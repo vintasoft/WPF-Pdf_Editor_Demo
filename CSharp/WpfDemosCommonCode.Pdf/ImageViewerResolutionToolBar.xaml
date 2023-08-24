@@ -1,0 +1,12 @@
+﻿<ToolBar x:Class="WpfDemosCommonCode.Pdf.ImageViewerResolutionToolBar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="31" Width="Auto" Background="Transparent" SnapsToDevicePixels="True">
+    <StackPanel Orientation="Horizontal">
+        <ComboBox Name="resolutionValueToolStripComboBox" 
+                  Width="104" Height="23" 
+                  VerticalAlignment="Center" 
+                  Margin="0,0,5,0"
+                  SelectionChanged="resolutionValueToolStripComboBox_SelectionChanged" />
+    </StackPanel>
+</ToolBar>

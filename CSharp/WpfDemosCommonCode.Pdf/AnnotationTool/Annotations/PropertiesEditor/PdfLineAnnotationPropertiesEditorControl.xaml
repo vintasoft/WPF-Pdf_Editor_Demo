@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfLineAnnotationPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    MinWidth="216" MinHeight="87" MaxHeight="87" Width="Auto">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0">Start Point Line Ending Style</Label>
+        <ComboBox  Grid.Row="0" Grid.Column="1" Name="startPointLineEndingStyleComboBox" Height="23" SelectionChanged="startPointLineEndingStyleComboBox_SelectionChanged"/>
+        
+        <Label Grid.Row="1" Grid.Column="0">End Point Line Ending Style</Label>
+        <ComboBox  Grid.Row="1" Grid.Column="1" Name="endPointLineEndingStyleComboBox" Height="23" SelectionChanged="endPointLineEndingStyleComboBox_SelectionChanged"/>
+
+        <Label Grid.Row="2" Grid.Column="0">Interior Color</Label>
+        <CustomControls:ColorPanelControl x:Name="interiorColorColorPanelControl" Grid.Row="2" Grid.Column="1" ColorChanged="InteriorColorColorPanelControl_ColorChanged" CanSetDefaultColor="True" />
+    </Grid>
+</UserControl>

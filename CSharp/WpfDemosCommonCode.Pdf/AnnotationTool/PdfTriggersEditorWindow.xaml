@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.PdfTriggersEditorWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+    xmlns:PdfCustomControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Title="Triggers Editor" MinHeight="380" MinWidth="200" Width="430" Height="380">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="29" />
+        </Grid.RowDefinitions>
+        
+        <PdfCustomControls:PdfTriggersEditorControl x:Name="pdfTriggersEditorControl" Grid.Row="0" Grid.Column="0" />
+        
+        <Button Name="okButton" Margin="3" Width="75" Height="23" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Click="okButton_Click">OK</Button>
+    </Grid>
+</Window>

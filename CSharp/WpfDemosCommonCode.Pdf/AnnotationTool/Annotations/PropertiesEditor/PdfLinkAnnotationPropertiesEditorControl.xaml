@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfLinkAnnotationPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.Pdf"             
+    MinHeight="214" MinWidth="170" Height="Auto" Width="Auto">
+    <Grid Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0">Highlighting Mode</Label>
+        <ComboBox Grid.Row="0" Grid.Column="1" Name="highlightingModeComboBox" Height="23" VerticalAlignment="Center" SelectionChanged="highlightingModeComboBox_SelectionChanged" />
+        
+        <GroupBox Header="Action" Grid.Row="1" Grid.ColumnSpan="2" >
+            <CustomControls:PdfActionEditorControl x:Name="pdfActionEditorControl" ActionChanged="pdfActionEditorControl_ActionChanged" />
+        </GroupBox>
+    </Grid>
+</UserControl>

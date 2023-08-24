@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfListBoxPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    xmlns:Controls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Height="Auto" MinHeight="268"
+    Width="Auto" MinWidth="254">
+    <Grid Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="102" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0">Selection Brush</Label>
+        <CustomControls:ColorPanelControl 
+            Grid.Row="0" 
+            Grid.Column="1" 
+            x:Name="selectionBrushColorPanelControl"
+            ColorChanged="selectionBrushColorPanelControl_ColorChanged"/>
+        <CheckBox Grid.Row="0" 
+                  Grid.Column="2" 
+                  Name="multiselectCheckBox"
+                  VerticalAlignment="Center"
+                  Checked="multiselectCheckBox_CheckedChanged"
+                  Unchecked="multiselectCheckBox_CheckedChanged"
+                  Margin="3,0">
+            Multiselect
+        </CheckBox>
+
+        <Controls:PdfInteractiveFormChoiceFieldEditorControl
+            x:Name="pdfInteractiveFormChoiceFieldEditorControl"
+            PropertyValueChanged="pdfInteractiveFormChoiceFieldEditorControl_PropertyValueChanged"
+            Grid.Row="1" 
+            Grid.ColumnSpan="3" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.Security.SecurityPropertiesWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Document Security" Height="394" Width="435" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="31" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Encryption:</Label>
+        <Label Name="encryptionLabel" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">X</Label>
+        
+        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Adobe Acrobat Compatibility:</Label>
+        <Label Name="compatibilityModeLabel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">X</Label>
+        
+        <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Authorization Result:</Label>
+        <Label Name="authorizationResultLabel" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">AuthenticationNotRequired</Label>
+
+        <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Document User Password:</Label>
+        <Label Name="userPasswordLabel" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">No</Label>
+
+        <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Document Owner Password:</Label>
+        <Label Name="ownerPasswordLabel" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">No</Label>
+
+
+        <GroupBox Header="User Permissions" Height="190" Grid.Row="5" Margin="3" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Printing:</Label>
+                <Label Name="printingLabel" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Allowed</Label>
+
+                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Extract Text and Graphics:</Label>
+                <Label Name="extractTextAndGraphicsLabel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Allowed</Label>
+
+                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Extract Text and Graphics (for Accessibility):</Label>
+                <Label Name="extractTextAndGraphicsForAccessibilityLabel" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Allowed</Label>
+
+                <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Modify Contents:</Label>
+                <Label Name="modifyContentsLabel" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Allowed</Label>
+
+                <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Modify Annotations:</Label>
+                <Label Name="modifyAnnotationLabel" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Allowed</Label>
+
+                <Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Fill Interactive Form Fields:</Label>
+                <Label Name="fillInteractiveFormFieldsLabel" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Allowed</Label>
+
+                <Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Assemble Document:</Label>
+                <Label Name="assembleDocumentLabel" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Allowed</Label>
+            </Grid>
+        </GroupBox>
+        
+        <Button Name="okButton" HorizontalAlignment="Center" Width="75" Height="23" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="6" Click="okButton_Click">OK</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,364 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfContentEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vsue="clr-namespace:Vintasoft.Imaging.Wpf.UI.UIElements;assembly=Vintasoft.Imaging.Wpf.UI"
+    xmlns:cc="clr-namespace:WpfDemosCommonCode.Pdf" 
+    Height="600" MinHeight="520" Width="250" MinWidth="225"
+    SnapsToDevicePixels="True">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="23" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="Margin" Value="3" />
+        </Style>
+
+        <Style TargetType="Button" x:Key="figuresButtonStyle">
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+
+        <Style TargetType="{x:Type Image}" x:Key="figuresImageStyle">
+            <Setter Property="Stretch" Value="None" />
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,3,0" />
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="figuresStackPanelStyle">
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+
+        <Style TargetType="Menu" x:Key="dropDownMenuStyle">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="18"/>
+        </Style>
+
+        <BitmapImage x:Key="Ellipse" UriSource="Resources/CE_Ellipse.png" />
+        <BitmapImage x:Key="FreehandLines" UriSource="Resources/CE_FreehandLines.png" />
+        <BitmapImage x:Key="FreehandPolygon" UriSource="Resources/CE_FreehandPolygon.png" />
+        <BitmapImage x:Key="FreehandTextHighlight" UriSource="Resources/CE_FreehandTextHighlight.png" />
+        <BitmapImage x:Key="Highlight" UriSource="Resources/CE_Highlight.png" />
+        <BitmapImage x:Key="Lines" UriSource="Resources/CE_Lines.png" />
+        <BitmapImage x:Key="Polygon" UriSource="Resources/CE_Polygon.png" />
+        <BitmapImage x:Key="Rectangle" UriSource="Resources/CE_Rectangle.png" />
+        <BitmapImage x:Key="Text" UriSource="Resources/CE_Text.png" />
+        <BitmapImage x:Key="TextHighlight" UriSource="Resources/CE_TextHighlight.png" />
+        <BitmapImage x:Key="TextLine" UriSource="Resources/CE_TextLine.png" />
+        <BitmapImage x:Key="Image" UriSource="Resources/CE_Image.png" />
+        <BitmapImage x:Key="Form" UriSource="Resources/CE_Form.png" />
+        <BitmapImage x:Key="OfficeDocument" UriSource="Resources/CE_Office.png" />
+        <BitmapImage x:Key="EmptyDocument" UriSource="Resources/CE_EmptyDocument.png" />
+        <BitmapImage x:Key="Chart" UriSource="Resources/CE_Chart.png" />
+
+        <ContextMenu Name="figureViewContextMenu" x:Key="figureViewContextMenu" Opened="figureViewContextMenu_Opened">
+            <MenuItem Header="Cut" Name="cutMenuItem" Click="cutMenuItem_Click" />
+            <MenuItem Header="Copy" Name="copyMenuItem" Click="copyMenuItem_Click"/>
+            <MenuItem Header="Paste" Name="pasteMenuItem" Click="pasteMenuItem_Click"/>
+            <MenuItem Header="Delete" Name="deleteMenuItem" Click="removeButton_Click"/>
+            <Separator/>
+            <MenuItem Header="Select by Cursor" Name="selectByCursorMenuItem"/>
+            <Separator/>
+            <MenuItem Header="Bring to Front" Name="bringToFrontMenuItem" Click="bringToFrontMenuItem_Click" />
+            <MenuItem Header="Bring to Back" Name="bringToBackMenuItem" Click="bringToBackMenuItem_Click" />
+            <Separator/>
+            <MenuItem Header="Content Graphics Properties..." Name="contentGraphicsPropertiesToolStripMenuItem" Click="contentGraphicsPropertiesToolStripMenuItem_Click"/>
+            <MenuItem Header="Properties..." Name="propertiesMenuItem" Click="propertiesMenuItem_Click"/>
+        </ContextMenu>
+
+        <ContextMenu Name="imageViewerContextMenu" x:Key="imageViewerContextMenu" Opened="imageViewerContextMenu_Opened">
+            <MenuItem Header="Paste" Name="pasteMenuItem1" Click="pasteMenuItem_Click"/>
+            <MenuItem Header="Remove All" Name="removeAllMenuItem" Click="removeAllButton_Click"/>
+        </ContextMenu>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding x:Name="undoCommandBinding" Command="{x:Static cc:PdfContentEditorControl._undoCommand}" Executed="undoToolBarButton_Click" CanExecute="undoCommandBinding_CanExecute" />
+        <CommandBinding x:Name="redoCommandBinding" Command="{x:Static cc:PdfContentEditorControl._redoCommand}" Executed="redoToolBarButton_Click" CanExecute="redoCommandBinding_CanExecute"/>        
+    </UserControl.CommandBindings>
+
+    <UserControl.InputBindings>
+        <KeyBinding Command="{x:Static cc:PdfContentEditorControl._undoCommand}" Modifiers="CTRL" Key="Z"/>
+        <KeyBinding Command="{x:Static cc:PdfContentEditorControl._redoCommand}" Modifiers="CTRL" Key="Y"/>
+    </UserControl.InputBindings>
+
+    <Grid Name="mainPanel" IsEnabled="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="525" />
+            <RowDefinition Height="29" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ToolBar>
+            <vsue:ToolBarButton x:Name="appendModeToolBarButton" ImageSource="Resources\CE_AppendMode.png" Click="appendModeToolBarButton_Click" ToolTip="Append Mode"/>
+            <vsue:ToolBarButton x:Name="groupContentFiguresToolBarButton" ImageSource="Resources\CE_FigureGrouping.png" Click="groupContentFiguresToolBarButton_Click"  ToolTip="Group Content Figures"/>
+            <vsue:ToolBarButton x:Name="highlightToolBarButton" ImageSource="Resources\CE_HighlightFigures.png" Click="highlightToolBarButton_Click" ToolTip="Highlight Figures"/>
+            <Separator/>
+            <vsue:ToolBarButton x:Name="textContentToolBarButton" ImageSource="Resources\CE_InteractiveContent_Text.png" ToolTip="Edit Text" Click="interactiveContentTypeToolBarButton_Click" MouseDown="interactiveContentTypeToolBarButton_MouseDown"/>
+            <vsue:ToolBarButton x:Name="imageContentToolBarButton" ImageSource="Resources\CE_InteractiveContent_Image.png" ToolTip="Edit Images" Click="interactiveContentTypeToolBarButton_Click" MouseDown="interactiveContentTypeToolBarButton_MouseDown"/>
+            <vsue:ToolBarButton x:Name="formContentToolBarButton" ImageSource="Resources\CE_InteractiveContent_Form.png" ToolTip="Edit Forms" Click="interactiveContentTypeToolBarButton_Click" MouseDown="interactiveContentTypeToolBarButton_MouseDown"/>
+            <vsue:ToolBarButton x:Name="strokePathContentToolBarButton" ImageSource="Resources\CE_InteractiveContent_Stroke.png" ToolTip="Edit Stroke Paths" Click="interactiveContentTypeToolBarButton_Click" MouseDown="interactiveContentTypeToolBarButton_MouseDown"/>
+            <vsue:ToolBarButton x:Name="fillPathContentToolBarButton" ImageSource="Resources\CE_InteractiveContent_Fill.png" ToolTip="Edit Fill Paths" Click="interactiveContentTypeToolBarButton_Click" MouseDown="interactiveContentTypeToolBarButton_MouseDown"/>
+            <vsue:ToolBarButton x:Name="shadingFillContentToolBarButton" ImageSource="Resources\CE_InteractiveContent_ShadingFill.png" ToolTip="Edit Shading Fills" Click="interactiveContentTypeToolBarButton_Click" MouseDown="interactiveContentTypeToolBarButton_MouseDown"/>
+            <vsue:ToolBarButton x:Name="clipContentToolBarButton" ImageSource="Resources\CE_InteractiveContent_Clip.png" ToolTip="Edit Clip Paths" Click="interactiveContentTypeToolBarButton_Click" MouseDown="interactiveContentTypeToolBarButton_MouseDown"/>
+        </ToolBar>
+        <ToolBar Grid.Row="1">
+            <vsue:ToolBarButton x:Name="undoToolBarButton" ImageSource="Resources\CE_Undo.png" ToolTip="Undo" Click="undoToolBarButton_Click"/>
+            <Menu Style="{StaticResource dropDownMenuStyle}">
+                <MenuItem Name="undoToolBarMenu">
+                    <MenuItem.Header>
+                        <Path Fill="Black" Data="M 0 0 L 4 4 L 8 0 Z"  Margin="-6,0,0,0"/>
+                    </MenuItem.Header>
+                </MenuItem>
+            </Menu>
+            <vsue:ToolBarButton x:Name="redoToolBarButton" ImageSource="Resources\CE_Redo.png" ToolTip="Redo" Click="redoToolBarButton_Click"/>
+            <Menu Style="{StaticResource dropDownMenuStyle}">
+                <MenuItem Name="redoToolBarMenu">
+                    <MenuItem.Header>
+                        <Path Fill="Black" Data="M 0 0 L 4 4 L 8 0 Z"  Margin="-6,0,0,0"/>
+                    </MenuItem.Header>
+                </MenuItem>
+            </Menu>
+            <Separator />
+            <vsue:ToolBarButton x:Name="editTextObjectToolBarButton" ImageSource="Resources\CE_EditTextObject.png" ToolTip="Edit Text" Click="editTextObjectToolBarButton_Click"/>
+            <vsue:ToolBarButton x:Name="replaceResourceToolBarButton" ImageSource="Resources\CE_replaceResource.png" ToolTip="Replace Image/Form Resource..." Click="replaceResourceToolBarButton_Click"/>
+            <vsue:ToolBarButton x:Name="contentGraphicsPropertiesToolBarButton" ImageSource="Resources\CE_EditContentGraphicsProperties.png" ToolTip="Edit Content Graphics Properties..." Click="contentGraphicsPropertiesToolBarButton_Click" />
+            <Separator/>
+            <vsue:ToolBarButton x:Name="horizontalMirrorToolBarButton" ImageSource="Resources\CE_HorizontalMirror.png" Click="horizontalMirrorToolBarButton_Click" ToolTip="Hirizontal Mirror"/>
+            <vsue:ToolBarButton x:Name="verticalMirrorToolBarButton" ImageSource="Resources\CE_VerticalMirror.png" Click="verticalMirrorToolBarButton_Click" ToolTip="Vertical Mirror"/>
+            <vsue:ToolBarButton x:Name="rotateClockwiseToolBarButton" ImageSource="Resources\CE_rotate90.png" Click="rotateClockwiseToolBarButton_Click" ToolTip="Rotate Clockwise"/>
+            <vsue:ToolBarButton x:Name="rotateCounterclockwiseToolBarButton" ImageSource="Resources\CE_rotateM90.png" Click="rotateCounterclockwiseToolBarButton_Click" ToolTip="Rotate Counterclockwise"/>
+            <Separator/>
+            <vsue:ToolBarButton x:Name="addRectangleClipToolBarButton" ImageSource="Resources\CE_rectClip.png" ToolTip="Add Rectangular Clip" Click="addRectangleClipToolBarButton_Click"/>
+            <vsue:ToolBarButton x:Name="addEllipseClipToolBarButton" ImageSource="Resources\CE_ellipseClip.png" ToolTip="Add Elliptical Clip" Click="addEllipseClipToolBarButton_Click" />
+        </ToolBar>
+        <GroupBox Name="figuresGroupBox" Grid.Row="2" Header="Add Graphics Figure">
+            <StackPanel>
+                <Button Click="addTextButton_Click" 
+                        Name="addTextButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource TextLine}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Text Line</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="addTextBoxButton_Click" 
+                        Name="addTextBoxButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Text}" 
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Text Box</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="addFormattedTextButton_Click" 
+                        Name="addFormattedTextButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource EmptyDocument}" 
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Formatted Text</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="addOfficeDocumentButton_Click" 
+                        Name="addOfficeDocumentButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource OfficeDocument}" 
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Office Document</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="addChartButton_Click" 
+                        Name="addChartButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Chart}" 
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Chart</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="drawImageButton_Click" 
+                        Name="drawImageButton"
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Image}" 
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Image Resource</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="formXObjectButton_Click"
+                        Name="formXObjectButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Form}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Form Resource</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="drawVintasoftImageButton_Click" 
+                        Name="drawVintasoftImageButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Image}" 
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>VintasoftImage</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="drawRectangleButton_Click" 
+                        Name="drawRectangleButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Rectangle}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Rectangle</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="fillRectangleButton_Click"
+                        Name="fillRectangleButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Highlight}" 
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Filled Rectangle</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="fillRectangleUseBlendingModeButton_Click"
+                        Name="fillRectangleUseBlendingModeButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource TextHighlight}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Highlight Rectangle With Blending</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="drawLinesUseBlendingModeButton_Click"
+                        Name="drawLinesUseBlendingModeButton"
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource FreehandTextHighlight}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Highlight With Blending</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="drawEllipseButton_Click"
+                        Name="drawEllipseButton"
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Ellipse}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Ellipse</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="drawLinesButton_Click"
+                        Name="drawLinesButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Lines}" 
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Lines</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="freeHandLineButton_Click" 
+                        Name="freeHandLineButton"
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource FreehandLines}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Freehand Line</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="drawCurvesButton_Click" 
+                        Name="drawCurvesButton"
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource FreehandLines}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Curves</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="drawPolygonButton_Click" 
+                        Name="drawPolygonButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource Polygon}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Polygon</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="drawClosedCurvesButton_Click" 
+                        Name="drawClosedCurvesButton" 
+                        Style="{StaticResource figuresButtonStyle}">
+                    <StackPanel Style="{StaticResource figuresStackPanelStyle}">
+                        <Image Source="{StaticResource FreehandPolygon}"
+                               Style="{StaticResource figuresImageStyle}" />
+                        <TextBlock>Closed Curves</TextBlock>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+        </GroupBox>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="74" />
+            </Grid.ColumnDefinitions>
+
+            <Button Name="renderFiguresButton" 
+                    Width="Auto" 
+                    Grid.Column="0" 
+                    FontWeight="Bold"
+                    Click="renderFiguresButton_Click">
+                Append Content
+            </Button>
+            <Button Name="removeButton" 
+                    Grid.Column="1"
+                    Click="removeButton_Click">
+                Remove
+            </Button>
+            <Button Name="removeAllButton" 
+                    Grid.Column="2" 
+                    Click="removeAllButton_Click">
+                Remove All
+            </Button>
+        </Grid>
+
+        <ListBox Name="figuresListBox" 
+                 Grid.Row="4"
+                 Width="Auto" Height="Auto" 
+                 SelectionChanged="figuresListBox_SelectionChanged" 
+                 SelectionMode="Single"
+                 IsTextSearchEnabled="False" />
+    </Grid>
+</UserControl>

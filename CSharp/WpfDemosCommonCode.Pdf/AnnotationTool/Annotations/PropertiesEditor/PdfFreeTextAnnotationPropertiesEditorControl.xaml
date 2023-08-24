@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfFreeTextAnnotationPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    xmlns:PdfCustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    MinHeight="196" Height="Auto" MinWidth="160" 
+    Width="Auto">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="29" />
+            <RowDefinition Height="29" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="29" />
+            <RowDefinition Height="29" />
+        </Grid.RowDefinitions>
+
+        <Label VerticalAlignment="Top" Grid.Row="0" Grid.Column="0">Text</Label>
+        <TextBox Name="textBox" Grid.Row="0" Height="Auto" VerticalAlignment="Stretch" Grid.Column="1" Margin="0,3,6,3" TextChanged="textBox_TextChanged"/>
+
+        <Label Grid.Row="1" Grid.Column="0">Text Quadding</Label>
+        <ComboBox Name="textQuaddingComboBox" Grid.Row="1" Grid.Column="1" Height="23" Margin="0,0,6,0" SelectionChanged="textQuaddingComboBox_SelectionChanged"/>
+
+        <Label Grid.Row="2" Grid.Column="0">BackColor</Label>
+        <CustomControls:ColorPanelControl x:Name="backColorPanelControl" Grid.Row="2" Grid.Column="1" Margin="0,0,6,0" ColorChanged="backColorPanelControl_ColorChanged" CanSetDefaultColor="True" CanEditAlphaChannel="False" />
+
+        <GroupBox Header="Font" Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="29" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="95" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Font Name</Label>
+                <PdfCustomControls:PdfFontPanelControl x:Name="pdfFontPanelControl" Grid.Row="0" Grid.Column="1" Height="23" PdfFontChanged="pdfFontPanelControl_PdfFontChanged" />
+
+                <Label Grid.Row="1" Grid.Column="0">Size</Label>
+                <CustomControls:NumericUpDown x:Name="fontSizeNumericUpDown" Grid.Row="1" Grid.Column="1" Height="26" ValueChanged="fontSizeNumericUpDown_ValueChanged" />
+            </Grid>
+        </GroupBox>
+
+        <Label Grid.Row="4" Grid.Column="0">Line Ending Style</Label>
+        <ComboBox Name="lineEndingStyleComboBox" Grid.Row="4" Grid.Column="1" Height="23" Margin="0,0,6,0" SelectionChanged="lineEndingStyleComboBox_SelectionChanged" />
+
+        <Label Grid.Row="5" Grid.Column="0">Style</Label>
+        <PdfCustomControls:PdfAnnotationBorderEffectEditorControl Height="23" VerticalAlignment="Center" Margin="0,0,6,0" PropertyValueChanged="PdfAnnotationBorderEffectEditorControl_PropertyValueChanged" x:Name="pdfAnnotationBorderEffectEditorControl1" Grid.Row="5" Grid.Column="1" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfCheckBoxPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Width="Auto" 
+    Height="Auto">
+    <Grid>
+        <Controls:PdfInteractiveFormSwitchableButtonPropertiesEditorControl 
+            x:Name="pdfInteractiveFormSwitchableButtonPropertiesEditorControl"
+            PropertyValueChanged="pdfInteractiveFormSwitchableButtonPropertiesEditorControl_PropertyValueChanged" />
+    </Grid>
+</UserControl>

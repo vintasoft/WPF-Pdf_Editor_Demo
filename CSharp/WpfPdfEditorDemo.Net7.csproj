@@ -1,0 +1,1881 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>  
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <Version>12.2.6.1</Version>
+    <AssemblyName>WpfPdfEditorDemo</AssemblyName>
+    <RootNamespace>WpfPdfEditorDemo</RootNamespace>
+    <StartupObject>WpfPdfEditorDemo.App</StartupObject>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>NETCORE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>NETCORE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Win32.Registry" Version="6.0.0-preview.5.21301.5" />
+    <PackageReference Include="System.IO.Packaging" Version="7.0.0-rc.1.22426.10" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0-rc.1.22426.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Jint.Vintasoft">
+      <HintPath>.\Jint.Vintasoft\DotNet7\Jint.Vintasoft.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Vintasoft.Barcode" Version="14.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.UI" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Wpf.UI" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="7.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="8.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Ocr" Version="7.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Ocr.Tesseract" Version="7.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="4.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="4.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="4.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.JavaScript" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Mrc" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Ocr" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.UI" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.Wpf.UI" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.UI" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Wpf.UI" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.WebpCodec" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Shared" Version="4.0.0.3" />
+    <PackageReference Include="Vintasoft.WpfTwain" Version="14.0.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="CustomControls\AnchorTypeEditorControl.xaml.cs">
+      <DependentUpon>AnchorTypeEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ColorPanelControl\ColorPanelControl.xaml.cs">
+      <DependentUpon>ColorPanelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\ColorPicker.cs">
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\ColorPickerDialog.xaml.cs">
+      <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\ColorThumb.cs">
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\ColorUtilities.cs">
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\HsvColor.cs">
+    </Compile>
+    <Compile Include="CustomControls\ColorPickerDialog\SpectrumSlider.cs">
+    </Compile>
+    <Compile Include="CustomControls\CursorPanelControl\CursorPanelControl.cs">
+    </Compile>
+    <Compile Include="CustomControls\FontFamilySelector.xaml.cs">
+      <DependentUpon>FontFamilySelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\NumericUpDown.xaml.cs">
+      <DependentUpon>NumericUpDown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PaddingFEditorControl.xaml.cs">
+      <DependentUpon>PaddingFEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ThicknessEditorControl.xaml.cs">
+      <DependentUpon>ThicknessEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ValueEditorControl.xaml.cs">
+      <DependentUpon>ValueEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Annotation\Comments\CommentControl.xaml.cs">
+      <DependentUpon>CommentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Annotation\Comments\CommentControlFactory.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Annotation\Comments\CommentControlTransformer.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Annotation\Comments\CommentPropertiesWindow.xaml.cs">
+      <DependentUpon>CommentPropertiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Annotation\Comments\CommentsControl.xaml.cs">
+      <DependentUpon>CommentsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Annotation\Comments\CommentTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Annotation\Comments\StateHistory\CommentStateHistoryControl.xaml.cs">
+      <DependentUpon>CommentStateHistoryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Annotation\Comments\StateHistory\CommentStateHistoryWindow.xaml.cs">
+      <DependentUpon>CommentStateHistoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ActionProgressWindow.xaml.cs">
+      <DependentUpon>ActionProgressWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\AssembliesLoader\DocxAssemblyLoader.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\AssembliesLoader\Jbig2AssemblyLoader.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\AssembliesLoader\Jpeg2000AssemblyLoader.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\CodecsFileFilters.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\BmpEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>BmpEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\GifEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>GifEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\JpegEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>JpegEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\PbmEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>PbmEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\PngEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>PngEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\SvgEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>SvgEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\TgaEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>TgaEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\TiffEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>TiffEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\WebpEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>WebpEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\ImagingEncoderFactory.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\PluginsEncoderFactory\Dialogs\Jbig2EncoderSettingsWindow.xaml.cs">
+      <DependentUpon>Jbig2EncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\PluginsEncoderFactory\Dialogs\Jpeg2000EncoderSettingsWindow.xaml.cs">
+      <DependentUpon>Jpeg2000EncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\PluginsEncoderFactory\Dialogs\PdfCompressionControl.xaml.cs">
+      <DependentUpon>PdfCompressionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\PluginsEncoderFactory\Dialogs\PdfEncoderSettingsWindow.xaml.cs">
+      <DependentUpon>PdfEncoderSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Codecs\PluginsEncoderFactory\PluginsEncoderFactory.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ColorManagementHelper.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorManagementSettingsWindow.xaml.cs">
+      <DependentUpon>ColorManagementSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorTransformSetEditorWindow.xaml.cs">
+      <DependentUpon>ColorTransformSetEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\CompositeRenderingSettingsWindow.xaml.cs">
+      <DependentUpon>CompositeRenderingSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\DocumentPasswordWindow.xaml.cs">
+      <DependentUpon>DocumentPasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Fonts\CustomFontProgramsController.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Fonts\FontProgramsTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\ImageViewerToolbar.xaml.cs">
+      <DependentUpon>ImageViewerToolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\PageIndexChangedEventArgs.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageAppearanceSettingsWindow.xaml.cs">
+      <DependentUpon>ImageAppearanceSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageRenderingRequirementAddWindow.xaml.cs">
+      <DependentUpon>ImageRenderingRequirementAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageRenderingRequirementsWindow.xaml.cs">
+      <DependentUpon>ImageRenderingRequirementsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageViewerSettingsWindow.xaml.cs">
+      <DependentUpon>ImageViewerSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\PageSettingsWindow.xaml.cs">
+      <DependentUpon>PageSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Processing\DocumentProcessingCommandControl.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandControl.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandControlBase.xaml.cs">
+      <DependentUpon>ProcessingCommandControlBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\ProcessingCommandViewer.xaml.cs">
+      <DependentUpon>ProcessingCommandViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandWindow.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultTreeType.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\NamedProcessingResult.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\ProcessingResultViewer.xaml.cs">
+      <DependentUpon>ProcessingResultViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Processing\ProcessingTreeViewItem.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\PropertyGridWindow.xaml.cs">
+      <DependentUpon>PropertyGridWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\RenderingSettingsWindow.xaml.cs">
+      <DependentUpon>RenderingSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\Resources\DemosResourcesManager.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\SaveImageFileWindow.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\SelectImageWindow.xaml.cs">
+      <DependentUpon>SelectImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ServerSettingsWindow.xaml.cs">
+      <DependentUpon>ServerSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\ThumbnailViewer\ThumbnailViewerSettingsWindow.xaml.cs">
+      <DependentUpon>ThumbnailViewerSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\TypeEditorRegistrator\ImagingTypeEditorRegistrator.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\Actions\NoneAction.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\Actions\SeparatorToolBarAction.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\Actions\VisualToolAction.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualToolsToolBar.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\MeasurementVisualTools\Actions\ImageMeasureToolAction.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\MeasurementVisualTools\Actions\ImageMeasureToolUnitsOfMeasureAction.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\MeasurementVisualTools\MeasurementVisualToolActionFactory.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\ZoomVisualTools\Actions\MagnifierToolAction.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\ZoomVisualTools\ZoomVisualToolActionFactory.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualTools\TextSelectionTool\FindTextToolBar.xaml.cs">
+      <DependentUpon>FindTextToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualTools\TextSelectionTool\FindTextWindow.xaml.cs">
+      <DependentUpon>FindTextWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualTools\TextSelectionTool\WpfTextSelectionControl.xaml.cs">
+      <DependentUpon>WpfTextSelectionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualTools\UserInteraction\WpfInteractionAreaAppearanceManagerWindow.xaml.cs">
+      <DependentUpon>WpfInteractionAreaAppearanceManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualTools\WpfMagnifierToolSettingsWindow.xaml.cs">
+      <DependentUpon>WpfMagnifierToolSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Office\OfficeDemosTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OfficeDocumentFontPropertiesVisualEditorToolBar.xaml.cs">
+      <DependentUpon>OfficeDocumentFontPropertiesVisualEditorToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OfficeDocumentParagraphPropertiesVisualEditorToolBar.xaml.cs">
+      <DependentUpon>OfficeDocumentParagraphPropertiesVisualEditorToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OfficeDocumentTextPropertiesVisualEditorToolBar.xaml.cs">
+      <DependentUpon>OfficeDocumentTextPropertiesVisualEditorToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OfficeDocumentVisualEditorWindow.xaml.cs">
+      <DependentUpon>OfficeDocumentVisualEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OpenXmlDocumentChartDataWindow.xaml.cs">
+      <DependentUpon>OpenXmlDocumentChartDataWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OpenXmlParagraphPropertiesWindow.xaml.cs">
+      <DependentUpon>OpenXmlParagraphPropertiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OpenXmlTextPropertiesWindow.xaml.cs">
+      <DependentUpon>OpenXmlTextPropertiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\SetOpenXmlParagraphNumerationWindow.xaml.cs">
+      <DependentUpon>SetOpenXmlParagraphNumerationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Twain\SelectDeviceManagerModeWindow.xaml.cs">
+      <DependentUpon>SelectDeviceManagerModeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Twain\WpfSimpleTwainManager.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\DemosTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\FontDemosTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\ItemSetEditor\ItemSet.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\ItemSetEditor\ItemSetEditorWindow.xaml.cs">
+      <DependentUpon>ItemSetEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\ProcessingDemosTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\StatusBarActionController.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\WebUploaderWindow.xaml.cs">
+      <DependentUpon>WebUploaderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode\WpfAboutBoxBaseWindow.xaml.cs">
+      <DependentUpon>WpfAboutBoxBaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PdfAnnotationBorderEffectEditorControl.xaml.cs">
+      <DependentUpon>PdfAnnotationBorderEffectEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PdfFontPanelControl.xaml.cs">
+      <DependentUpon>PdfFontPanelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\PdfContentXObjectTool\Actions\PdfContentXObjectToolAction.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\VisualTools\UserInteraction\WpfPdfInteractionAreaAppearanceManager.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Ocr\AddImagesWindow.xaml.cs">
+      <DependentUpon>AddImagesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\CreatePdfActionWindow.xaml.cs">
+      <DependentUpon>CreatePdfActionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfAnnotationHideActionEditorWindow.xaml.cs">
+      <DependentUpon>PdfAnnotationHideActionEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfGotoActionEditorWindow.xaml.cs">
+      <DependentUpon>PdfGotoActionEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfJavaScriptActionEditorWindow.xaml.cs">
+      <DependentUpon>PdfJavaScriptActionEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfLaunchActionEditorWindow.xaml.cs">
+      <DependentUpon>PdfLaunchActionEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfNamedActionEditorWindow.xaml.cs">
+      <DependentUpon>PdfNamedActionEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfResetFormActionEditorWindow.xaml.cs">
+      <DependentUpon>PdfResetFormActionEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfSubmitFormActionEditorWindow.xaml.cs">
+      <DependentUpon>PdfSubmitFormActionEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfUriActionEditorWindow.xaml.cs">
+      <DependentUpon>PdfUriActionEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\PdfActionEditorControl.xaml.cs">
+      <DependentUpon>PdfActionEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\PdfActionEditorWindow.xaml.cs">
+      <DependentUpon>PdfActionEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Editor\PdfActionsEditorTool.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Executor\PdfActionExecutorManager.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Executor\PdfLaunchActionExecutor.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Executor\PdfSubmitActionExecutor.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Executor\PdfUriActionExecutor.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Executor\PdfViewerNamedAction.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\Executor\PdfViewerNamedActionExecutor.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Actions\PdfActionsTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AddEmptyPageWindow.xaml.cs">
+      <DependentUpon>AddEmptyPageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\AnnotationListControl\PdfAnnotationToolAnnotationsControl.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\AnnotationListControl\PdfPageAnnotationsControl.xaml.cs">
+      <DependentUpon>PdfPageAnnotationsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\AnnotationType.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PdfAnnotationBuilderControl.xaml.cs">
+      <DependentUpon>PdfAnnotationBuilderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PdfAnnotationsControl.xaml.cs">
+      <DependentUpon>PdfAnnotationsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfAnnotationAppearancesEditorControl.xaml.cs">
+      <DependentUpon>PdfAnnotationAppearancesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfAnnotationBorderStyleControl.xaml.cs">
+      <DependentUpon>PdfAnnotationBorderStyleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfAnnotationCommonPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfAnnotationCommonPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfPolygonalAnnotationPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfPolygonalAnnotationPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfRectangularAnnotationPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfRectangularAnnotationPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\IPdfAnnotationPropertiesEditor.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfFileAttachmentAnnotationPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfFileAttachmentAnnotationPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfFreeTextAnnotationPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfFreeTextAnnotationPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfLineAnnotationPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfLineAnnotationPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfLinkAnnotationPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfLinkAnnotationPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfPolylineAnnotationPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfPolylineAnnotationPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\AppearanceGenerators\Signature\SignatureAppearanceGenerator.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\InteractiveFormFieldType.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormControl.xaml.cs">
+      <DependentUpon>PdfInteractiveFormControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormFieldBuilderControl.xaml.cs">
+      <DependentUpon>PdfInteractiveFormFieldBuilderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormFieldListEditorControl.xaml.cs">
+      <DependentUpon>PdfInteractiveFormFieldListEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormFieldTree.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormChoiceFieldEditorControl.xaml.cs">
+      <DependentUpon>PdfInteractiveFormChoiceFieldEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormCommonPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfInteractiveFormCommonPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormSwitchableButtonPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfInteractiveFormSwitchableButtonPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfWidgetAnnotationBorderStyleControl.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\IPdfInteractiveFormPropertiesEditor.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfBarcodeFieldPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfBarcodeFieldPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfCheckBoxPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfCheckBoxPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfComboBoxPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfComboBoxPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfListBoxPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfListBoxPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfPushButtonPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfPushButtonPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfRadioButtonPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfRadioButtonPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfTextFieldPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfTextFieldPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfVintasoftBarcodeFieldPropertiesEditorControl.xaml.cs">
+      <DependentUpon>PdfVintasoftBarcodeFieldPropertiesEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfAnnotationAppearanceGeneratorController.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfAnnotationPropertiesWindow.xaml.cs">
+      <DependentUpon>PdfAnnotationPropertiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfAnnotationsTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfAnnotationToolControl.xaml.cs">
+      <DependentUpon>PdfAnnotationToolControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfTriggersEditorControl.xaml.cs">
+      <DependentUpon>PdfTriggersEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfTriggersEditorWindow.xaml.cs">
+      <DependentUpon>PdfTriggersEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\AnnotationTool\VisualToolMouseObserver.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Attachments\AttachmentsEditorWindow.xaml.cs">
+      <DependentUpon>AttachmentsEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Attachments\PdfAttachmentDataFieldFactoryWindow.xaml.cs">
+      <DependentUpon>PdfAttachmentDataFieldFactoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Attachments\PdfAttachmentSchemaFiledFactoryWindow.xaml.cs">
+      <DependentUpon>PdfAttachmentSchemaFiledFactoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Attachments\PdfAttachmentViewer.xaml.cs">
+      <DependentUpon>PdfAttachmentViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Attachments\ViewMode.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\BookmarksEditor\BookmarkTreeViewEditor.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\BookmarksEditor\EditBookmarkNodeWindow.xaml.cs">
+      <DependentUpon>EditBookmarkNodeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Bookmarks\BookmarkTreeView.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Comments\PdfCommentsControl.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\ContentRenderer\CustomContentRenderer.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\ContentRenderer\CustomContentRendererSettingsWindow.xaml.cs">
+      <DependentUpon>CustomContentRendererSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Fonts\CreateFontWindow.xaml.cs">
+      <DependentUpon>CreateFontWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Fonts\ViewDocumentFontsWindow.xaml.cs">
+      <DependentUpon>ViewDocumentFontsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\ImageViewerResolutionToolBar.xaml.cs">
+      <DependentUpon>ImageViewerResolutionToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\JavaScript\ActionDictionaryEditorDialog\PdfJavaScriptActionDictionaryEditorDialog.xaml.cs">
+      <DependentUpon>PdfJavaScriptActionDictionaryEditorDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\JavaScript\ActionDictionaryEditorDialog\PdfJavaScriptActionDictionaryRenameActionDialog.xaml.cs">
+      <DependentUpon>PdfJavaScriptActionDictionaryRenameActionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\JavaScript\PdfJavaScriptDebuggerWindow.xaml.cs">
+      <DependentUpon>PdfJavaScriptDebuggerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\JavaScript\PdfJavaScriptManager.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\JavaScript\PdfViewerJsApp.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\JavaScript\TextBoxPdfJsConsole.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\JavaScript\WpfPdfJavaScriptActionExecutor.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\OptionalContent\OptionalContentSettingsWindow.xaml.cs">
+      <DependentUpon>OptionalContentSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\OptionalContent\RemoveOptionalContentWindow.xaml.cs">
+      <DependentUpon>RemoveOptionalContentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\PdfAuthenticateTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\PdfDemosTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\PdfInteractiveFormFieldCalculationOrderEditorWindow.xaml.cs">
+      <DependentUpon>PdfInteractiveFormFieldCalculationOrderEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\PdfNamedDictionaryItemSet.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\PdfRenderingSettingsWindow.xaml.cs">
+      <DependentUpon>PdfRenderingSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\PdfTextMarkupTools.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Processing\DocumentProcessingCommandWindow.xaml.cs">
+      <DependentUpon>DocumentProcessingCommandWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\EmbeddedFileSpecificationPropertiesEditor.xaml.cs">
+      <DependentUpon>EmbeddedFileSpecificationPropertiesEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\EmbeddedFileSpecificationWindow.xaml.cs">
+      <DependentUpon>EmbeddedFileSpecificationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\EmbeddedFilesWindow.xaml.cs">
+      <DependentUpon>EmbeddedFilesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\ImageResourceCompressionParamsWindow.xaml.cs">
+      <DependentUpon>ImageResourceCompressionParamsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\PdfDocumentResourceViewer\PdfDocumentResourceViewer.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\PdfDocumentResourceViewer\PdfResourceTreeType.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\PdfResourcesViewerWindow.xaml.cs">
+      <DependentUpon>PdfResourcesViewerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\PdfResourceViewerControl.xaml.cs">
+      <DependentUpon>PdfResourceViewerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\SelectResourceWindow.xaml.cs">
+      <DependentUpon>SelectResourceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Resources\ViewContentImageWindow.xaml.cs">
+      <DependentUpon>ViewContentImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\Certificates\CertificatePasswordWindow.xaml.cs">
+      <DependentUpon>CertificatePasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\Certificates\SelectCertificateWindow.xaml.cs">
+      <DependentUpon>SelectCertificateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\CreateEmptySignatureFieldWindow.xaml.cs">
+      <DependentUpon>CreateEmptySignatureFieldWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\CreateSignatureFieldWindow.xaml.cs">
+      <DependentUpon>CreateSignatureFieldWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\DocumentSignaturesWindow.xaml.cs">
+      <DependentUpon>DocumentSignaturesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\SelectSignatureFieldWindow.xaml.cs">
+      <DependentUpon>SelectSignatureFieldWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\SignatureAppearance\CreateSignatureAppearanceWindow.xaml.cs">
+      <DependentUpon>CreateSignatureAppearanceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\SignatureAppearance\SignatureAppearanceGraphicsFigure.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\SignatureAppearance\VintasoftImageFigure.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\PdfDocumentPasswordWindow.xaml.cs">
+      <DependentUpon>PdfDocumentPasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\RedactionMarks\RedactionMarkAppearanceEditor.xaml.cs">
+      <DependentUpon>RedactionMarkAppearanceEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\RedactionMarks\RedactionMarkAppearanceGraphicsFigure.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\SecurityPropertiesWindow.xaml.cs">
+      <DependentUpon>SecurityPropertiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Security\SecuritySettingsWindow.xaml.cs">
+      <DependentUpon>SecuritySettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\SelectPdfFormatWindow.xaml.cs">
+      <DependentUpon>SelectPdfFormatWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\AddTextWindow.xaml.cs">
+      <DependentUpon>AddTextWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\GraphicsFigureViewItem.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\PdfContentEditorControl.xaml.cs">
+      <DependentUpon>PdfContentEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\PdfContentGraphicsPropertiesWindow.xaml.cs">
+      <DependentUpon>PdfContentGraphicsPropertiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\PdfResourceGraphicsPropertiesWindow.xaml.cs">
+      <DependentUpon>PdfResourceGraphicsPropertiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\SelectHighlightWindow.xaml.cs">
+      <DependentUpon>SelectHighlightWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Tools\PdfImageExtractorControl.xaml.cs">
+      <DependentUpon>PdfImageExtractorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Tools\PdfRemoveContentControl\PdfRemoveContentControl.xaml.cs">
+      <DependentUpon>PdfRemoveContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SetCompressionParamsWindow.xaml.cs">
+      <DependentUpon>SetCompressionParamsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SignatureMakerTool.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="DefaultCMYK.icc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DefaultRGB.icc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="Resources\Charts\Chart_Areas.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_AreasWithAccumulation.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_AreasWithAccumulationNormalized.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_Dotted.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_DottedWithCurvedLines.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_DottedWithCurvedLinesAndMarkers.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_DottedWithLines.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_DottedWithLinesAmdMarkers.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagram.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramCurvedLines.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithAccumulation.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithAccumulationAndMarkers.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithAccumulationAndMarkersCurvedLines.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithAccumulationAndMarkersNormalized.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithAccumulationAndMarkersNormalizedCurvedLines.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithAccumulationCurvedLines.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithAccumulationNormalized.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithAccumulationNormalizedCurvedLines.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithMarkers.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GraphDiagramWithMarkersCurvedLines.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GroupedHistogram.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GroupedHistogramWithAccumulation.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GroupedHistogramWithAccumulationNormalized.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_Pie.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_StickDiagram.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_StickDiagramWithAccumulation.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_StickDiagramWithAccumulationNormalized.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\EmptyDocument.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Numerations\CheckList.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Numerations\NumberedList.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Numerations\SimpleList.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GroupedHistogram3D.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_StickDiagram3D.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GroupedHistogram3DWithAccumulation.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_GroupedHistogram3DWithAccumulationNormalized.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_StickDiagram3DWithAccumulation.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_StickDiagram3DWithAccumulationNormalized.docx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Charts\Chart_Doughnut.docx">
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Page Include="CustomControls\AnchorTypeEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\ColorPanelControl\ColorPanelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\ColorPickerDialog\ColorPickerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\FontFamilySelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\NumericUpDown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\PaddingFEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\ThicknessEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\ValueEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Annotation\Comments\CommentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Annotation\Comments\CommentPropertiesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Annotation\Comments\CommentsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Annotation\Comments\StateHistory\CommentStateHistoryControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Annotation\Comments\StateHistory\CommentStateHistoryWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ActionProgressWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\BmpEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\GifEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\JpegEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\PbmEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\PngEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\SvgEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\TgaEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\TiffEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\ImagingEncoderFactory\Dialogs\WebpEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\PluginsEncoderFactory\Dialogs\Jbig2EncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\PluginsEncoderFactory\Dialogs\Jpeg2000EncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\PluginsEncoderFactory\Dialogs\PdfCompressionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Codecs\PluginsEncoderFactory\Dialogs\PdfEncoderSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorManagementSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ColorManagement\ColorTransformSetEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\CompositeRenderingSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\DocumentPasswordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\ImageViewerToolbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageAppearanceSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageRenderingRequirementAddWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageRenderingRequirementsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageViewerSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\PageSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandControlBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\ProcessingCommandViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\ProcessingResultViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\PropertyGridWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\RenderingSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\SelectImageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ServerSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\ThumbnailViewer\ThumbnailViewerSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\VisualTools\TextSelectionTool\FindTextToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\VisualTools\TextSelectionTool\FindTextWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\VisualTools\TextSelectionTool\WpfTextSelectionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\VisualTools\UserInteraction\WpfInteractionAreaAppearanceManagerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\VisualTools\WpfMagnifierToolSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OfficeDocumentFontPropertiesVisualEditorToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OfficeDocumentParagraphPropertiesVisualEditorToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OfficeDocumentTextPropertiesVisualEditorToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OfficeDocumentVisualEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OpenXmlDocumentChartDataWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OpenXmlParagraphPropertiesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\OpenXmlTextPropertiesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\SetOpenXmlParagraphNumerationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Twain\SelectDeviceManagerModeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode\ItemSetEditor\ItemSetEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode\WebUploaderWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode\WpfAboutBoxBaseWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\PdfAnnotationBorderEffectEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\PdfFontPanelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Ocr\AddImagesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\CreatePdfActionWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfAnnotationHideActionEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfGotoActionEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfJavaScriptActionEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfLaunchActionEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfNamedActionEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfResetFormActionEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfSubmitFormActionEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\Dialogs\PdfUriActionEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\PdfActionEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Actions\Editor\PdfActionEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AddEmptyPageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\AnnotationListControl\PdfPageAnnotationsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PdfAnnotationBuilderControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PdfAnnotationsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfAnnotationAppearancesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfAnnotationBorderStyleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfAnnotationCommonPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfPolygonalAnnotationPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\Common\PdfRectangularAnnotationPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfFileAttachmentAnnotationPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfFreeTextAnnotationPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfLineAnnotationPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfLinkAnnotationPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\PropertiesEditor\PdfPolylineAnnotationPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormFieldBuilderControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormFieldListEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormChoiceFieldEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormCommonPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfInteractiveFormSwitchableButtonPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfBarcodeFieldPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfCheckBoxPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfComboBoxPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfListBoxPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfPushButtonPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfRadioButtonPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfTextFieldPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\PdfVintasoftBarcodeFieldPropertiesEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfAnnotationPropertiesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfAnnotationToolControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfTriggersEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\AnnotationTool\PdfTriggersEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Attachments\AttachmentsEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Attachments\PdfAttachmentDataFieldFactoryWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Attachments\PdfAttachmentSchemaFiledFactoryWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Attachments\PdfAttachmentViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\BookmarksEditor\EditBookmarkNodeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\ContentRenderer\CustomContentRendererSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Fonts\CreateFontWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Fonts\ViewDocumentFontsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\ImageViewerResolutionToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\JavaScript\ActionDictionaryEditorDialog\PdfJavaScriptActionDictionaryEditorDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\JavaScript\ActionDictionaryEditorDialog\PdfJavaScriptActionDictionaryRenameActionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\JavaScript\PdfJavaScriptDebuggerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\OptionalContent\OptionalContentSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\OptionalContent\RemoveOptionalContentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\PdfInteractiveFormFieldCalculationOrderEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\PdfRenderingSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Processing\DocumentProcessingCommandWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Resources\EmbeddedFileSpecificationPropertiesEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Resources\EmbeddedFileSpecificationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Resources\EmbeddedFilesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Resources\ImageResourceCompressionParamsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Resources\PdfResourcesViewerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Resources\PdfResourceViewerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Resources\SelectResourceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Resources\ViewContentImageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\Certificates\CertificatePasswordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\Certificates\SelectCertificateWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\CreateEmptySignatureFieldWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\CreateSignatureFieldWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\DocumentSignaturesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\SelectSignatureFieldWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\DigitalSignatures\SignatureAppearance\CreateSignatureAppearanceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\PdfDocumentPasswordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\RedactionMarks\RedactionMarkAppearanceEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\SecurityPropertiesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Security\SecuritySettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\SelectPdfFormatWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\AddTextWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\PdfContentEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\PdfContentGraphicsPropertiesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\PdfResourceGraphicsPropertiesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\SelectHighlightWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Tools\PdfImageExtractorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Tools\PdfRemoveContentControl\PdfRemoveContentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\SetCompressionParamsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Resource Include="App.ico" />
+    <EmbeddedResource Include="Resources\ContentEditor.png" />
+    <EmbeddedResource Include="Resources\EditInteractiveForms.png" />
+    <EmbeddedResource Include="Resources\ImageExtraction.png" />
+    <EmbeddedResource Include="Resources\RemoveContent.png" />
+    <EmbeddedResource Include="Resources\TextExtraction.png" />
+    <EmbeddedResource Include="Resources\TextSelectionFillForms.png" />
+    <EmbeddedResource Include="Resources\CropSelection.png" />
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\camera.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\navigate_beginning.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\navigate_end.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\navigate_left.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\navigate_right.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\open.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\printer.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\save.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\scanner.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\zoom_in.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\ImageViewerToolbar\Resources\zoom_out.png">
+    </Resource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\Analyzer.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\Command.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\CompositeCommand.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\CompositePredicateAnalyzer.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\ConditionalCommand.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\ConversionProfile.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\DefaultCommand.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\FixupCommand.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\Predicate.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\PropertyCommand.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\PropertyGetter.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\PropertySetter.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\TriggerImportant.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\TriggerInformation.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\TriggerUnimportant.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingCommandViewer\Resources\VerificationProfile.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\Resources\AppliedCommand.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\Resources\CompositeResult.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\Resources\DefaultResult.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\Resources\ProfileResultFail.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\Resources\ProfileResultSuccess.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\Resources\PropertyResult.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\Resources\TriggerActivationImportant.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\Resources\TriggerActivationInformation.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\Processing\ProcessingResultViewer\Resources\TriggerActivationUnimportant.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\Resources\None.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\MeasurementVisualTools\Resources\WpfImageMeasureTool.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\ZoomVisualTools\Resources\WpfMagnifierTool.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\ZoomVisualTools\Resources\WpfZoomPanTool.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\ZoomVisualTools\Resources\WpfZoomSelection.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Imaging\VisualToolsToolBar\VisualTools\ZoomVisualTools\Resources\WpfZoomTool.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\CloudEllipse.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\CloudFilledEllipse.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\CloudFilledPolygon.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\CloudFilledRectangle.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\CloudFreeText.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\CloudPolygon.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\CloudRectangle.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\CloudText.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Ellipse.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\FileAttachment.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\FilledEllipse.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\FilledPolygon.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\FilledRectangle.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\FreehandPolygon.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\FreehandPolyline.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\FreeText.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\GraphFileAttachment.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Highlight.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Ink.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Label.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Line.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\LineWithArrow.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\LineWithArrows.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Link.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\PaperclipFileAttachment.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Polygon.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Polyline.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\PolylineWithArrow.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\PolylineWithArrows.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\PushPinFileAttachment.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Rectangle.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Screen.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Stamp.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\TagFileAttachment.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\BarcodeField.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\ButtonField.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\CheckBoxField.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\CheckBoxGroup.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\ComboBoxField.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\FieldGroup.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\InteractiveField.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\ListBoxField.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\RadioButtonField.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\RadioButtonGroup.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\SignatureField.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\FormFields\Resources\TextField.png">
+    </EmbeddedResource>
+    <Resource Include="WpfDemosCommonCode.Pdf\JavaScript\Resources\delete.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\JavaScript\Resources\evaluate.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode\Resources\VintasoftLogo.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfRemoveContentControl\Resources\RedactionMarks_Add.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfRemoveContentControl\Resources\RedactionMarks_Apply.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfRemoveContentControl\Resources\RedactionMarks_MarkPages.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfRemoveContentControl\Resources\RedactionMarks_Properties.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfRemoveContentControl\Resources\RedactionMarks_Remove.png">
+    </Resource>
+    <Resource Include="Resources\AddExistingFolder_18x18.png">
+    </Resource>
+    <Resource Include="Resources\AddNewFolder_18x18.png">
+    </Resource>
+    <Resource Include="Resources\DeleteSelected_18x18.png">
+    </Resource>
+    <Resource Include="Resources\DetailsMode_18x18.png">
+    </Resource>
+    <Resource Include="Resources\Export_18x18.png">
+    </Resource>
+    <EmbeddedResource Include="Resources\Icon_EmptyFolder_100x100.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon_EmptyFolder_40x40.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon_File_100x100.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon_File_40x40.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon_Folder_100x100.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon_Folder_40x40.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon_PDF_100x100.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon_PDF_40x40.png">
+    </EmbeddedResource>
+    <Resource Include="Resources\ImportFolder_18x18.png">
+    </Resource>
+    <Resource Include="Resources\LevelUp_18x18.png">
+    </Resource>
+    <Resource Include="Resources\MoveToRoot_18x18.png">
+    </Resource>
+    <Resource Include="Resources\TileMode_18x18.png">
+    </Resource>
+    <EmbeddedResource Include="Resources\VintasoftLogo_112x65.png">
+    </EmbeddedResource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Ellipse.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Form.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_FreehandLines.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_FreehandPolygon.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_FreehandTextHighlight.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Highlight.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Image.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Lines.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Polygon.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Rectangle.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Text.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_TextHighlight.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_TextLine.png">
+    </Resource>
+    <Resource Include="directives.txt" />
+    <Resource Include="WpfDemosCommonCode.Imaging\VisualTools\TextSelectionTool\Resources\FastFindText.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\VisualTools\TextSelectionTool\Resources\FindText.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Imaging\VisualTools\TextSelectionTool\Resources\StopFastFindText.png">
+    </Resource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentClose.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentCollapse.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentExpand.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentLock.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentSettings.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentState_ReviewAccepted.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentState_ReviewCancelled.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentState_ReviewCompleted.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentState_ReviewNone.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Annotation\Comments\Resources\CommentState_ReviewRejected.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Check.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Checkmark.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Circle.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Comment.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Cross.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_CrossHairs.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Help.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Insert.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Key.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_NewParagraph.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Note.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Paragraph.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Rectangle.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_RightArrow.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_RightPointer.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_Star.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_UpArrow.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Text_UpLeftArrow.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Popup.png">
+    </EmbeddedResource>
+    <Resource Include="Resources\AddCommentIcon.png" />
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Squiggly.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\StrikeOut.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Underline.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Caret.png">
+    </EmbeddedResource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_AppendMode.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_HighlightFigures.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_HorizontalMirror.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_rotate90.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_rotateM90.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_VerticalMirror.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Chart.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_EmptyDocument.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Office.png">
+    </Resource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\Chart.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\EmptyDocument.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="WpfDemosCommonCode.Pdf\AnnotationTool\Annotations\Resources\OfficeDocument.png">
+    </EmbeddedResource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\BoldText.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\Chart.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\DecreaseContentScale.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\DecreaseTextSize.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\IncreaseContentScale.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\IncreaseTextSize.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ItalicText.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphDecreaseFirstLineIndentation.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphDecreaseLeftIndentation.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphIncreaseFirstLineIndentation.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphIncreaseLeftIndentation.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphJustificationBoth.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphJustificationCenter.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphJustificationLeft.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphJustificationRight.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphNumbering.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\ParagraphProperties.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\StrikeoutText.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\SubscriptText.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\SuperscriptText.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\TextProperties.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Office\OfficeDocumentVisualEditor\Icons\UnderlinedText.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_ellipseClip.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_rectClip.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_replaceResource.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_FigureGrouping.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_EditTextObject.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_InteractiveContent_Clip.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_InteractiveContent_Fill.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_InteractiveContent_Form.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_InteractiveContent_Image.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_InteractiveContent_ShadingFill.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_InteractiveContent_Stroke.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_InteractiveContent_Text.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Redo.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_Undo.png">
+    </Resource>
+    <Resource Include="WpfDemosCommonCode.Pdf\Tools\PdfContentEditorControl\Resources\CE_EditContentGraphicsProperties.png">
+    </Resource>
+  </ItemGroup>
+</Project>

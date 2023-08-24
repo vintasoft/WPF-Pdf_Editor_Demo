@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfVintasoftBarcodeFieldPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    xmlns:PdfControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Height="Auto" MinHeight="190" Width="Auto" MinWidth="380">
+    <UserControl.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="23" />
+            <Setter Property="Margin" Value="0,3" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="23" />
+            <Setter Property="Margin" Value="0,3" />
+        </Style>
+    </UserControl.Resources>
+    <TabControl SelectedIndex="0" Name="mainTabControl" SelectionChanged="mainTabControl_SelectionChanged">
+        <TabItem Header="Value" Name="valueTabPage">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="162" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" TextBlock.FontWeight="Bold">Value</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" 
+                          Grid.ColumnSpan="2"
+                         TextChanged="valueTextBox_TextChanged"
+                         Name="valueTextBox"/>
+
+                <Label Grid.Row="1" Grid.Column="0">Default Value</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" 
+                          Grid.ColumnSpan="2"
+                         TextChanged="defaultValueTextBox_TextChanged"
+                         Name="defaultValueTextBox"/>
+
+                <Label Grid.Row="2" Grid.Column="0">Barcode Symbology</Label>
+                <ComboBox Grid.Row="2" Grid.Column="1" 
+                          Grid.ColumnSpan="2"
+                          SelectionChanged="barcodeSymbologyComboBox_SelectionChanged"
+                          Name="barcodeSymbologyComboBox"/>
+
+                <Label Grid.Row="3" Grid.Column="0">Error Correction Coefficient</Label>
+                <ComboBox Grid.Row="3" Grid.Column="1" 
+                          Grid.ColumnSpan="2"
+                          SelectionChanged="errorCorrectionCoefficientComboBox_SelectionChanged"
+                          Name="errorCorrectionCoefficientComboBox"/>
+
+                <Label Grid.Row="4" Grid.Column="0">Data Preparation Steps</Label>
+                <ComboBox Grid.Row="4" Grid.Column="1" 
+                          Grid.ColumnSpan="2"
+                          SelectionChanged="dataPreparationStepsComboBox_SelectionChanged"
+                          Name="dataPreparationStepsComboBox"/>
+                
+                <Label Grid.Row="5" Grid.Column="0" Name="moduleWidthLabel">Module Width</Label>
+                <Controls:NumericUpDown x:Name="moduleWidthNumericUpDown" Grid.Row="5" Grid.Column="1" ValueChanged="moduleWidthNumericUpDown_ValueChanged" />
+
+                <CheckBox Grid.Row="6" Grid.Column="0"
+                          Grid.ColumnSpan="2" 
+                          VerticalAlignment="Center"
+                          Name="fitBarcodeToAppearanceRectCheckBox"
+                          Checked="fitBarcodeToAppearanceRectCheckBox_CheckChanged"
+                          Unchecked="fitBarcodeToAppearanceRectCheckBox_CheckChanged">
+                    Fit Barcode To Appearance Rect
+                </CheckBox>
+
+                <Label Grid.Row="7" Grid.Column="0">Foreground Color</Label>
+                <Controls:ColorPanelControl x:Name="foregroundColorPanelControl" Grid.Row="7" Grid.Column="1" ColorChanged="foregroundColorPanelControl_ColorChanged" />
+                
+                <GroupBox Header="Padding" Grid.Column="2" Grid.Row="5" Grid.RowSpan="4" Margin="2,0,0,3">
+                    <Controls:PaddingFEditorControl x:Name="paddingPanelControl" HorizontalAlignment="Center" VerticalAlignment="Center" PaddingValueChanged="paddingPanelControl_PaddingValueChanged" />
+                </GroupBox>
+                
+            </Grid>
+        </TabItem>
+        <TabItem Header="Calculate Action" Name="calculateTabPage">
+            <PdfControls:PdfActionEditorControl x:Name="calculateActionEditorControl" ActionChanged="calculateActionEditorControl_ActionChanged"/>
+        </TabItem>
+    </TabControl>
+</UserControl>

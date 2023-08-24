@@ -1,0 +1,146 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.PdfAnnotationPropertiesWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+    xmlns:WindowsForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+    xmlns:WindowFormsIntegration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+    xmlns:PdfControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Title="PDF Annotation Properties"
+    WindowStartupLocation="CenterOwner"
+    Width="480" MinWidth="476"
+    Height="720" MinHeight="720">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="461*" />
+            <RowDefinition Height="82" />
+        </Grid.RowDefinitions>
+        
+        <TabControl Grid.Row="0" SelectedIndex="0" Name="mainTabControl" SelectionChanged="mainTabControl_SelectionChanged">
+            <TabItem Header="Properties" Name="propertiesTabPage">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Grid.Row="0" Name="commonPropertiesGroupBox"/>
+                    <GroupBox Grid.Row="1" Name="customPropertiesGroupBox"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Advanced" Name="andancedTabPage">
+                <TabControl Grid.Row="0" SelectedIndex="0" Name="advancedTabControl" SelectionChanged="advancedTabControl_SelectionChanged">
+                    <TabItem Header="Field" Name="fieldTabPage">
+                        <GroupBox Header="" Name="fieldPropertiesGroupBox">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="29" />
+                                </Grid.RowDefinitions>
+
+                                <TabControl Margin="3" Name="fieldTabControl" SelectionChanged="fieldTabControl_SelectionChanged" >
+                                    <TabItem Header="Properties" Name="fieldPropertiesTabPage">
+                                        <WindowFormsIntegration:WindowsFormsHost>
+                                            <WindowsForms:PropertyGrid x:Name="fieldPropertyGrid" 
+                                                           PropertyValueChanged="fieldPropertyGrid_PropertyValueChanged" />
+                                        </WindowFormsIntegration:WindowsFormsHost>
+                                    </TabItem>
+
+                                    <TabItem Header="Actions" Name="fieldTriggersTtabPage">
+                                        <PdfControls:PdfTriggersEditorControl x:Name="fieldTriggersEditorControl" />
+                                    </TabItem>
+                                </TabControl>
+
+                                <Button Name="fieldFontButton" 
+                                Grid.Row="1" 
+                                Width="75" Height="23" 
+                                HorizontalAlignment="Left" 
+                                Margin="4,0"
+                                Click="fieldFontButton_Click">
+                                    Font...
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                    </TabItem>
+
+                    <TabItem Header="Annotation" Name="annotationTabPage">
+                        <GroupBox Header="" Name="annotationPropertiesGroupBox">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="29" />
+                                </Grid.RowDefinitions>
+
+                                <TabControl Margin="3" Name="annotationTabControl" SelectionChanged="annotationTabControl_SelectionChanged" >
+                                    <TabItem Header="Properties" Name="annotationPropertiesTabPage">
+                                        <WindowFormsIntegration:WindowsFormsHost>
+                                            <WindowsForms:PropertyGrid x:Name="annotationPropertyGrid" 
+                                                       PropertyValueChanged="annotationPropertyGrid_PropertyValueChanged"/>
+                                        </WindowFormsIntegration:WindowsFormsHost>
+                                    </TabItem>
+
+                                    <TabItem Header="Actions" Name="annotationsTriggersTabPage">
+                                        <PdfControls:PdfTriggersEditorControl x:Name="annotationTriggersEditorControl" />
+                                    </TabItem>
+                                </TabControl>
+
+                                <Button Name="annotationFontButton" 
+                                Grid.Row="1" 
+                                Width="75" Height="23"
+                                HorizontalAlignment="Left" 
+                                Margin="4,0"
+                                Click="annotationFontButton_Click">
+                                    Font...
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                    </TabItem>
+
+                    <TabItem Header="Appearance Generator" Name="appearanceGeneratorTabPage">
+                        <GroupBox Header="" Name="appearanceGeneratorGroupBox">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="29" />
+                                </Grid.RowDefinitions>
+
+                                <WindowFormsIntegration:WindowsFormsHost>
+                                    <WindowsForms:PropertyGrid x:Name="appearanceGeneratorPropertyGrid" 
+                                               PropertyValueChanged="appearanceGeneratorPropertyGrid_PropertyValueChanged"/>
+                                </WindowFormsIntegration:WindowsFormsHost>
+
+                                <Button Name="appearanceGeneratorFontButton" 
+                                Grid.Row="1" 
+                                Width="75" Height="23"
+                                HorizontalAlignment="Left" 
+                                Margin="4,0"
+                                Click="setFontButton_Click">
+                                    Font...
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+        </TabControl>
+            
+            <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="38" />
+            </Grid.RowDefinitions>
+
+            <GroupBox Header="OnPropertyChanged" Grid.Row="0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <CheckBox Margin="0,0,12,0" IsChecked="True" Name="refreshAnnotationCheckBox">Refresh Annotation</CheckBox>
+                    <CheckBox IsChecked="True" Name="updateAnnotationAppearanceCheckBox">Update Annotation Appearance</CheckBox>
+                </StackPanel>
+            </GroupBox>
+
+            <Button Name="closeButton" 
+                    Grid.Row="1" 
+                    Width="75" Height="23"
+                    HorizontalAlignment="Right" 
+                    Margin="0,0,3,0"
+                    Click="closeButton_Click">Close</Button>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfPolylineAnnotationPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    MinHeight="88" MaxHeight="88" MinWidth="200" Width="Auto">
+    <Grid Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0">Start Point Line Ending Style</Label>
+        <ComboBox Grid.Row="0" Grid.Column="1" Height="23" Name="startPointLineEndingStyleComboBox" SelectionChanged="startPointLineEndingStyleComboBox_SelectionChanged"/>
+        
+        <Label Grid.Row="1" Grid.Column="0">End Point Line Ending Style</Label>
+        <ComboBox Grid.Row="1" Grid.Column="1" Height="23" Name="endPointLineEndingStyleComboBox" SelectionChanged="endPointLineEndingStyleComboBox_SelectionChanged"/>
+        
+        <CustomControls:PdfPolygonalAnnotationPropertiesEditorControl x:Name="pdfPolygonalAnnotationPropertiesEditorControl" Grid.Row="2" Grid.ColumnSpan="2" PropertyValueChanged="pdfPolygonalAnnotationPropertiesEditorControl_PropertyValueChanged"/>
+    </Grid>
+</UserControl>

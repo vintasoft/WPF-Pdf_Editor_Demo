@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.PdfRenderingSettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    Title="PDF Rendering Settings" Height="209" Width="302" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="30*" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Resolution" Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="1" VerticalAlignment="Center">X</Label>
+                <Label Grid.Column="3" VerticalAlignment="Center">DPI</Label>
+                <CheckBox Name="dpiDefault" VerticalAlignment="Center" Margin="3,0,0,0" Grid.Column="4" Click="dpiDefault_Click">Default</CheckBox>
+                <CustomControls:NumericUpDown x:Name="verticalResolution" Minimum="1" Maximum="10000" Grid.Column="2" Width="74" />
+                <CustomControls:NumericUpDown x:Name="horizontalResolution" Minimum="1" Maximum="10000" Grid.Column="0" Width="74" ValueChanged="horizontalResolution_ValueChanged"/>
+            </Grid>
+        </GroupBox>
+
+        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Rendering Mode</Label>
+        <ComboBox Name="renderingMode" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+
+        <CheckBox Name="drawAnnotationsCheckBox" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="3">Draw Annotations</CheckBox>
+        <CheckBox Name="useRotatePropertyCheckBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="3">Use Rotate property</CheckBox>
+
+        <CheckBox Name="cacheResourcesCheckBox" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="3">Cache Resources</CheckBox>
+        <CheckBox Name="cropPageAtCropBoxCheckBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="3">Crop Page at CropBox</CheckBox>
+
+        <Button Name="okButton" Margin="0,0,88,0" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="75" Height="23" Click="okButton_Click">OK</Button>
+        <Button Name="cancelButton" Margin="0,0,3,0" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="75" Height="23" Click="cancelButton_Click">Cancel</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,420 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfAnnotationBuilderControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="Auto" Width="Auto">
+    <UserControl.Resources>
+        <Style TargetType="Image" x:Key="IconStyle">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Stretch" Value="None" />
+        </Style>
+
+        <Style TargetType="MenuItem" x:Key="MainMenu">
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="MenuItem" x:Key="SubMenu">
+            <Setter Property="Width" Value="190" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="MenuItem">
+                        <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"                                
+                                CornerRadius="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{TemplateBinding Tag}"
+                                       Style="{StaticResource IconStyle}"                                       
+                                       Margin="4,0,0,0" />
+                                <Label Content="{TemplateBinding MenuItem.Header}"
+                                       VerticalAlignment="Center"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       Margin="8,0,0,0"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="BorderBrush" Value="#8071CBF1" />
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#34C5EBFF" Offset="0" />
+                                <GradientStop Color="#3481D8FF" Offset="1" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="MainMenuHeaderStackPanel">
+            <Setter Property="Margin" Value="-6,-2, 0,-2" />
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="MainMenuHeaderDropDownLabel">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="4,2,0,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Label">
+                        <Path Fill="{TemplateBinding Foreground}">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathGeometry.Figures>
+                                        <PathFigureCollection>
+                                            <PathFigure IsClosed="True">
+                                                <PathFigure.Segments>
+                                                    <PathSegmentCollection>
+                                                        <LineSegment Point="0,0" />
+                                                        <LineSegment Point="4,4" />
+                                                        <LineSegment Point="8,0" />
+                                                    </PathSegmentCollection>
+                                                </PathFigure.Segments>
+                                            </PathFigure>
+                                        </PathFigureCollection>
+                                    </PathGeometry.Figures>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="Focusable" Value="False" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                Margin="1,2,0,1"
+                                CornerRadius="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{TemplateBinding Tag}"
+                                       Style="{StaticResource IconStyle}"
+                                       Margin="2,0,0,0" />
+                                <Label Content="{TemplateBinding Content}"
+                                       VerticalAlignment="Center"
+                                       VerticalContentAlignment="Center"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       Margin="0,-5,0,0"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#C8C8C8" />
+                    <Setter Property="BorderBrush" Value="#000000" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Menu Background="Transparent" Name="mainMenu">
+        <Menu.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" />
+            </ItemsPanelTemplate>
+        </Menu.ItemsPanel>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Line" Name="lineButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Line with Arrow"
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="lineWithArrowMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Line with Arrows"
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="lineWithArrowsMenuItem"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Ink (Pencil)" Name="inkButton" Click="addAndBuildAnnotationButton_Click"/>
+                </StackPanel>
+            </MenuItem.Header>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Rectangle" Name="rectangleButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Filled Rectangle" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="filledRectangleMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cloud Rectangle" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="cloudRectangleMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cloud Filled Rectangle" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="cloudFilledRectangleMenuItem"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Ellipse" Name="ellipseButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Filled Ellipse" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="filledEllipseMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cloud Ellipse" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="cloudEllipseMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cloud Filled Ellipse" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="cloudFilledEllipseMenuItem"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Polyline" Name="polylineButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Polyline with Arrow" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="polylineWithArrowMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Polyline with Arrows" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="polylineWithArrowsMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Freehand Polyline" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="freehandPolylineMenuItem"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Polygon" Name="polygonButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Filled Polygon" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="filledPolygonMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cloud Polygon" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="cloudPolygonMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cloud Filled Polygon" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="cloudFilledPolygonMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Freehand Polygon"
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="freehandPolygonMenuItem"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Link" Name="linkButton" Click="addAndBuildAnnotationButton_Click"/>
+                </StackPanel>
+            </MenuItem.Header>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Label" Name="labelButton" Click="addAndBuildAnnotationButton_Click"/>
+                </StackPanel>
+            </MenuItem.Header>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}">
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Text" Name="textButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cloud Text" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="cloudTextMenuItem"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Free Text" Name="freeTextButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cloud Free Text" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="cloudFreeTextMenuItem"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Formatted Text" Name="formattedTextButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Office document" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="officeDocumentMenuItem"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Chart" Name="chartButton" Click="addAndBuildAnnotationButton_Click"/>
+                </StackPanel>
+            </MenuItem.Header>
+        </MenuItem>
+        
+        <MenuItem Style="{StaticResource MainMenu}" Name="fileAttachmentMenuItem" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="File Attachment" Name="fileAttachmentButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Graph File Attachment" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="graphFileAttachmentMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Push Pin File Attachment" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="pushPinFileAttachmentMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Paperclip File Attachment" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="paperclipFileAttachmentMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Tag File Attachment" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="tagFileAttachmentMenuItem"/>
+        </MenuItem>
+        
+        <MenuItem Style="{StaticResource MainMenu}" Name="textCommentMenuItem" >
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Comment" Name="textCommentButton" Click="addAndBuildAnnotationButton_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Check" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textCheckMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Checkmark" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textCheckmarkMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Circle" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textCircleMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Rectangle" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textRectangleMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cross" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textCrossMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Cross Hairs" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textCrossHairsMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Help" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textHelpMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Insert" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textInsertMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Key" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textKeyMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="New Paragraph" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textNewParagraphMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Note" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textNoteMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Paragraph" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textParagraphMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Right Arrow" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textRightArrowMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Right Pointer" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textRightPointerMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Star" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textStarMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Up Arrow" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textUpArrowMenuItem"/>
+            <MenuItem Style="{StaticResource SubMenu}"
+                      Header="Up Left Arrow" 
+                      Click="addAndBuildAnnotationButton_Click"
+                      Name="textUpLeftArrowMenuItem"/>
+        </MenuItem>
+    </Menu>
+</UserControl>

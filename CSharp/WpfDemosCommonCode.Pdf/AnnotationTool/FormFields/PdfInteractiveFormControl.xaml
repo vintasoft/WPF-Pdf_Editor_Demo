@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfInteractiveFormControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Height="Auto" MinHeight="350"
+    Width="Auto">
+    <UserControl.Resources>
+        <ContextMenu x:Key="ContextMenu" Opened="ContextMenu_Opened">
+            <MenuItem Header="Cut" Name="cutFieldMenuItem" Click="cutFieldMenuItem_Click" />
+            <MenuItem Header="Copy" Name="copyFieldMenuItem"  Click="copyFieldMenuItem_Click"/>
+            <MenuItem Header="Paste" Name="pasteAnnotationOrFieldMenuItem" Click="pasteAnnotationOrFieldMenuItem_Click" />
+            <MenuItem Header="Delete" Name="deleteFieldMenuItem" Click="deleteFieldMenuItem_Click" />
+            <Separator />
+            <MenuItem Header="Add Text Field" Name="addTextFieldMenuItem" Click="addInteractiveFormFieldToolStripMenuItem_Click" />
+            <MenuItem Header="Add Check Box" Name="addCheckBoxMenuItem" Click="addInteractiveFormFieldToolStripMenuItem_Click" />
+            <MenuItem Header="Add Button" Name="addButtonMenuItem" Click="addInteractiveFormFieldToolStripMenuItem_Click" />
+            <MenuItem Header="Add List Box" Name="addListBoxMenuItem" Click="addInteractiveFormFieldToolStripMenuItem_Click" />
+            <MenuItem Header="Add Combo Box" Name="addComboBoxMenuItem" Click="addInteractiveFormFieldToolStripMenuItem_Click" />
+            <MenuItem Header="Add Radio Button" Name="addRadioButtonMenuItem" Click="addInteractiveFormFieldToolStripMenuItem_Click" />
+            <MenuItem Header="Add Barcode" Name="addBarcodeMenuItem" Click="addInteractiveFormFieldToolStripMenuItem_Click" />
+            <MenuItem Header="Add Digital Signature" Name="addDigitalSignatureMenuItem" Click="addInteractiveFormFieldToolStripMenuItem_Click" />
+            <Separator />
+            <MenuItem Header="Properties..." Name="propertiesMenuItem" Click="propertiesMenuItem_Click" />
+        </ContextMenu>
+    </UserControl.Resources>
+    <Grid Name="mainPanel" IsEnabled="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" MinHeight="60" />
+            <RowDefinition Height="29" />
+        </Grid.RowDefinitions>
+
+        <CheckBox Grid.Row="0" 
+                  Name="showFieldNamesCheckBox"
+                  VerticalAlignment="Center"
+                  Checked="showFieldNamesCheckBox_CheckedChanged"
+                  Unchecked="showFieldNamesCheckBox_CheckedChanged">
+            Show Field Names
+        </CheckBox>
+
+        <GroupBox Grid.Row="1" Header="Add Form Fields">
+            <CustomControls:PdfInteractiveFormFieldBuilderControl
+                x:Name="InteractiveFormFieldBuilder" />
+        </GroupBox>
+
+        <CustomControls:PdfInteractiveFormFieldTree 
+            x:Name="interactiveFormFieldTree" 
+            Grid.Row="2"
+            MouseDoubleClick="interactiveFormFieldTree_MouseDoubleClick" />
+
+        <CheckBox Grid.Row="3" 
+                  Name="groupFormFieldsByPagesCheckBox"
+                  VerticalAlignment="Center"
+                  Checked="groupFormFieldsByPagesCheckBox_CheckedChanged"
+                  Unchecked="groupFormFieldsByPagesCheckBox_CheckedChanged">
+            Group Form Fields by Pages
+        </CheckBox>
+    </Grid>
+</UserControl>

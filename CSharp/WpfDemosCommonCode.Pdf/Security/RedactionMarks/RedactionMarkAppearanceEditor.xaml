@@ -1,0 +1,88 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.Security.RedactionMarkAppearanceEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    xmlns:wpfUi="clr-namespace:Vintasoft.Imaging.Wpf.UI;assembly=Vintasoft.Imaging.Wpf.UI"
+    Title="Redaction Mark Appearance Editor" MinHeight="250" Height="550" MinWidth="500" Width="600"
+    WindowStartupLocation="CenterOwner" Loaded="Window_Loaded" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="92" />
+            <RowDefinition Height="300*" />
+            <RowDefinition Height="29" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="3,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Name="fillColorGroupBox" Header="         ">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="42" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Label VerticalAlignment="Center" Grid.Column="0" Height="26" Margin="0,15.5">Color</Label>
+                    <CustomControls:ColorPanelControl x:Name="fillColorPanelControl" Grid.Column="1" Height="20" ColorButtonWidth="40" ColorButtonMargin="5" ColorChanged="fillColorPanelControl_ColorChanged" CanEditAlphaChannel="False" VerticalAlignment="Center" />
+                </Grid>
+            </GroupBox>
+            <CheckBox Grid.Column="0"  Name="isFillColorEnabledCheckBox" Margin="6,2,0,0" VerticalAlignment="Top" Checked="isFillColorEnabledCheckBox_CheckedChanged" Unchecked="isFillColorEnabledCheckBox_CheckedChanged">Fill</CheckBox>
+
+            <GroupBox Grid.Column="1"  Name="borderPropertiesGroupBox" Header="                ">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="42" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="55" />
+                        <ColumnDefinition Width="65" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label VerticalAlignment="Center" Grid.Column="0" Height="26" Margin="0,15.5">Color</Label>
+                    <CustomControls:ColorPanelControl x:Name="borderColorPanelControl" Grid.Column="1" Height="20" ColorButtonWidth="40" ColorButtonMargin="5" ColorChanged="borderColorPanelControl_ColorChanged" CanEditAlphaChannel="False" VerticalAlignment="Center" />
+                    <Label VerticalAlignment="Center" Grid.Column="2" Height="26" Margin="12,15.5,0,15.5">Width</Label>
+                    <CustomControls:NumericUpDown x:Name="borderWidthNumericUpDown" Grid.Column="3" Minimum="0" Maximum="100" Width="60" ValueChanged="borderWidthNumericUpDown_ValueChanged" VerticalAlignment="Center" Margin="2.5,11,2.5,10"/>
+                </Grid>
+            </GroupBox>
+            <CheckBox Grid.Column="1"  Name="isBorderPropertiesEnabledCheckBox" Margin="6,2,0,0" VerticalAlignment="Top" Checked="isBorderPropertiesEnabledCheckBox_CheckedChanged" Unchecked="isBorderPropertiesEnabledCheckBox_CheckedChanged">Border</CheckBox>
+        </Grid>
+
+        <GroupBox Header="Overlay Text" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="164" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBox Name="overlayTextBox" Grid.Column="0" Grid.Row="0" Margin="3" VerticalAlignment="Center" Height="23" TextChanged="overlayTextBox_TextChanged" />
+                <ComboBox Name="alignmentComboBox" Grid.Column="1" Grid.Row="0" Margin="3" Height="23" SelectionChanged="alignmentComboBox_SelectionChanged"></ComboBox>
+
+                <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
+                    <Button Name="fontButton" VerticalAlignment="Center" Margin="3,0" Width="75" Height="23" Click="fontButton_Click">Font...</Button>
+                    <Label VerticalAlignment="Center">Font Size</Label>
+                    <CustomControls:NumericUpDown x:Name="fontSizeNumericUpDown" Minimum="1" Maximum="1000" Value="12" Margin="3,0" Width="60" ValueChanged="fontSizeNumericUpDown_ValueChanged"/>
+                    <CheckBox Name="autoFontSizeCheckBox" Margin="3,0" VerticalAlignment="Center" Checked="autoFontSizeCheckBox_CheckedChanged" Unchecked="autoFontSizeCheckBox_CheckedChanged">Auto Font Size</CheckBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                    <Label Margin="3,0" VerticalAlignment="Center">Font Color</Label>
+                    <CustomControls:ColorPanelControl x:Name="fontColorPanelControl" Height="22" Width="88" ColorButtonWidth="40" ColorChanged="fontColorPanelControl_ColorChanged" CanEditAlphaChannel="False" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Preview" Grid.Row="2">
+            <Border BorderBrush="Black">
+                <wpfUi:WpfImageViewer SizeMode="BestFit" x:Name="redactionMarkEditor" />
+            </Border>
+        </GroupBox>
+
+        <Button Grid.Row="3" Width="75" Height="23" HorizontalAlignment="Right" Margin="3" Name="buttonOk" Click="buttonOk_Click">OK</Button>
+    </Grid>
+</Window>

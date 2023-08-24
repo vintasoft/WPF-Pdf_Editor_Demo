@@ -1,0 +1,172 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Imaging.WpfTextSelectionControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    Height="550" Width="230">
+    <UserControl.Resources>
+        <ContextMenu x:Key="TextSelectionContextMenu" Opened="TextSelectionContextMenu_Opened">
+            <MenuItem Header="Copy" 
+                      Name="copyToolStripMenuItem" 
+                      Click="copyToolStripMenuItem_Click" />
+            <MenuItem Header="Select All" 
+                      Name="selectAllToolStripMenuItem" 
+                      Click="selectAllToolStripMenuItem_Click" />
+        </ContextMenu>
+    </UserControl.Resources>
+
+    <Grid Name="mainPanel" IsEnabled="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <CheckBox Name="mouseSelectionCheckBox" Checked="MouseSelectionCheckBox_CheckedChanged" Unchecked="MouseSelectionCheckBox_CheckedChanged" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Mouse Selection</CheckBox>
+            <CheckBox Name="keyboardSelectionCheckBox" Checked="KeyboardSelectionCheckBox_CheckedChanged" Unchecked="KeyboardSelectionCheckBox_CheckedChanged" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Keyboard Selection</CheckBox>
+        </Grid>
+
+        <GroupBox Header="Text Caret" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="72" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Caret Width (px):</Label>
+                <CustomControls:NumericUpDown x:Name="caretWidthNumericUpDown" ValueChanged="CaretWidthNumericUpDown_ValueChanged" Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="100" Value="1"/>
+
+                <Label Grid.Row="1" Grid.Column="0">Blinking Interval (ms):</Label>
+                <CustomControls:NumericUpDown x:Name="caretBlinkingIntervalNumericUpDown" ValueChanged="CaretBlinkingIntervalNumericUpDown_ValueChanged" Grid.Row="1" Grid.Column="1" Minimum="50" Maximum="100000" Increment="10" Value="500" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Formatting Mode" Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Margin="3" 
+                             Name="formattingModeParagraphsRadioButton"
+                             IsChecked="True"
+                             Checked="formattingModeRadioButton_Checked">
+                    Paragraphs
+                </RadioButton>
+                <RadioButton Margin="3"
+                             Name="formattingModeLinesRadioButton"
+                             Checked="formattingModeRadioButton_Checked">
+                    Lines
+                </RadioButton>
+                <RadioButton Margin="3"
+                             Name="formattingModeMonospaceRadioButton"
+                             Checked="formattingModeRadioButton_Checked">
+                    Monospace
+                </RadioButton>
+            </StackPanel>
+        </GroupBox>
+        
+        <GroupBox Header="Selection Mode" Grid.Row="3">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Margin="3" 
+                             Name="selectionModeRectangleRadioButton"
+                             IsChecked="True"
+                             Checked="selectionModeRectangleRadioButton_Checked">
+                    Rectangle
+                </RadioButton>
+                <RadioButton Margin="3"
+                             Name="selectionModeFullLinesRadioButton"
+                             Checked="selectionModeRectangleRadioButton_Checked">
+                    Full Lines
+                </RadioButton>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Focused Text Symbol" Grid.Row="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="99" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Image Location:</Label>
+                <Label Grid.Row="0" Grid.Column="1" Name="imageLocationLabel">-</Label>
+
+                <Label Grid.Row="1" Grid.Column="0">Page Location:</Label>
+                <Label Grid.Row="1" Grid.Column="1" Name="pageLocationLabel">-</Label>
+
+                <Label Grid.Row="2" Grid.Column="0">Symbol:</Label>
+                <Label Grid.Row="2" Grid.Column="1" Name="symbolLabel">-</Label>
+
+                <Label Grid.Row="3" Grid.Column="0">Symbol Code:</Label>
+                <Label Grid.Row="3" Grid.Column="1" Name="symbolCodeLabel">-</Label>
+
+                <Label Grid.Row="4" Grid.Column="0">Content Code:</Label>
+                <Label Grid.Row="4" Grid.Column="1" Name="contentCodeLabel">-</Label>
+
+                <Label Grid.Row="5" Grid.Column="0">Symbol Rect:</Label>
+                <Label Grid.Row="5" Grid.Column="1" Name="symbolRectLabel">-</Label>
+
+                <Label Grid.Row="6" Grid.Column="0">Font:</Label>
+                <Label Grid.Row="6" Grid.Column="1" Name="fontLabel">-</Label>
+
+                <Label Grid.Row="7" Grid.Column="0">Font Size:</Label>
+                <Label Grid.Row="7" Grid.Column="1" Name="fontSizeLabel">-</Label>
+
+                <Label Grid.Row="8" Grid.Column="0">Rendering Mode:</Label>
+                <Label Grid.Row="8" Grid.Column="1" Name="renderingModeLabel">-</Label>
+
+                <Label Grid.Row="9" Grid.Column="0">Color:</Label>                            
+                <CustomControls:ColorPanelControl x:Name="symbolColorPanel"
+                                                  Grid.Row ="9"
+                                                  Grid.Column="1"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="5,0"
+                                                  Width="75"
+                                                  Height="20"
+                                                  CanSetColor="False"/>
+            </Grid>
+        </GroupBox>
+
+        <Button Grid.Row="5" 
+                        Name="saveAsTextButton"
+                        Height="23"
+                        Margin="4"
+                        IsEnabled="False" Click="saveAsTextButton_Click">
+            Save All Selected Text As...
+        </Button>
+
+        <GroupBox Header="Selected Text on Focused Page" Grid.Row="6">
+            <TextBox Name="textExtractionTextBox"
+                     Width="Auto" 
+                     Height="Auto"
+                     Margin="1"
+                     IsReadOnly="True" 
+                     TextWrapping="NoWrap"
+                     Background="{x:Static SystemColors.ControlBrush}"
+                     VerticalScrollBarVisibility="Auto" 
+                     HorizontalScrollBarVisibility="Auto" FontFamily="Lucida Console" />
+        </GroupBox>
+    </Grid>
+</UserControl>

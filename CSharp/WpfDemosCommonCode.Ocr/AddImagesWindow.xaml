@@ -1,0 +1,153 @@
+﻿<Window x:Class="WpfDemosCommonCode.Ocr.AddImagesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vs="clr-namespace:Vintasoft.Imaging.Wpf.UI;assembly=Vintasoft.Imaging.Wpf.UI"
+        mc:Ignorable="d"
+        Title="AddImagesWindow" Height="524" Width="800"
+        WindowStartupLocation="CenterOwner"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="23" />
+            <Setter Property="Margin" Value="3" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="25*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" x:Name="addFromFileButton" Click="addFromFileButton_Click">Add from File...</Button>
+                <Button Grid.Row="1" x:Name="addFromScannerButton" Click="addFromScannerButton_Click">Scan...</Button>
+                <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black">
+                    <vs:WpfThumbnailViewer x:Name="thumbnailViewer1" ThumbnailAdded="thumbnailViewer1_ThumbnailAdded" ThumbnailRemoved="thumbnailViewer1_ThumbnailRemoved" />
+                </Border>
+            </Grid>
+
+            <Border Grid.Column="1" BorderThickness="1" BorderBrush="Black">
+                <vs:WpfImageViewer x:Name="imageViewer1" SizeMode="BestFit" />
+            </Border>
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0" Header="Processing" x:Name="processingGroupBox">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="ComboBox">
+                                <Setter Property="Margin" Value="3,0"/>
+                                <Setter Property="Height" Value =" 23"/>
+                            </Style>
+                        </Grid.Resources>
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="0">
+                            <RadioButton x:Name="currentImageRadioButton" IsChecked="True">Current Image</RadioButton>
+                            <RadioButton x:Name="allImagesRadioButton" Margin="3,0">All Images</RadioButton>
+                        </StackPanel>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="55"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button Grid.Row="0" Grid.Column="0" x:Name="rotateButton" Click="rotateButton_Click">Rotate</Button>
+                            <ComboBox Grid.Row="0" Grid.Column="1" SelectedIndex="0" x:Name="rotateAngleComboBox" IsEditable="True">
+                                <ComboBoxItem>90</ComboBoxItem>
+                                <ComboBoxItem>180</ComboBoxItem>
+                                <ComboBoxItem>270</ComboBoxItem>
+                            </ComboBox>
+
+                            <Button Grid.Row="1" Grid.Column="0" x:Name="invertButton" Click="invertButton_Click">Invert</Button>
+                            <Button Grid.Row="2" Grid.Column="0" x:Name="adaptiveBinarizeButton" Click="adaptiveBinarizeButton_Click">Adaptive Binarize</Button>
+                            <Button Grid.Row="3" Grid.Column="0" x:Name="globalBinarizeButton" Click="globalBinarizeButton_Click">Global Binarize</Button>
+
+                            <Button Grid.Row="4" Grid.Column="0" x:Name="thresholdBinarizeButton" Click="thresholdBinarizeButton_Click">Threshold Binarize</Button>
+                            <ComboBox Grid.Row="4" Grid.Column="1" SelectedIndex="1" x:Name="thresholdComboBox" IsEditable="True">
+                                <ComboBoxItem>250</ComboBoxItem>
+                                <ComboBoxItem>384</ComboBoxItem>
+                                <ComboBoxItem>500</ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="2" Margin="0,3,0,0">
+                            <Button x:Name="removeTablesButton" Click="removeTablesButton_Click">Remove Tables</Button>
+                            <Button x:Name="autoTextInvertButton" Click="autoTextInvertButton_Click">Auto Text Invert</Button>
+                            <Button x:Name="autoOrientationButton" Click="autoOrientationButton_Click">Auto Orientation</Button>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                
+                <GroupBox Grid.Row="1" x:Name="ocrPreprocessingGroupBox" Margin="0,0,0,0" Header="                                     ">
+                    <GroupBox.Resources>
+                        <Style TargetType="CheckBox">
+                            <Setter Property="Margin" Value="3,0" />
+                        </Style>
+                        <Style TargetType="ProgressBar">
+                            <Setter Property="Height" Value="17" />
+                            <Setter Property="Margin" Value="3,2" />
+                        </Style>
+                    </GroupBox.Resources>
+                    <StackPanel Orientation="Vertical">
+                        <CheckBox x:Name="autoInvertCheckBox" Margin="3,2,0,0" IsChecked="True">Auto Invert</CheckBox>
+                        <CheckBox x:Name="halftoneRemovalCheckBox" IsChecked="True">Halftone Removal</CheckBox>
+                        <CheckBox x:Name="clearBorderCheckBox" IsChecked="True">Clear Border</CheckBox>
+                        <CheckBox x:Name="holePunchRemovalCheckBox" IsChecked="True">Hole Punch Removal</CheckBox>
+                        <CheckBox x:Name="despeckleCheckBox" IsChecked="True">Despeckle</CheckBox>
+                        <CheckBox x:Name="deskewChekBox" IsChecked="True">Deskew</CheckBox>
+                        <CheckBox x:Name="autoOrientationCheckBox">Auto Orienation</CheckBox>
+                        <CheckBox x:Name="segmentationCheckBox">Segmentation</CheckBox>
+                        <ProgressBar x:Name="currentImageProgressBar"/>
+                        <ProgressBar x:Name="allImagesProgressBar"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <CheckBox Grid.Row="1" Margin="9,4,0,0" Height="15" VerticalAlignment="Top" IsChecked="True" x:Name="ocrPreprocessingCheckBox" Checked="ocrPreprocessingCheckBox_CheckedChanged" Unchecked="ocrPreprocessingCheckBox_CheckedChanged">OCR Preprocessing</CheckBox>
+            </Grid>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="75" />
+                    <Setter Property="Height" Value="23" />
+                    <Setter Property="Margin" Value="3,8,3,3" />
+                </Style>
+            </StackPanel.Resources>
+
+            <Button x:Name="okButton" Click="okButton_Click">OK</Button>
+            <Button x:Name="buttonCancel" Click="buttonCancel_Click">Calnel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

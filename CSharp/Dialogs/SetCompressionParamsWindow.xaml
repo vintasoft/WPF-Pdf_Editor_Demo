@@ -1,0 +1,85 @@
+﻿<Window x:Class="WpfPdfEditorDemo.SetCompressionParamsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    Title="Set Image Compression" Height="204" Width="438">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="29" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Image info" Margin="3" Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="110*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Number</Label>
+                <Label Name="imageNumberLabel" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">X</Label>
+                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Pixel Format</Label>
+                <Label Name="pixelFormatLabel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">X</Label>
+                <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Size</Label>
+                <Label Name="sizeLabel" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">X</Label>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Compression" Margin="3" Grid.Row="0" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="27" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <ComboBox Name="compressionComboBox" Grid.Row="0" Height="21" VerticalAlignment="Center" Margin="3" SelectionChanged="compressionComboBox_SelectionChanged"></ComboBox>
+
+                <GroupBox Name="jpeg2000CompressionGroupBox" Header="JPEG 2000" Grid.Row="1" Margin="3" Visibility="Collapsed">
+                    <Button Name="jpeg200SettingsButton" Height="23" Width="108" HorizontalAlignment="Left" Click="jpeg200SettingsButton_Click">Settings...</Button>
+                </GroupBox>
+
+                <GroupBox Name="jpegParamsGroupBox" Header="JPEG" Grid.Row="1" Margin="3" Visibility="Collapsed">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="112*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0">Quality</Label>
+                        <CustomControls:NumericUpDown x:Name="jpegQualityNumericUpDown" Grid.Row="0" Grid.Column="1" Width="112" />
+                        <CheckBox Name="jpegGrayscaleCheckBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">Grayscale</CheckBox>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Name="jbig2ParamsGroupBox" Header="JBIG2" Grid.Row="1" Margin="3" Visibility="Collapsed">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <CheckBox Name="jbig2LossyCheckBox" Grid.Row="0" VerticalAlignment="Center" Margin="3">Lossy Coding</CheckBox>
+                        <CheckBox Name="jbig2UseGlobalsCheckBox" Grid.Row="1" VerticalAlignment="Center" Margin="3">Use Globals</CheckBox>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+
+        <Button Name="okButton" Margin="0,0,88,0" Grid.Row="1" Height="23" Width="75" Grid.Column="1" HorizontalAlignment="Right" Click="okButton_Click">OK</Button>
+        <Button Name="forAllButton" Margin="0,0,3,0" Grid.Row="1" Height="23" Width="75" Grid.Column="1" HorizontalAlignment="Right" Click="forAllButton_Click">Use For All</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.EditBookmarkNodeWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    Title="Bookmark" Height="191" Width="307" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="118*" />
+            <ColumnDefinition Width="167*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Title</Label>
+        <TextBox Name="outlineTitle" Grid.Row="0" Grid.Column="1" Margin="0,3,3,0">Outline1</TextBox>
+        <RadioButton Name="destRadioButton" Margin="3" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Destination Page</RadioButton>
+        <RadioButton Name="actionRadioButton" Margin="3" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Click="actionRadioButton_Click">Action</RadioButton>
+        <CustomControls:NumericUpDown x:Name="pageNumberNumericUpDown" Grid.Row="1" Grid.Column="1" Minimum="1" Maximum="2" HorizontalAlignment="Left" Width="81" Height="23" />
+        <Button Name="editActionButton" IsEnabled="False" Grid.Row="2" Grid.Column="1" Height="23" Width="81" HorizontalAlignment="Left" Click="editActionButton_Click">Edit Action...</Button>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="107" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="74" />
+            </Grid.ColumnDefinitions>
+            <Button Name="colorButton" Grid.Row="3" Grid.Column="0" Width="75" Height="23" HorizontalAlignment="Left" Margin="3,0" Click="colorButton_Click">Color...</Button>
+            <CheckBox Name="outlineItalicCheckBox" Grid.Column="1" VerticalAlignment="Center">Italic</CheckBox>
+            <CheckBox Name="outlineBoldCheckBox" Grid.Column="2" VerticalAlignment="Center">Bold</CheckBox>
+            <CheckBox Name="outlineExpandedCheckBox" Grid.Column="3" VerticalAlignment="Center">Expanded</CheckBox>
+        </Grid>
+        <CheckBox Name="addToRootCheckBox" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="3">Add To Root</CheckBox>
+        <Button Name="okButton" Grid.Row="4" Grid.Column="1" Height="21" Width="75" HorizontalAlignment="Left" Click="okButton_Click">OK</Button>
+        <Button Name="cancelButton" Grid.Row="4" Grid.Column="1" Margin="3" Height="21" Width="75" HorizontalAlignment="Right" Click="cancelButton_Click">Cancel</Button>
+    </Grid>
+</Window>

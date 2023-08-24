@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.Security.CreateEmptySignatureFieldWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Create Digital Signature" Height="160" Width="353" MinWidth="353" MinHeight="160" MaxHeight="160" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Margin" Value="3" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" VerticalAlignment="Bottom">Name</Label>
+        <TextBox Name="signatureNameTextBox" Grid.Row="1" Margin="3"/>
+        <Button Name="signatureAppearanceButton" Grid.Row="2" Width="Auto" Click="signatureAppearanceButton_Click">Signature Appearance...</Button>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Name="buttonOk" Click="buttonOk_Click">OK</Button>
+            <Button Name="buttonCancel" Click="buttonCancel_Click">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

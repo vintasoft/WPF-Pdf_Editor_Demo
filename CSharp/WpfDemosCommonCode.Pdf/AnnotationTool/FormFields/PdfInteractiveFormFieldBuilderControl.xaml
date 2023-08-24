@@ -1,0 +1,318 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfInteractiveFormFieldBuilderControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="Auto" MinWidth="150"
+    Height="Auto" MinHeight="200">
+    <UserControl.Resources>
+        <Style TargetType="MenuItem" x:Key="MainMenu">
+            <Setter Property="Height" Value="31" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="MainMenuHeaderStackPanel">
+            <Setter Property="Margin" Value="-6,-1, 0,-2" />
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="MainMenuHeaderDropDownLabel">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="4,2,0,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Label">
+                        <Path Fill="{TemplateBinding Foreground}">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathGeometry.Figures>
+                                        <PathFigureCollection>
+                                            <PathFigure IsClosed="True">
+                                                <PathFigure.Segments>
+                                                    <PathSegmentCollection>
+                                                        <LineSegment Point="0,0" />
+                                                        <LineSegment Point="4,4" />
+                                                        <LineSegment Point="8,0" />
+                                                    </PathSegmentCollection>
+                                                </PathFigure.Segments>
+                                            </PathFigure>
+                                        </PathFigureCollection>
+                                    </PathGeometry.Figures>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="Width" Value="Auto" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{TemplateBinding Tag}"
+                                       Margin="2,0,0,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Stretch="None"
+                                       Width="16"
+                                       Height="16" />
+                                <Label Content="{TemplateBinding Content}"
+                                       VerticalAlignment="Center"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       Margin="0,-2,0,0"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#C8C8C8" />
+                    <Setter Property="BorderBrush" Value="#000000" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+
+    <Menu Background="Transparent" Name="mainMenu">
+        <Menu.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" />
+            </ItemsPanelTemplate>
+        </Menu.ItemsPanel>
+
+
+        <MenuItem Style="{StaticResource MainMenu}" Name="textFieldButton">
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Text Field" 
+                            Click="addAndBuildInteractiveFormFieldMenuItem_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Header="No Border" 
+                      Name="textFieldNoBorderMenuItem"  
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click" 
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="Single Border" 
+                      Name="textFieldSingleBorderMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click" 
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="3D Border" 
+                      Name="textField3DBorderMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click" 
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <Separator />
+            <MenuItem Header="Properties..."
+                      Name="textFieldPropertiesMenuItem"
+                      Click="fieldAppearanceGeneratorPropertiesMenuItem_Click"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" Name="checkBoxButton">
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Check Box"
+                            Click="addAndBuildInteractiveFormFieldMenuItem_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}" />
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Header="Standard" 
+                      Name="checkBoxStandardMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="Simple" 
+                      Name="checkBoxSimpleMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Name="checkBoxSymbolVMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged">
+                <MenuItem.Header>
+                    Symbol "V"
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Name="checkBoxSymbolXMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged">
+                <MenuItem.Header>
+                    Symbol "X"
+                </MenuItem.Header>
+            </MenuItem>
+            <Separator />
+            <MenuItem Header="Properties..." 
+                      Name="checkBoxPropertiesMenuItem"
+                      Click="fieldAppearanceGeneratorPropertiesMenuItem_Click"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" Name="buttonButton">
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Button"
+                            Click="addAndBuildInteractiveFormFieldMenuItem_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}" />
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Header="Flat Border" 
+                      Name="buttonFlatBorderMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="3D Border" 
+                      Name="buttonBorder3DMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <Separator />
+            <MenuItem Header="Properties..." 
+                      Name="buttonPropertiesMenuItem"
+                      Click="fieldAppearanceGeneratorPropertiesMenuItem_Click"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" Name="listBoxButton">
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="List Box"
+                            Click="addAndBuildInteractiveFormFieldMenuItem_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}" />
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Header="No Border" 
+                      Name="listBoxNoBorderMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <Separator />
+            <MenuItem Header="Properties..." 
+                      Name="listBoxPropertiesMenuItem"
+                      Click="fieldAppearanceGeneratorPropertiesMenuItem_Click"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" Name="comboBoxButton">
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Combo Box"
+                            Click="addAndBuildInteractiveFormFieldMenuItem_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}" />
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Header="No Border" 
+                      Name="comboBoxNoBorderMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="Single Border" 
+                      Name="comboBoxSingleBorderMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="3D Border" 
+                      Name="comboBox3dBorderMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <Separator />
+            <MenuItem Header="Properties..." 
+                      Name="comboBoxMenuItem"
+                      Click="fieldAppearanceGeneratorPropertiesMenuItem_Click"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" Name="radioButtonButton">
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Radio Button"
+                            Click="addAndBuildInteractiveFormFieldMenuItem_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}" />
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Header="Standard" 
+                      Name="radioButtonStandardMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="Symbol" 
+                      Name="radioButtonSymbolMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <Separator />
+            <MenuItem Header="Properties..." 
+                      Name="radioButtonPropertiesMenuItem"
+                      Click="fieldAppearanceGeneratorPropertiesMenuItem_Click"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" Name="barcodeButton">
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Barcode"
+                            Click="addAndBuildInteractiveFormFieldMenuItem_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}" />
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Header="PDF417" 
+                      Name="barcodePdf417MenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="DataMatrix" 
+                      Name="barcodeDataMatrixMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="QR Code" 
+                      Name="barcodeQrCodeMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <MenuItem Header="Vintasoft Barcode (other symbologies)"
+                      Name="vintasoftBarcodeMenuItem"
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged" />
+            <Separator />
+            <MenuItem Header="Properties..." 
+                      Name="barcodePropertiesMenuItem"
+                      Click="fieldAppearanceGeneratorPropertiesMenuItem_Click"/>
+        </MenuItem>
+
+        <MenuItem Style="{StaticResource MainMenu}" Name="signatureButton">
+            <MenuItem.Header>
+                <StackPanel Style="{StaticResource MainMenuHeaderStackPanel}">
+                    <Button Content="Digital Signature"
+                            Click="addAndBuildInteractiveFormFieldMenuItem_Click"/>
+                    <Label Style="{StaticResource MainMenuHeaderDropDownLabel}" />
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem Header="Default" 
+                      Name="signatureDefaultMenuItem" 
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"
+                      Checked="appearanceMenuItem_CheckedChanged" 
+                      Unchecked="appearanceMenuItem_CheckedChanged"/>
+            <Separator />
+            <MenuItem Header="Properties..." 
+                      Name="signaturePropertiesMenuItem"
+                      Click="addAndBuildInteractiveFormFieldMenuItem_Click"/>
+        </MenuItem>
+    </Menu>
+</UserControl>

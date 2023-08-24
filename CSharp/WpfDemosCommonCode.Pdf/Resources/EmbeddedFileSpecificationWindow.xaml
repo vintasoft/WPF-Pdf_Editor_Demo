@@ -1,0 +1,51 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.EmbeddedFileSpecificationWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Embedded File Specification Editor" 
+    Width="568"  MinWidth="432"
+    Height="174" MaxHeight="174" MinHeight="174">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="3" />
+            <Style.Triggers>
+                <Trigger Property="IsReadOnly" Value="True">
+                    <Setter Property="Background" Value="#FFF3F3F3" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="3,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="154" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="155" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0">File</Label>
+        <TextBox Name="filenameTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button Name="browseButton" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="75" Height="23" Click="browseButton_Click">Load...</Button>
+        <Button Name="saveAsButton" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Width="75" Height="23" Click="saveAsButton_Click">Save As...</Button>
+
+        <Label Grid.Row="1" Grid.Column="0">Description</Label>
+        <TextBox Name="fileDescriptionTextBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />
+
+        <Label Grid.Row="2" Grid.Column="0">File Size</Label>
+        <TextBox Name="sizeTextBox" Grid.Row="2" Grid.Column="1" IsReadOnly="True"/>
+
+        <Label Grid.Row="3" Grid.Column="0">Compression</Label>
+        <ComboBox Name="compressionComboBox" Grid.Row="3" Grid.Column="1" Height="23" Margin="3,0" SelectionChanged="compressionComboBox_SelectionChanged" />
+
+        <Label Grid.Row="4" Grid.Column="0">Compressed Size</Label>
+        <TextBox Name="compressedSizeTextBox" Grid.Row="4" Grid.Column="1" IsReadOnly="True"/>
+        <Button Name="buttonOk" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" Width="75" Height="23" Click="buttonOk_Click">OK</Button>
+        <Button Name="buttonCancel" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right" Width="75" Height="23" Click="buttonCancel_Click">Cancel</Button>
+    </Grid>
+</Window>

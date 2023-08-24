@@ -1,0 +1,169 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.AttachmentsEditorWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:win="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+    xmlns:pdf="clr-namespace:WpfDemosCommonCode.Pdf"
+    Title="Attachments (Portfolio) Editor" Height="510" MinHeight="150" Width="750" MinWidth="200"
+    WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="ToolBarButtonStyle">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="ToolBarImageStyle">
+            <Setter Property="Width" Value="18" />
+            <Setter Property="Height" Value="18" />
+            <Setter Property="Stretch" Value="None" />
+        </Style>
+
+        <BitmapImage x:Key="levelUpIcon" UriSource="..\..\Resources\MoveToRoot_18x18.png" />
+        <BitmapImage x:Key="moveToRootIcon" UriSource="..\..\Resources\LevelUp_18x18.png" />
+        <BitmapImage x:Key="iconViewModeIcon" UriSource="..\..\Resources\TileMode_18x18.png" />
+        <BitmapImage x:Key="detailViewModeIcon" UriSource="..\..\Resources\DetailsMode_18x18.png" />
+        <BitmapImage x:Key="createNewFolderIcon" UriSource="..\..\Resources\AddNewFolder_18x18.png" />
+        <BitmapImage x:Key="addFilesIcon" UriSource="..\..\Resources\ImportFolder_18x18.png" />
+        <BitmapImage x:Key="addExistingFolderIcon" UriSource="..\..\Resources\AddExistingFolder_18x18.png" />
+        <BitmapImage x:Key="saveSelectedItemsIcon" UriSource="..\..\Resources\Export_18x18.png" />
+        <BitmapImage x:Key="deleteSelectedIcon" UriSource="..\..\Resources\DeleteSelected_18x18.png" />
+
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding x:Name="createNewFolderCommandBinding" Command="{x:Static pdf:AttachmentsEditorWindow._createNewFolderCommand}" Executed="createNewFolderMenuItem_Click" CanExecute="createNewFolderCommandBinding_CanExecute" />
+        <CommandBinding x:Name="saveSelectedFilesToCommandBinding" Command="{x:Static pdf:AttachmentsEditorWindow._saveSelectedFilesToCommand}" Executed="saveSelectedFilesToMenuItem_Click" CanExecute="saveSelectedFilesToCommandBinding_CanExecute" />
+        <CommandBinding x:Name="closeCommandBinding" Command="{x:Static pdf:AttachmentsEditorWindow._closeCommand}" Executed="closeMenuItem_Click" CanExecute="closeCommandBinding_CanExecute" />
+        <CommandBinding x:Name="levelUpCommandBinding" Command="{x:Static pdf:AttachmentsEditorWindow._levelUpCommand}" Executed="levelUpMenuItem_Click" CanExecute="levelUpCommandBinding_CanExecute" />
+        <CommandBinding x:Name="moveToRootCommandBinding" Command="{x:Static pdf:AttachmentsEditorWindow._moveToRootCommand}" Executed="moveToRootMenuItem_Click" CanExecute="moveToRootCommandBinding_CanExecute" />
+        <CommandBinding x:Name="deleteSelectedCommandBinding" Command="{x:Static pdf:AttachmentsEditorWindow._deleteSelectedCommand}" Executed="deleteSelectedMenuItem_Click" CanExecute="deleteSelectedCommandBinding_CanExecute" />
+        <CommandBinding x:Name="selectAllCommandBinding" Command="{x:Static pdf:AttachmentsEditorWindow._selectAllCommand}" Executed="selectAllMenuItem_Click" CanExecute="selectAllCommandBinding_CanExecute" />
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Command="{x:Static pdf:AttachmentsEditorWindow._createNewFolderCommand}" Modifiers="CTRL" Key="N"/>
+        <KeyBinding Command="{x:Static pdf:AttachmentsEditorWindow._saveSelectedFilesToCommand}" Modifiers="CTRL" Key="S"/>
+        <KeyBinding Command="{x:Static pdf:AttachmentsEditorWindow._closeCommand}" Modifiers="CTRL" Key="X"/>
+        <KeyBinding Command="{x:Static pdf:AttachmentsEditorWindow._levelUpCommand}" Modifiers="CTRL" Key="LEFT"/>
+        <KeyBinding Command="{x:Static pdf:AttachmentsEditorWindow._moveToRootCommand}" Modifiers="CTRL" Key="UP"/>
+        <KeyBinding Command="{x:Static pdf:AttachmentsEditorWindow._deleteSelectedCommand}" Key="DEL"/>
+        <KeyBinding Command="{x:Static pdf:AttachmentsEditorWindow._selectAllCommand}" Modifiers="CTRL" Key="A"/>
+    </Window.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Menu Height="25" Grid.Row="0" VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Add Files..." Name="addFilesMenuItem" Click="addFilesMenuItem_Click" />
+                <MenuItem Header="Add New Folder" Name="createNewFolderMenuItem" HeaderStringFormat="{}{0} (Ctrl+ N)" Click="createNewFolderMenuItem_Click"/>
+                <MenuItem Header="Add Existing Folder..." Name="addExistingFolderMenuItem" Click="addExistingFolderMenuItem_Click"/>
+                <MenuItem Header="Compression of New Files" Name="compressionOfNewFilesMenuItem">
+                    <ComboBox Name="fileCompressionComboBox"/>
+                </MenuItem>
+                <MenuItem Header="Encode Files Immediately" Name="encodeFilesImmediatelyMenuItem" Click="encodeFilesImmediatelyMenuItem_Click"/>
+                <Separator Name="separator5" />
+                <MenuItem Header="Save Selected Item(s) To..." Name="saveSelectedFilesToMenuItem" HeaderStringFormat="{}{0} (Ctrl+ S)" Click="saveSelectedFilesToMenuItem_Click" />
+                <Separator />
+                <MenuItem Header="Close" Name="closeMenuItem" HeaderStringFormat="{}{0} (Ctrl+ X)" Click="closeMenuItem_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="View">
+                <MenuItem Header="View Mode" Name="viewModeMenuItem">
+                    <ComboBox Name="viewModeComboBox" SelectionChanged="viewModeComboBox_SelectionChanged"/>
+                </MenuItem>
+                <MenuItem Header="Initial View Mode" Name="initialViewModeMenuItem">
+                    <ComboBox Name="initialViewModeComboBox" SelectionChanged="initialViewModeComboBox_SelectionChanged"/>
+                </MenuItem>
+                <MenuItem Header="Sort" Name="sortMenuItem">
+                    <MenuItem Header="Sort by Field" Name="sortByFieldMenuItem">
+                        <ComboBox Name="sortFieldNameComboBox" SelectionChanged="sortFieldNameComboBox_SelectionChanged"/>
+                    </MenuItem>
+                    <MenuItem Header="Ascending Order" Name="ascendingOrderMenuItem" IsCheckable="True" Checked="ascendingOrderMenuItem_Checked" Unchecked="ascendingOrderMenuItem_Checked"/>
+                    <MenuItem Header="Remove Sort Information..." Name="removeSortInformationMenuItem" Click="removeSortInformationMenuItem_Click"/>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Level Up" Name="levelUpMenuItem" HeaderStringFormat="{}{0} (Ctrl+ Left)" Click="levelUpMenuItem_Click"/>
+                <MenuItem Header="Move To Root" Name="moveToRootMenuItem" HeaderStringFormat="{}{0} (Ctrl+ Up)" Click="moveToRootMenuItem_Click"/>
+                <Separator Name="separator7" />
+                <MenuItem Header="Colors..." Name="colorsMenuItem" Click="colorsMenuItem_Click"/>
+                <MenuItem Header="Reset Colors" Name="resetColorsMenuItem" Click="resetColorsMenuItem_Click"/>
+                <Separator Name="separator9" />
+                <MenuItem Header="Generate Thumbnails For All Files..." Name="generateThumbnailsForAllFilesMenuItem" Click="generateThumbnailsForAllFilesMenuItem_Click"/>
+                <MenuItem Header="Generate Thumbnails For Selected Files..." Name="generateThumbnailsForlSelectedFilesMenuItem" Click="generateThumbnailsForlSelectedFilesMenuItem_Click"/>
+                <MenuItem Header="Set Thumbnail For All Folders..." Name="setThumbnailForAllFoldersMenuItem" Click="setThumbnailForAllFoldersMenuItem_Click"/>
+                <MenuItem Header="Set Thumbnail For Selected Items..." Name="setThumbnailForSelectedItemsMenuItem" Click="setThumbnailForSelectedItemsMenuItem_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="Edit" Name="editMenuItem">
+                <MenuItem Header="Delete Selected" Name="deleteSelectedMenuItem" HeaderStringFormat="{}{0} (Del)" Click="deleteSelectedMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Select All" Name="selectAllMenuItem" HeaderStringFormat="{}{0} (Ctrl+ A)" Click="selectAllMenuItem_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="Schema" Name="schemaMenuItem">
+                <MenuItem Header="Schema Editor..." Name="schemaEditorMenuItem" Click="schemaEditorMenuItem_Click"/>
+                <MenuItem Header="Selected Item Data Fields..." Name="selectedFileDataFieldsMenuItem" Click="selectedFileDataFieldsMenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray Grid.Row="1">
+            <ToolBar Height="Auto" Background="Transparent" SnapsToDevicePixels="True">
+                <Button Name="levelUpButton" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Level Up" Click="levelUpMenuItem_Click">
+                    <Image Style="{StaticResource ToolBarImageStyle}" Source="{StaticResource levelUpIcon}" />
+                </Button>
+                <Button Name="moveToRootButton" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Move To Root" Click="moveToRootMenuItem_Click">
+                    <Image Style="{StaticResource ToolBarImageStyle}" Source="{StaticResource moveToRootIcon}" />
+                </Button>
+                <Separator />
+                <Button Name="iconViewModeButton" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Large Icons" Click="iconViewModeButton_Click">
+                    <Image Style="{StaticResource ToolBarImageStyle}" Source="{StaticResource iconViewModeIcon}" />
+                </Button>
+                <Button Name="detailViewModeButton" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Details" Click="detailViewModeButton_Click">
+                    <Image Style="{StaticResource ToolBarImageStyle}" Source="{StaticResource detailViewModeIcon}" />
+                </Button>
+                <Separator />
+                <Button Name="addFilesButton" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Add Files..." Click="addFilesMenuItem_Click">
+                    <Image Style="{StaticResource ToolBarImageStyle}" Source="{StaticResource addFilesIcon}" />
+                </Button>
+                <Button Name="createNewFolderButton" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Create New Folder" Click="createNewFolderMenuItem_Click">
+                    <Image Style="{StaticResource ToolBarImageStyle}" Source="{StaticResource createNewFolderIcon}" />
+                </Button>
+                <Button Name="addExistingFolderButton" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Add Existing Folder..." Click="addExistingFolderMenuItem_Click">
+                    <Image Style="{StaticResource ToolBarImageStyle}" Source="{StaticResource addExistingFolderIcon}" />
+                </Button>
+                <Button Name="saveSelectedItemsButton" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Save Selected Items To..." Click="saveSelectedFilesToMenuItem_Click">
+                    <Image Style="{StaticResource ToolBarImageStyle}" Source="{StaticResource saveSelectedItemsIcon}" />
+                </Button>
+                <Separator />
+                <Button Name="deleteSelectedButton" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Delete Selected Items" Click="deleteSelectedMenuItem_Click">
+                    <Image Style="{StaticResource ToolBarImageStyle}" Source="{StaticResource deleteSelectedIcon}" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="511*" MinWidth="100" />
+                <ColumnDefinition Width="217*" MinWidth="100" />
+            </Grid.ColumnDefinitions>
+
+            <pdf:PdfAttachmentViewer x:Name="attachmentViewer" MouseDoubleClick="attachmentViewer_MouseDoubleClick" CurrentFolderChanged="attachmentViewer_CurrentFolderChanged" SelectionChanged="attachmentViewer_SelectionChanged" Focusable="False" />
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Width="5" />
+
+            <win:WindowsFormsHost Grid.Column="1" Margin="5,0,0,0" Name="windowsFormsHost1">
+                <wf:PropertyGrid x:Name="itemsPropertyGrid" PropertyValueChanged="itemsPropertyGrid_PropertyValueChanged" />
+            </win:WindowsFormsHost>
+        </Grid>
+
+        <DockPanel Grid.Row="3" Height="25" VerticalAlignment="Stretch" Name="statusBar1">
+            <DockPanel HorizontalAlignment="Left">
+                <Label Name="actionStatusLabel" VerticalAlignment="Center" />
+                <ProgressBar Width="100" Height="15" VerticalAlignment="Center" Name="actionProgressBar" Visibility="Hidden" Margin="4"/>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>

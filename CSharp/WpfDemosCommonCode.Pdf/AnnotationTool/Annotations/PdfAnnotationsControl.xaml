@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfAnnotationsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Height="Auto" Width="Auto">
+    <Grid Name="mainPanel" IsEnabled="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" MinHeight="80" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Add Annotation" Grid.Row="0">
+            <CustomControls:PdfAnnotationBuilderControl 
+                x:Name="AnnotationBuilderControl" />
+        </GroupBox>
+
+        <CustomControls:PdfAnnotationToolAnnotationsControl 
+            x:Name="pdfAnnotationToolAnnotationsControl"
+            MouseDoubleClick="pdfAnnotationToolAnnotationsControl_MouseDoubleClick"
+            Grid.Row="1" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfImageExtractorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="210" MinWidth="180"
+    Height="370" MinHeight="170">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="23" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="Margin" Value="3" />
+        </Style>
+        
+        <ContextMenu x:Key="ImageExtractorContextMenu">
+            <MenuItem Header="View Content Image..." 
+                      Name="viewContentImageMenuItem"
+                      Click="viewContentImageButton_Click"/>
+            <Separator />
+            <MenuItem Header="Save Image Resource..." 
+                      Name="saveImageResourceMenuItem"
+                      Click="saveImageResourceButton_Click"/>
+            <MenuItem Header="Save Transformed Image..." 
+                      Name="saveTransformedImageMenuItem"
+                      Click="saveTransformedImageButton_Click"/>
+            <MenuItem Header="Copy Image to Clipboard" 
+                      Name="copyImageToClipboardMenuItem" 
+                      Click="copyImageToClipboardToolStripMenuItem_Click"/>
+        </ContextMenu>
+    </UserControl.Resources>
+    <Grid Name="mainPanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="34" />
+            <RowDefinition Height="83" />
+        </Grid.RowDefinitions>
+        
+        <ListBox Grid.Row="0"
+                 Name="imageResourcesListBox"
+                 SelectionChanged="imageResourcesListBox_SelectionChanged"/>
+        
+        <Button Grid.Row="1"
+                Margin="8,0" 
+                Name="viewContentImageButton"
+                Click="viewContentImageButton_Click">
+            View Content Image...
+        </Button>
+        
+        <GroupBox Header="Save"
+                  Name="saveGroupBox"
+                  Grid.Row="2">
+            <StackPanel>
+                <Button Name="saveImageResourceButton" 
+                        Click="saveImageResourceButton_Click">
+                    Save Image Resource As...
+                </Button>
+                <Button Name="saveTransformedImageButton"
+                        Click="saveTransformedImageButton_Click">
+                    Save Transformed Image As...
+                </Button>
+            </StackPanel>
+        </GroupBox>
+        
+    </Grid>
+</UserControl>

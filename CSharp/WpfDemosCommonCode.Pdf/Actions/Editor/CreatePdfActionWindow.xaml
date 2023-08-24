@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.CreatePdfActionWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Create Action" Height="213" Width="186" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <ListBox Name="actionsListBox" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <Button Name="okButton" Grid.Column="0" Grid.Row="1" Margin="5" Click="okButton_Click">OK</Button>
+        <Button Name="cancelButton" Grid.Column="1" Grid.Row="1" Margin="5" IsCancel="True">Cancel</Button>
+    </Grid>
+</Window>

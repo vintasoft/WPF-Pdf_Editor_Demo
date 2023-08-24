@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfComboBoxPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Width="Auto" MinWidth="250"
+    Height="Auto" MinHeight="266">
+
+    <TabControl SelectedIndex="0" 
+                Name="mainTabControl" 
+                SelectionChanged="mainTabControl_SelectionChanged">
+        <TabItem Header="Value" Name="valueTabPage">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="29" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <CheckBox 
+                    Name="editableCheckBox" 
+                    Grid.Row="0" 
+                    VerticalAlignment="Center" 
+                    Checked="editableCheckBox_CheckedChanged"
+                    Unchecked="editableCheckBox_CheckedChanged"
+                    Margin="102,0,0,0">
+                    Editable
+                </CheckBox>
+
+                <CheckBox 
+                    Name="spellCheckCheckBox" 
+                    Grid.Row="0" 
+                    VerticalAlignment="Center" 
+                    Checked="spellCheckCheckBox_CheckedChanged"
+                    Unchecked="spellCheckCheckBox_CheckedChanged"
+                    Margin="168,0,0,0">
+                    Spell Check
+                </CheckBox>
+
+                <Controls:PdfInteractiveFormChoiceFieldEditorControl 
+            x:Name="pdfInteractiveFormChoiceFieldEditorControl" 
+            PropertyValueChanged="pdfInteractiveFormChoiceFieldEditorControl_PropertyValueChanged"
+            Grid.Row="1" />
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Calculate Action" Name="calculateActionTabPage">
+            <Controls:PdfActionEditorControl 
+                x:Name="calculatePdfActionEditorControl" 
+                ActionChanged="calculatePdfActionEditorControl_ActionChanged" />
+        </TabItem>
+
+        <TabItem Header="Validate Action" Name="validateActionTabPage">
+            <Controls:PdfActionEditorControl 
+                x:Name="validatePdfActionEditorControl" 
+                ActionChanged="validatePdfActionEditorControl_ActionChanged" />
+        </TabItem>
+
+        <TabItem Header="Format Action" Name="formatActionTabPage">
+            <Controls:PdfActionEditorControl 
+                x:Name="formatPdfActionEditorControl" 
+                ActionChanged="formatPdfActionEditorControl_ActionChanged" />
+        </TabItem>
+
+        <TabItem Header="Keystroke Action" Name="keystrokeActionTabPage">
+            <Controls:PdfActionEditorControl 
+                x:Name="keystrokePdfActionEditorControl" 
+                ActionChanged="keystrokePdfActionEditorControl_ActionChanged" />
+        </TabItem>
+    </TabControl>
+</UserControl>

@@ -1,0 +1,73 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls" x:Class="WpfDemosCommonCode.Imaging.CompositeRenderingSettingsWindow"
+        mc:Ignorable="d"
+        Title="Markup Rendering Settings" Height="382.482" Width="311.167" WindowStartupLocation="CenterScreen" Topmost="True" ResizeMode="NoResize">
+    <Grid>
+        <TabControl x:Name="renderingSettingsTabControl" Margin="0,0,0,41">
+            <TabItem Header="Common">
+                <Grid>
+                    <GroupBox x:Name="resolutionSettingsGroupBox" Margin="10,10,10,0" Height="93" VerticalAlignment="Top" Header="                               ">
+                        <Grid>
+                            <Label Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="67" Margin="5,5,0,0">Horizontal</Label>
+                            <CustomControls:NumericUpDown x:Name="horizontalResolutionNumericUpDown"  Width="75" Value="96" Minimum="1" Maximum="10000" Margin="0,6,3,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+
+                            <Label Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="67" Margin="5,38,0,0">Vertical</Label>
+                            <CustomControls:NumericUpDown x:Name="verticalResolutionNumericUpDown" Width="75" Value="96" Minimum="1" Maximum="10000" Margin="0,38,3,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <Label HorizontalAlignment="Left" Width="116" Height="27" VerticalAlignment="Top" Margin="6,111,0,0">Smoothing Mode</Label>
+                    <ComboBox x:Name="smoothingModeComboBox" Margin="0,113,10,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Right" Width="132" />
+
+                    <Label Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="114" Margin="6,138,0,0">Interpolation Mode</Label>
+                    <ComboBox x:Name="interpolationModeComboBox" Margin="0,141,10,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Right" Width="132" />
+
+                    <CheckBox VerticalAlignment="Top" Name="optimizeImageDrawingCheckBox" HorizontalAlignment="Left" Margin="10,178,0,0" Width="154">Optimize Image Drawing</CheckBox>
+                    <CheckBox x:Name="resolutionSettingsCheckBox" Checked="resolutionSettingsCheckBox_CheckedChanged" Unchecked="resolutionSettingsCheckBox_CheckedChanged" IsChecked="True" VerticalAlignment="Top" Margin="18,12,0,0" HorizontalAlignment="Left" Width="108" Content="Resolution (DPI)"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="PDF" x:Name="pdfRenderingSettingsTabItem">
+                <Grid>
+                    <GroupBox Header="GroupBox" Margin="10,10,10,0" Height="214" VerticalAlignment="Top">
+                        <Grid>
+                            <CheckBox x:Name="vintasoftAnnotationsCheckBox" Content="Vintasoft Annotations" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="nonMarkupAnnotationsCheckBox" Content="Non Markup Annotations" HorizontalAlignment="Left" Margin="10,33,0,0" Height="15" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="markupAnnotationsCheckBox" Content="Markup Annotations" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="renderInvisibleCheckBox" Content="Render Invisible" HorizontalAlignment="Left" Margin="10,79,0,0" Height="15" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="renderHiddenCheckBox" Content="Render Hidden" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="renderPrintableCheckBox" Content="Render Printable" HorizontalAlignment="Left" Margin="10,125,0,0" Height="15" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="renderNoViewCheckBox" Content="Render NoView" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top"/>
+                            <CheckBox x:Name="renderDisplayableCheckBox" Content="Render Displayable" HorizontalAlignment="Left" Margin="10,171,0,0" Height="15" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+                    <CheckBox x:Name="ignoreImageInterpolationFlagCheckBox" Content="Ignore Image Interpolation Flag" HorizontalAlignment="Left" Margin="12,230,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="optimizePatternRenderingCheckBox" Content="Optimize Pattern Rendering" HorizontalAlignment="Left" Margin="12,253,0,0" Height="15" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Office" x:Name="officeRenderingSettingsTabItem">
+                <Grid>
+                    <CheckBox x:Name="showNonPrintableCharactersCheckBox" Content="Show Non Printing Characters" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Height="15" Width="183"/>
+                    <Label x:Name="textRenderingHintLabel" Content="Text Rendering Hint" HorizontalAlignment="Left" Padding="0,0,0,0" Margin="10,11,0,0" VerticalAlignment="Top" Width="114" Height="16"/>
+
+                    <ComboBox x:Name="textRenderingHintComboBox" Margin="130,8,10,0" VerticalAlignment="Top" Height="22"/>
+                    <GroupBox x:Name="invisibleTableBordersGroupBox" Height="54" Margin="10,41,10,0" VerticalAlignment="Top" Header="                                                   " >
+                        <Grid>
+                            <CustomControls:ColorPanelControl x:Name="invisibleTableBordersColorPanelControl" Height="20" Margin="0,7,4,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="160"/>
+                            <Label x:Name="borderColorRenderingHintLabel" Content="Border Color" HorizontalAlignment="Left" Padding="0,0,0,0" Margin="10,7,0,0" VerticalAlignment="Top" Width="71" Height="16"/>
+                        </Grid>
+                    </GroupBox>
+                    <CheckBox x:Name="showInvisibleTableBordersCheckBox" Content="Show Invisible Table Borders" Margin="18,43,0,0" VerticalAlignment="Top" Height="15" IsChecked="True" Checked="showInvisibleTableBordersCheckBox_CheckedChanged" Unchecked="showInvisibleTableBordersCheckBox_CheckedChanged" HorizontalAlignment="Left" Width="175"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,6,5" Height="33" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="162">
+            <Button x:Name="btOk" Content="OK" HorizontalAlignment="Left" Width="75" Click="btOk_Click" Height="23"/>
+            <Button x:Name="btCancel" Content="Cancel" HorizontalAlignment="Right" Width="75" Margin="10,0,0,0" Click="btCancel_Click" Height="23"/>
+        </StackPanel>
+    </Grid>
+</Window>

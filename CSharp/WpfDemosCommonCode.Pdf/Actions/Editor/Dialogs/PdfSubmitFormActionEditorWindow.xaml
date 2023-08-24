@@ -1,0 +1,75 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.PdfSubmitFormActionEditorWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Title="Submit Form Action Editor" Height="460" Width="650" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Format</Label>
+            <ComboBox Name="submitFormatComboBox" Grid.Row="0" Grid.Column="1" Margin="5"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">URL</Label>
+            <TextBox Name="submitUrlTextBox" Grid.Row="0" Grid.Column="1" Margin="5" TextChanged="submitUrlTextBox_TextChanged"/>
+        </Grid>
+        <RadioButton Name="allFieldsRadioButton" Grid.Row="2" Grid.Column="0" GroupName="fieldSelectionChoice" Margin="9,0,9,0" VerticalAlignment="Center" IsChecked="True" Checked="RadioButton_Checked">
+            All Fields
+        </RadioButton>
+        <GroupBox Grid.Row="3" Grid.Column="0">
+            <GroupBox.Header>
+                <RadioButton Name="selectedFieldsRadioButton" GroupName="fieldSelectionChoice" Margin="0,0,0,10" Checked="RadioButton_Checked">
+                    Selected Fields
+                </RadioButton>
+            </GroupBox.Header>
+            <Grid Name="selectedFieldsGrid" IsEnabled="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Name="excludeSelectedFieldsCheckBox" Grid.Row="0" Grid.Column="0" Margin="3,7,3,7">
+                    Exclude selected fields
+                </CheckBox>
+                <CustomControls:PdfInteractiveFormFieldListEditorControl x:Name="pdfInteractiveFormFieldListEditorControl" Grid.Row="1" Grid.Column="0" ShowOnlyExportableFields="True"/>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="4" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Name="okButton" Grid.Row="0" Grid.Column="1" Width="75" Height="23" Margin="5" IsDefault="True" Click="okButton_Click">OK</Button>
+            <Button Grid.Row="0" Grid.Column="2" Width="75" Height="23" Margin="5" IsCancel="True">Cancel</Button>
+        </Grid>
+    </Grid>
+</Window>

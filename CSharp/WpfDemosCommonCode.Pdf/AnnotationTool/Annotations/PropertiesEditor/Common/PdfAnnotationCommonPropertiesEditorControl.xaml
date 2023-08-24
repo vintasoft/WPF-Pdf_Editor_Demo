@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfAnnotationCommonPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:WpfDemosCommonCode.Pdf"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    Width="Auto" MinWidth="252" Height="Auto">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="23" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29" />
+            <RowDefinition Height="29" />
+            <RowDefinition Height="29" />
+            <RowDefinition Height="29" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="29" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0">Name</Label>
+        <TextBox Name="nameTextBox" 
+                 Grid.Row="0" Grid.Column="1" 
+                 TextChanged="nameTextBox_TextChanged"/>
+
+        <Label Grid.Row="1">Subject</Label>
+        <TextBox Name="subjectTextBox" 
+                 Grid.Row="1" Grid.Column="1"
+                 TextChanged="subjectTextBox_TextChanged"/>
+
+        <Label Grid.Row="2">Title</Label>
+        <TextBox Name="titleTextBox" 
+                 Grid.Row="2" Grid.Column="1"
+                 TextChanged="titleTextBox_TextChanged"/>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" 
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <CheckBox Name="lockedCheckBox" 
+                      Checked="lockedCheckBox_CheckedChanged"
+                      Unchecked="lockedCheckBox_CheckedChanged">
+                Locked
+            </CheckBox>
+            <CheckBox Name="printableCheckBox"
+                      Margin="3,0" 
+                      Checked="printableCheckBox_CheckedChanged"
+                      Unchecked="printableCheckBox_CheckedChanged">
+                Printable
+            </CheckBox>
+            <CheckBox Name="readOnlyCheckBox" 
+                      Margin="3,0"
+                      Checked="readOnlyCheckBox_CheckedChanged"
+                      Unchecked="readOnlyCheckBox_CheckedChanged">
+                ReadOnly
+            </CheckBox>
+        </StackPanel>
+
+        <GroupBox Grid.Row="4" Grid.ColumnSpan="2" 
+                  Header="Outline">
+            <Controls:PdfAnnotationBorderStyleControl 
+                x:Name="borderStyleControl"
+                PropertyValueChanged="borderStyleControl_PropertyValueChanged"/>
+        </GroupBox>
+
+        <Label Grid.Row="5">Opacity</Label>
+        <Grid Grid.Row="5" Grid.Column="1" 
+              Name="opacityPanel">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <Slider Grid.Column="0"
+                    Name="opacitySlider"
+                    ValueChanged="opacitySlider_ValueChanged"
+                    VerticalAlignment="Center"
+                    Minimum="0"
+                    Maximum="100"
+                    Width="Auto"/>
+
+            <CustomControls:NumericUpDown 
+                Grid.Column="1"
+                ValueChanged="opacityNumericUpDown_ValueChanged"
+                x:Name="opacityNumericUpDown"
+                Width="56"
+                Margin="3,0"
+                Minimum="0"
+                Maximum="100"
+                VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</UserControl>

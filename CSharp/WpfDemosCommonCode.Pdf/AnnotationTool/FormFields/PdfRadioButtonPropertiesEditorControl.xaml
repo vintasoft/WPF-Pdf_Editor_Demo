@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfRadioButtonPropertiesEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Height="Auto" Width="Auto">
+    <Controls:PdfInteractiveFormSwitchableButtonPropertiesEditorControl 
+        x:Name="pdfInteractiveFormSwitchableButtonPropertiesEditorControl"
+        PropertyValueChanged="pdfInteractiveFormSwitchableButtonPropertiesEditorControl_PropertyValueChanged"/>
+</UserControl>

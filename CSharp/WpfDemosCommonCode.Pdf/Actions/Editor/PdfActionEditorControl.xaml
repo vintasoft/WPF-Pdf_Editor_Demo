@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfActionEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinHeight="160" MinWidth="165" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="74" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="0" Grid.Column="0" Name="actionsListBox" Margin="5" SelectionChanged="actionsListBox_SelectionChanged" MouseDoubleClick="actionsListBox_MouseDoubleClick"/>
+        <Grid Grid.Row="0" Grid.Column="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26"/>
+                <RowDefinition Height="29"/>
+                <RowDefinition Height="29"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="29"/>
+                <RowDefinition Height="26"/>
+            </Grid.RowDefinitions>
+            <Button Name="addButton" Grid.Row="0" Grid.Column="0" Margin="3,0,3,3" Click="addButton_Click">Add...</Button>
+            <Button Name="editButton" Grid.Row="1" Grid.Column="0" Margin="3,3,3,3" Click="editButton_Click">Edit...</Button>
+            <Button Name="removeButton" Grid.Row="2" Grid.Column="0" Margin="3,3,3,3" Click="removeButton_Click">Remove</Button>
+            <Button Name="moveUpButton" Grid.Row="4" Grid.Column="0" Margin="3,3,3,3" Click="moveUpButton_Click">Up</Button>
+            <Button Name="moveDownButton" Grid.Row="5" Grid.Column="0" Margin="3,3,3,0" Click="moveDownButton_Click">Down</Button>
+        </Grid>
+    </Grid>
+</UserControl>

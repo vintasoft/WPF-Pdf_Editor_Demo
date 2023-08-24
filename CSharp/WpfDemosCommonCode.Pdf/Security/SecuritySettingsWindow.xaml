@@ -1,0 +1,95 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.Security.SecuritySettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Document Security Settings" Height="490" Width="330" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22" />
+            <RowDefinition Height="18" />
+            <RowDefinition Height="18" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <RadioButton Grid.Row="0" VerticalAlignment="Center" Name="dontChangeRadioButton" Click="dontChangeRadioButton_Click" IsChecked="True" Margin="6, 6, 0, 0">
+            Don't Change
+        </RadioButton>
+        <RadioButton Grid.Row="1" VerticalAlignment="Center" Name="noSecurityRadioButton" Click="noSecurityRadioButton_Click" Margin="6, 0, 0, 0">
+            No Security
+        </RadioButton>
+        <RadioButton Grid.Row="2" VerticalAlignment="Center" Name="passwordProtectionRadioButton" Click="passwordProtectionRadioButton_Click" Margin="6, 0, 0, 0">
+            Password Protection
+        </RadioButton>
+
+        <GroupBox Header="Security Settings" Name="securitySettingsGroupBox" Grid.Row="3" Margin="6, 0, 6, 0" IsEnabled="False">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="39" />
+                    <RowDefinition Height="39" />
+                    <RowDefinition Height="102*" />
+                    <RowDefinition Height="182*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">Compatibility</Label>
+                <ComboBox Name="compatibilityModeComboBox" SelectionChanged="compatibilityModeComboBox_SelectionChanged" Grid.Column="1" Margin="0,8,6,8">
+                </ComboBox>
+                
+                <Label VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0">Security Method</Label>
+                <Label Name="securityMethodLabel"  VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1">X</Label>
+
+                <GroupBox Name="passwordsGroupBox" Header="Document Passwords" Grid.Row="2" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="93" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Owner</Label>
+                        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">User</Label>
+                        <PasswordBox Name="ownerPasswordPasswordBox" Grid.Row="0" Grid.Column="1" Height="21" VerticalAlignment="Center" PasswordChar="*" />
+                        <TextBox Name="ownerPasswordTextBox" Grid.Row="0" Grid.Column="1" Height="21" VerticalAlignment="Center" Visibility="Collapsed" />
+                        <PasswordBox Name="userPasswordPasswordBox" Grid.Row="1" Grid.Column="1" Height="21" VerticalAlignment="Center" PasswordChar="*" />
+                        <TextBox Name="userPasswordTextBox" Grid.Row="1" Grid.Column="1" Height="21" VerticalAlignment="Center"  Visibility="Collapsed" />
+                        <CheckBox Name="showPasswordsCheckBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Click="showPasswordsCheckBox_Click">Show Passwords</CheckBox>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Name="permissionsGroupBox" Header="User Permissions" Grid.Row="3" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <CheckBox Name="printInLowQualityCheckBox" IsChecked="True" Grid.Row="0" VerticalAlignment="Center" Margin="3,0" Click="printInLowQualityCheckBox_Click">Print in Low Quality</CheckBox>
+                        <CheckBox Name="printInHighQualityCheckBox" IsChecked="True" Grid.Row="1" VerticalAlignment="Center" Margin="3,0">Print in High Quaity</CheckBox>
+                        <CheckBox Name="extractTextAndGraphicsCheckBox" IsChecked="True" Grid.Row="2" VerticalAlignment="Center" Margin="3,0">Extract Text and Graphics</CheckBox>
+                        <CheckBox Name="extractTextAndGraphicsForAccessibilityCheckBox" IsChecked="True" Grid.Row="3" VerticalAlignment="Center" Margin="3,0">Extract Text and Graphics (for Accessibility)</CheckBox>
+                        <CheckBox Name="modifyContentsCheckBox" IsChecked="True" Grid.Row="4" VerticalAlignment="Center" Margin="3,0">Modify Contents</CheckBox>
+                        <CheckBox Name="modifyAnnotationsCheckBox" IsChecked="True" Grid.Row="5" VerticalAlignment="Center" Margin="3,0">Modify Annotations</CheckBox>
+                        <CheckBox Name="fillInteractiveFormFieldsCheckBox" IsChecked="True" Grid.Row="6" VerticalAlignment="Center" Margin="3,0">Fill Interactive Form Fields</CheckBox>
+                        <CheckBox Name="assembleDocumentCheckBox" IsChecked="True" Grid.Row="7" VerticalAlignment="Center" Margin="3,0">Assemble Document</CheckBox>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        
+        <Button Name="okButton" Margin="75,0,0,3" Grid.Row="4" Height="23" Width="75" HorizontalAlignment="Left" Click="okButton_Click">OK</Button>
+        <Button Name="cancelButton" Margin="0,0,75,3" Grid.Row="4" Height="23" Width="75" HorizontalAlignment="Right" Click="cancelButton_Click">Cancel</Button>
+    </Grid>
+</Window>

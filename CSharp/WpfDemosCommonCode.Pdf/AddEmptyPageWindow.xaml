@@ -1,0 +1,53 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.AddEmptyPageWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Add Empty Page" Height="184" Width="391" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="38" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Name="groupBox1" Header=" " Grid.Column="0" Grid.Row="0" Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Width</Label>
+                <TextBox Name="widthTextBox" Grid.Row="0" Grid.Column="1" Height="21" TextChanged="widthTextBox_TextChanged"></TextBox>
+                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Height</Label>
+                <TextBox Name="heightTextBox" Grid.Row="1" Grid.Column="1" Height="21" TextChanged="heightTextBox_TextChanged"></TextBox>
+                <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Units</Label>
+                <ComboBox Name="unitsComboBox" Grid.Row="2" Grid.Column="1" Height="21" SelectionChanged="unitsComboBox_SelectionChanged"/>
+            </Grid>
+        </GroupBox>
+        <RadioButton Name="customSizeRadioButton" Grid.Row="0" Grid.Column="0" Margin="6" Height="15" VerticalAlignment="Top" Checked="customSizeRadioButton_Checked">Custom Size</RadioButton>
+
+        <GroupBox Name="groupBox2" Header=" " Grid.Column="1" Grid.Row="0" Margin="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ComboBox Name="paperKindComboBox" Grid.Row="0" Margin="3,0" Height="21" SelectionChanged="paperKindComboBox_SelectionChanged"></ComboBox>
+                <CheckBox Name="rotatedCheckBox" Grid.Row="1" Margin="3" VerticalAlignment="Center">Rotated</CheckBox>
+            </Grid>
+        </GroupBox>
+        <RadioButton Name="standardSizeRadioButton" Grid.Row="0" Grid.Column="1" Margin="6" Height="15" VerticalAlignment="Top" Checked="standardSizeRadioButton_Checked">Standard Size</RadioButton>
+
+        <Button Name="okButton" Margin="4" Grid.Row="1" Grid.Column="0" Width="75" Height="21" VerticalAlignment="Center" HorizontalAlignment="Right" Click="okButton_Click">OK</Button>
+        <Button Name="cancelButton" Margin="4" Grid.Row="1" Grid.Column="1" Width="75" Height="21" VerticalAlignment="Center" HorizontalAlignment="Left" Click="cancelButton_Click">Cancel</Button>
+    </Grid>
+</Window>

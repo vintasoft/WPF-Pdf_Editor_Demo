@@ -1,0 +1,599 @@
+﻿<Window x:Class="WpfPdfEditorDemo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vsui="clr-namespace:Vintasoft.Imaging.Wpf.UI;assembly=Vintasoft.Imaging.Wpf.UI"
+    xmlns:widcci="clr-namespace:WpfDemosCommonCode.Imaging"
+    xmlns:pdfui="clr-namespace:Vintasoft.Imaging.Pdf.Wpf.UI;assembly=Vintasoft.Imaging.Pdf.Wpf.UI"
+    xmlns:wdcc="clr-namespace:WpfDemosCommonCode.Pdf"
+    xmlns:cc="clr-namespace:WpfPdfEditorDemo" 
+    Title="VintaSoft WPF PDF Editor Demo" 
+    Width="1200" 
+    Height="900" 
+    MinWidth="400"
+    MinHeight="300"
+    WindowStartupLocation="CenterScreen"
+    KeyUp="Window_KeyUp"
+    Loaded="Window_Loaded"
+    Icon="/WpfPdfEditorDemo;component/App.ico">
+    <Window.Resources>
+        <Style TargetType="vsui:ThumbnailImageItem" x:Key="ThumbnailItemStyle">
+            <Setter Property="Border">
+                <Setter.Value>
+                    <Pen Brush="#60000000" Thickness="1"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ThumbnailPadding" Value="2.5" />
+            <Setter Property="ThumbnailImagePadding" Value="3,3,3,18" />
+            <Setter Property="ThumbnailForeground">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="1">
+                        <GradientStop Color="#30000000" Offset="0.0" />
+                        <GradientStop Color="#D0000000" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ThumbnailBackground" Value="Transparent" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="SelectionBorder">
+                        <Setter.Value>
+                            <Pen Brush="#B08090FF" Thickness="2"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property = "IsSelected" Value="true">
+                    <Setter Property="ThumbnailBackground">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#207080F0" Offset="0.0" />
+                                <GradientStop Color="#B07080F0" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="ThumbnailForeground" Value="Transparent"/>
+                    <Setter Property="Border">
+                        <Setter.Value>
+                            <Pen Brush="#D07080FF" Thickness="1"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property = "IsSelected" Value="false"/>
+                        <Condition Property = "HasThumbnailImage" Value="false"/>
+                        <Condition Property = "IsRendering" Value="false"/>
+                        <Condition Property = "IsRendered" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="ThumbnailForeground.Opacity" To="1" Duration="0:0:0" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </MultiTrigger.EnterActions>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property = "IsSelected" Value="false"/>
+                        <Condition Property = "HasThumbnailImage" Value="false"/>
+                        <Condition Property = "IsRendering" Value="true"/>
+                        <Condition Property = "IsRendered" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property = "ThumbnailBackground">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#10008000" Offset="0.0" />
+                                <GradientStop Color="#30008000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <MultiTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="ThumbnailForeground.Opacity" From="1" To="0" Duration="0:0:0.25" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </MultiTrigger.EnterActions>
+                    <MultiTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="ThumbnailImageBrush.Opacity" From="0" To="1" Duration="0:0:0.3" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </MultiTrigger.ExitActions>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property = "IsSelected" Value="false"/>
+                        <Condition Property = "HasThumbnailImage" Value="true"/>
+                        <Condition Property = "IsRendering" Value="false"/>
+                        <Condition Property = "IsRendered" Value="true"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="ThumbnailBackground">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#10008000" Offset="0.0" />
+                                <GradientStop Color="#30008000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="ThumbnailForeground" Value="Transparent"/>
+                </MultiTrigger>
+                <Trigger Property = "IsFocused" Value="true">
+                    <Setter Property="Border">
+                        <Setter.Value>
+                            <Pen Brush="Black" Thickness="1">
+                                <Pen.DashStyle>
+                                    <DashStyle Dashes="1,2"/>
+                                </Pen.DashStyle>
+                            </Pen>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ComboBox" x:Key="MenuItemComboBoxStyle">
+            <Setter Property="Width" Value="170" />
+        </Style>
+        <Style TargetType="Button" x:Key="ToolBarButtonStyle">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="ToolBarImageStyle">
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Stretch" Value="None" />
+        </Style>
+
+        <BitmapImage x:Key="AddCommentIcon" UriSource="Resources\AddCommentIcon.png" />
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding x:Name="newCommandBinding" Command="{x:Static cc:MainWindow._newCommand}" Executed="newMenuItem_Click" CanExecute="newCommandBinding_CanExecute" />
+        <CommandBinding x:Name="openCommandBinding" Command="{x:Static cc:MainWindow._openCommand}" Executed="openMenuItem_Click" CanExecute="openCommandBinding_CanExecute"/>
+        <CommandBinding x:Name="closeCommandBinding" Command="{x:Static cc:MainWindow._closeCommand}" Executed="closeMenuItem_Click" CanExecute="closeCommandBinding_CanExecute"/>
+        <CommandBinding x:Name="addPagesCommandBinding" Command="{x:Static cc:MainWindow._addPagesCommand}" Executed="addPagesMenuItem_Click" CanExecute="addPagesCommandBinding_CanExecute"/>
+        <CommandBinding x:Name="saveAsCommandBinding" Command="{x:Static cc:MainWindow._saveAsCommand}" Executed="saveAsMenuItem_Click" CanExecute="saveAsCommandBinding_CanExecute"/>
+        <CommandBinding x:Name="printCommandBinding" Command="{x:Static cc:MainWindow._printCommand}" Executed="printMenuItem_Click" CanExecute="printCommandBinding_CanExecute"/>
+
+        <CommandBinding x:Name="cutCommandBinding" Command="{x:Static cc:MainWindow._cutCommand}" Executed="cutMenuItem_Click" CanExecute="cutCommandBinding_CanExecute"/>
+        <CommandBinding x:Name="copyCommandBinding" Command="{x:Static cc:MainWindow._copyCommand}" Executed="copyMenuItem_Click" CanExecute="copyCommandBinding_CanExecute"/>
+        <CommandBinding x:Name="pasteCommandBinding" Command="{x:Static cc:MainWindow._pasteCommand}" Executed="pasteMenuItem_Click" CanExecute="pasteCommandBinding_CanExecute"/>
+        <CommandBinding x:Name="deleteCommandBinding" Command="{x:Static cc:MainWindow._deleteCommand}" Executed="deleteMenuItem_Click" CanExecute="deleteCommandBinding_CanExecute"/>
+        <CommandBinding x:Name="selectAllCommandBinding" Command="{x:Static cc:MainWindow._selectAllCommand}" Executed="selectAllMenuItem_Click" CanExecute="selectAllCommandBinding_CanExecute"/>
+
+        <CommandBinding x:Name="documentInformationCommandBinding" Command="{x:Static cc:MainWindow._documentInformationCommand}" Executed="documentInformationMenuItem_Click" CanExecute="documentInformationCommandBinding_CanExecute"/>
+
+        <CommandBinding x:Name="findTextCommandBinding" Command="{x:Static cc:MainWindow._findTextCommand}" Executed="findTextMenuItem_Click" CanExecute="findTextCommandBinding_CanExecute"/>
+
+        <CommandBinding x:Name="rotateClockwiseCommandBinding" Command="{x:Static cc:MainWindow._rotateClockwiseCommand}" Executed="rotateClockwiseMenuItem_Click" CanExecute="rotateClockwiseCommandBinding_CanExecute" />
+        <CommandBinding x:Name="rotateCounterclockwiseCommandBinding" Command="{x:Static cc:MainWindow._rotateCounterclockwiseCommand}" Executed="rotateCounterclockwiseMenuItem_Click" CanExecute="rotateCounterclockwiseCommandBinding_CanExecute" />
+
+        <CommandBinding Command="{x:Static cc:MainWindow._aboutCommand}" Executed="aboutMenuItem_Click" />
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Command="{x:Static cc:MainWindow._newCommand}" Modifiers="CTRL" Key="N"/>
+        <KeyBinding Command="{x:Static cc:MainWindow._openCommand}" Modifiers="CTRL" Key="O"/>
+        <KeyBinding Command="{x:Static cc:MainWindow._closeCommand}" Modifiers="CTRL" Key="W"/>
+        <KeyBinding Command="{x:Static cc:MainWindow._addPagesCommand}" Modifiers="CTRL+SHIFT" Key="O"/>
+        <KeyBinding Command="{x:Static cc:MainWindow._saveAsCommand}" Modifiers="CTRL" Key="S"/>
+        <KeyBinding Command="{x:Static cc:MainWindow._printCommand}" Modifiers="CTRL" Key="P"/>
+
+        <KeyBinding Command="{x:Static cc:MainWindow._cutCommand}" Modifiers="CTRL" Key="X"/>
+        <KeyBinding Command="{x:Static cc:MainWindow._copyCommand}" Modifiers="CTRL" Key="C"/>
+        <KeyBinding Command="{x:Static cc:MainWindow._pasteCommand}" Modifiers="CTRL" Key="V"/>
+        <KeyBinding Command="{x:Static cc:MainWindow._deleteCommand}" Key="Del"/>
+        <KeyBinding Command="{x:Static cc:MainWindow._selectAllCommand}" Modifiers="CTRL" Key="A"/>
+
+        <KeyBinding Command="{x:Static cc:MainWindow._documentInformationCommand}" Modifiers="CTRL" Key="I"/>
+
+        <KeyBinding Command="{x:Static cc:MainWindow._findTextCommand}" Modifiers="CTRL" Key="F"/>
+
+        <KeyBinding Command="{x:Static cc:MainWindow._rotateClockwiseCommand}" Modifiers="CTRL+SHIFT" Key="OemPlus" />
+        <KeyBinding Command="{x:Static cc:MainWindow._rotateCounterclockwiseCommand}" Modifiers="CTRL+SHIFT" Key="OemMinus" />
+        <KeyBinding Command="{x:Static cc:MainWindow._rotateClockwiseCommand}" Modifiers="CTRL+SHIFT" Key="Add" />
+        <KeyBinding Command="{x:Static cc:MainWindow._rotateCounterclockwiseCommand}" Modifiers="CTRL+SHIFT" Key="Subtract" />
+
+        <KeyBinding Command="{x:Static cc:MainWindow._aboutCommand}" Key="F1"/>
+    </Window.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <Menu Name="mainMenu" Grid.Row="0" Height="25" VerticalAlignment="Top">
+            <MenuItem Name="fileMenuItem" Header="File" SubmenuOpened="fileMenuItem_SubmenuOpened">
+                <MenuItem Header="New..." HeaderStringFormat="{}{0} (Ctrl+ N)" Name="newMenuItem" Click="newMenuItem_Click" />
+                <MenuItem Header="Create New Portfolio..." Name="createPortfolioMenuItem" Click="createPortfolioMenuItem_Click" />
+                <MenuItem Header="Open..." HeaderStringFormat="{}{0} (Ctrl+ O)" Name="openMenuItem" Click="openMenuItem_Click"/>
+                <MenuItem Header="Close" HeaderStringFormat="{}{0} (Ctrl+ W)" Name="closeMenuItem" Click="closeMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Add Image/Document Page(s)..." HeaderStringFormat="{}{0} (Ctrl+ Shift+ O)" Name="addPagesMenuItem" Click="addPagesMenuItem_Click"/>
+                <MenuItem Header="Add OCR Page(s)" Name="addOcrPagesMenuItem">
+                    <MenuItem Header="Image Over Text..." Name="addOcrPagesUsingImageOverTextModeMenuItem" Click="addOcrPagesUsingImageOverTextModeMenuItem_Click" />
+                    <MenuItem Header="Text Over Image..." Name="addOcrPagesUsingTextOverImageModeMenuItem" Click="addOcrPagesUsingTextOverImageModeMenuItem_Click" />
+                </MenuItem>
+                <MenuItem Header="Add Empty Page..." Name="addEmptyPageMenuItem" Click="addEmptyPageMenuItem_Click"/>
+                <MenuItem Header="Add PDF Document..." Name="addPdfDocumentPageMenuItem" Click="addPdfDocumentMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Pack..." Name="packMenuItem" Click="packMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Save" Name="saveMenuItem" Click="saveMenuItem_Click"/>
+                <MenuItem Header="Save As..." HeaderStringFormat="{}{0} (Ctrl+ S)" Name="saveAsMenuItem" Click="saveAsMenuItem_Click"/>
+                <MenuItem Header="Save To..." Name="saveToMenuItem" Click="saveToMenuItem_Click"/>
+                <MenuItem Header="Convert to Tiff..." Name="convertToTiffMenuItem" Click="convertToTiffMenuItem_Click"/>
+                <MenuItem Header="Convert to Svg..." Name="convertToSvgMenuItem" Click="convertToSvgMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Page Settings..." Name="pageSettingsMenuItem" Click="pageSettingsMenuItem_Click"/>
+                <MenuItem Header="Print..." HeaderStringFormat="{}{0} (Ctrl+ P)" Name="printMenuItem" Click="printMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Exit" Name="exitMenuItem"  Click="exitMenuItem_Click" />
+            </MenuItem>
+
+            <MenuItem Header="Edit" 
+                      Name="editMenuItem"
+                      SubmenuOpened="editMenuItem_SubmenuOpened"
+                      SubmenuClosed="editMenuItem_SubmenuClosed">
+                <MenuItem Header="Cut" HeaderStringFormat="{}{0} (Ctrl+ X)" Name="cutMenuItem" Click="cutMenuItem_Click" />
+                <MenuItem Header="Copy" HeaderStringFormat="{}{0} (Ctrl+ C)" Name="copyMenuItem" Click="copyMenuItem_Click" />
+                <MenuItem Header="Paste" HeaderStringFormat="{}{0} (Ctrl+ V)" Name="pasteMenuItem" Click="pasteMenuItem_Click" />
+                <MenuItem Header="Delete" HeaderStringFormat="{}{0} (Del)" Name="deleteMenuItem" Click="deleteMenuItem_Click" />
+                <MenuItem Header="Select All" HeaderStringFormat="{}{0} (Ctrl+ A)" Name="selectAllMenuItem" Click="selectAllMenuItem_Click" />
+                <MenuItem Header="Deselect All" Name="deselectAllMenuItem" Click="deselectAllMenuItem_Click" />
+            </MenuItem>
+
+            <MenuItem Name="viewMenuItem" Header="View">
+                <MenuItem Header="Visual Tools" Name="visualToolsMenuItem"/>
+                <MenuItem Header="Touch Screen">
+                    <MenuItem Header="Zoom" Name="touchScreenZoomToolMenuItem" IsCheckable="True" IsChecked="False" Checked="touchScreenToolMenuItem_CheckChanged" Unchecked="touchScreenToolMenuItem_CheckChanged" />
+                    <MenuItem Header="Pan" Name="touchScreenPanToolMenuItem" IsCheckable="True" IsChecked="False" Checked="touchScreenToolMenuItem_CheckChanged" Unchecked="touchScreenToolMenuItem_CheckChanged" />
+                </MenuItem>
+                <MenuItem Header="Annotations / Fields Interaction Point Settings..." Name="interactionPointSettingsMenuItem" Click="interactionPointSettingsMenuItem_Click" />
+                <Separator />
+                <MenuItem Header="Enable Actions Executing" IsCheckable="True" IsChecked="True" Name="enableExecuteActionsMenuItem" Checked="enableExecuteActionsMenuItem_CheckedChanged" Unchecked="enableExecuteActionsMenuItem_CheckedChanged" />
+                <MenuItem Header="JavaScript">
+                    <MenuItem Header="Enable JavaScript Executing" Name="enableJavaScriptExecutingMenuItem" IsCheckable="True" Click="enableJavaScriptExecutingMenuItem_Click"/>
+                    <MenuItem Header="Debugger..." Name="debuggerMenuItem"  Click="debuggerMenuItem_Click" />
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Thumbnail Viewer Settings..." Name="thumbnailViewerSettingsMenuItem" Click="thumbnailViewerSettingsMenuItem_Click"/>
+                <MenuItem Header="Use Embedded Thumbnails" Name="useEmbeddedThumbnailsMenuItem" IsCheckable="True" IsChecked="False" Click="useEmbeddedThumbnailsMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Center Image" Name="centerImageMenuItem" IsCheckable="True" Click="centerImageMenuItem_Click"/>
+                <MenuItem Header="Image Display Mode">
+                    <MenuItem Header="Single Page" Name="singlePageMenuItem" Click="ImageDisplayMode_Click"/>
+                    <MenuItem Header="Two Columns" Name="twoColumnsMenuItem" Click="ImageDisplayMode_Click"/>
+                    <MenuItem Header="Single Continuous Row" Name="singleContinuousRowMenuItem" Click="ImageDisplayMode_Click"/>
+                    <MenuItem Header="Single Continuous Column" Name="singleContinuousColumnMenuItem" Click="ImageDisplayMode_Click"/>
+                    <MenuItem Header="Two Continuous Rows" Name="twoContinuousRowsMenuItem" Click="ImageDisplayMode_Click"/>
+                    <MenuItem Header="Two Continuous Columns" Name="twoContinuousColumnsMenuItem" Click="ImageDisplayMode_Click"/>
+                </MenuItem>
+
+                <MenuItem Header="Image Scale Mode">
+                    <MenuItem Header="Normal" Name="normalImageMenuItem" Click="ImageScale_Click"/>
+                    <MenuItem Header="Best fit" Name="bestFitMenuItem" Click="ImageScale_Click"/>
+                    <MenuItem Header="Fit to width" Name="fitToWidthMenuItem" Click="ImageScale_Click"/>
+                    <MenuItem Header="Fit to height" Name="fitToHeightMenuItem" Click="ImageScale_Click"/>
+                    <MenuItem Header="Scale" Name="scaleMenuItem" Click="ImageScale_Click"/>
+                    <MenuItem Header="Pixel to pixel" Name="pixelToPixelMenuItem" Click="ImageScale_Click"/>
+                    <Separator />
+                    <MenuItem Header="25%" Name="scale25MenuItem" Click="ImageScale_Click"/>
+                    <MenuItem Header="50%" Name="scale50MenuItem" Click="ImageScale_Click"/>
+                    <MenuItem Header="100%" Name="scale100MenuItem" Click="ImageScale_Click"/>
+                    <MenuItem Header="200%" Name="scale200MenuItem" Click="ImageScale_Click"/>
+                    <MenuItem Header="400%" Name="scale400MenuItem" Click="ImageScale_Click"/>
+                </MenuItem>
+                <MenuItem Header="Rotate View" Name="rotateViewModeMenuItem">
+                    <MenuItem Header="Clockwise (Shift+Ctrl+Plus)" Name="rotateClockwiseMenuItem" Click="rotateClockwiseMenuItem_Click"/>
+                    <MenuItem Header="Counterclockwise (Shift+Ctrl+Minus)" Name="rotateCounterclockwiseMenuItem" Click="rotateCounterclockwiseMenuItem_Click"/>
+                </MenuItem>
+                <MenuItem Header="Image Viewer Settings..." Name="imageViewerSettingsMenuItem" Click="imageViewerSettingsMenuItem_Click"/>
+                <MenuItem Header="Viewer Rendering Settings..." Name="viewerRenderingSettingsMenuItem" Click="viewerRenderingSettingsMenuItem_Click"/>
+                <MenuItem Header="Magnifier Settings..." Name="magnifierSettingsMenuItem" Click="magnifierSettingsMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Enable Form Fields Spell Checking" Name="enableFormFieldsSpellCheckingMenuItem" IsCheckable="True" IsChecked="True" Checked="enableFormFieldsSpellCheckingMenuItem_CheckedChanged" Unchecked="enableFormFieldsSpellCheckingMenuItem_CheckedChanged" />
+                <MenuItem Header="Enable Annotations Spell Checking" Name="enableAnnotationsSpellCheckingMenuItem" IsCheckable="True" IsChecked="True" Checked="enableAnnotationsSpellCheckingMenuItem_CheckedChanged" Unchecked="enableAnnotationsSpellCheckingMenuItem_CheckedChanged" />
+                <Separator />
+                <MenuItem Header="Color Management..." Name="colorManagementMenuItem" Click="colorManagementMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Use Custom Renderer" Name="useCustomRendererMenuItem" IsCheckable="True" Checked="useCustomRendererMenuItem_CheckedChanged" Unchecked="useCustomRendererMenuItem_CheckedChanged"/>
+                <MenuItem Header="Custom Renderer Settings..." Name="customRendererSettingsMenuItem" IsEnabled="False" Click="customRendererSettingsMenuItem_Click" />
+                <Separator />
+                <MenuItem Header="Refresh Font Names..." Name="refreshPostScriptFontNamesMenuItem" IsEnabled="True" Click="refreshPostScriptFontNamesMenuItem_Click" />
+            </MenuItem>
+
+            <MenuItem Name="documentMenuItem" Header="Document">
+                <MenuItem Header="Verification" Name="documentVerificationMenuItem" >
+                    <MenuItem Header="PDF/A-1a Verifier..." Name="pdfA1aVerifierMenuItem" Click="pdfA1aVerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-1b Verifier..." Name="pdfA1bVerifierMenuItem" Click="pdfA1bVerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-2a Verifier..." Name="pdfA2aVerifierMenuItem" Click="pdfA2aVerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-2b Verifier..." Name="pdfA2bVerifierMenuItem" Click="pdfA2bVerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-2u Verifier..." Name="pdfA2uVerifierMenuItem" Click="pdfA2uVerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-3a Verifier..." Name="pdfA3aVerifierMenuItem" Click="pdfA3aVerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-3b Verifier..." Name="pdfA3bVerifierMenuItem" Click="pdfA3bVerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-3u Verifier..." Name="pdfA3uVerifierMenuItem" Click="pdfA3uVerifierMenuItem_Click" />
+                </MenuItem>
+
+                <MenuItem Header="Conversion" Name="documentConversionMenuItem">
+                    <MenuItem Header="PDF/A-1a Converter..." Name="pdfA1aConverterMenuItem" Click="pdfA1aConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-1b Converter..." Name="pdfA1bConverterMenuItem" Click="pdfA1bConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-2a Converter..." Name="pdfA2aConverterMenuItem" Click="pdfA2aConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-2b Converter..." Name="pdfA2bConverterMenuItem" Click="pdfA2bConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-2u Converter..." Name="pdfA2uConverterMenuItem" Click="pdfA2uConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-3a Converter..." Name="pdfA3aConverterMenuItem" Click="pdfA3aConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-3b Converter..." Name="pdfA3bConverterMenuItem" Click="pdfA3bConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-3u Converter..." Name="pdfA3uConverterMenuItem" Click="pdfA3uConverterMenuItem_Click" />
+                    <MenuItem Header="Convert to Image-only Document..." Name="convertToImageonlyDocumentMenuItem" Click="convertToImageonlyDocumentMenuItem_Click" />
+                </MenuItem>
+                <MenuItem Header="Compression">
+                    <MenuItem Header="Compress document..." Name="compressDocumentMenuItem" Click="compressDocumentMenuItem_Click" />
+                    <Separator />
+                    <MenuItem Header="Compress image resources..." Name="compressImageResourcesMenuItem" Click="compressImageResourcesMenuItem_Click" />
+                    <MenuItem Header="Optimize images color depth..." Name="optimizeImagesColorDepthMenuItem" Click="optimizeImagesColorDepthMenuItem_Click" />
+                    <MenuItem Header="Optimize content images..." Name="optimizeContentImagesMenuItem" Click="optimizeContentImagesMenuItem_Click" />
+                    <MenuItem Header="Discard document elements..." Name="discardDocumentElementsMenuItem" Click="discardDocumentElementsMenuItem_Click" />
+                </MenuItem>
+                <MenuItem Header="Processing" Name="documentProcessingMenuItem">
+                    <MenuItem Header="Analyzers">
+                        <MenuItem Header="Detect the conformance using the metadata identification schema" Name="detectTheConformanceUsingTheMetadataIdentificationSchemaMenuItem" Click="detectTheConformanceUsingTheMetadataIdentificationSchemaMenuItem_Click" />
+                        <MenuItem Header="The cross-reference table is corrupt" Name="theCrossreferenceTableIsCorruptMenuItem" Click="theCrossreferenceTableIsCorruptMenuItem_Click" />
+                        <MenuItem Header="Number of indirect objects in a PDF file" Name="numberOfIndirectObjectsInAPDFFileMenuItem" Click="numberOfIndirectObjectsInAPDFFileMenuItem_Click" />
+                        <MenuItem Header="The cross-reference information is stored in a cross-reference stream" Name="theCrossreferenceInformationIsStoredInACrossreferenceStreamMenuItem" Click="theCrossreferenceInformationIsStoredInACrossreferenceStreamMenuItem_Click" />
+                        <MenuItem Header="Document uses the compressed object streams" Name="documentUsesTheCompressedObjectStreamsMenuItem" Click="documentUsesTheCompressedObjectStreamsMenuItem_Click" />
+                        <MenuItem Header="PDF file header occurs at byte offset 0 of the file" Name="pDFFileHeaderOccursAtByteOffset0OfTheFileMenuItem" Click="pDFFileHeaderOccursAtByteOffset0OfTheFileMenuItem_Click" />
+                        <MenuItem Header="PDF file has the linearization info" Name="pDFFileHasTheLinearizationInfoMenuItem" Click="pDFFileHasTheLinearizationInfoMenuItem_Click" />
+                        <MenuItem Header="Overprint control is used" Name="overprintControlIsUsedMenuItem" Click="overprintControlIsUsedMenuItem_Click" />
+                        <MenuItem Header="Document has signature fields..." Name="documentHasSignatureFieldsMenuItem" Click="DocumentHasSignatureFieldsMenuItem_Click" />
+                    </MenuItem>
+                    <MenuItem Header="Clean Up">
+                        <MenuItem Header="Remove unused resources..." Name="removeUnusedResourcesToolStripMenuItem" Click="removeUnusedResourcesToolStripMenuItem_Click" />
+                        <MenuItem Header="Remove duplicate resources..." Name="removeDuplicateResourcesMenuItem" Click="removeDuplicateResourcesMenuItem_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Tools">
+                        <MenuItem Header="Decompress data streams..." Name="decompressStreamsMenuItem" Click="decompressStreamsMenuItem_Click"/>
+                        <MenuItem Header="Compress data streams..." Name="compressDataStreamsMenuItem" Click="compressDataStreamsMenuItem_Click"/>
+                        <MenuItem Header="Remove transparency..." Name="removeTransparencyMenuItem" Click="removeTransparencyMenuItem_Click"/>
+                        <MenuItem Header="Convert TrueTupe fonts to CFF fonts..." Name="convertTrueTypeFontsToCffFontsMenuItem" Click="convertTrueTypeFontsToCffFontsMenuItem_Click"/>
+                        <MenuItem Header="Remove signature fields..." Name="removeSignatureFieldsMenuItem" Click="RemoveSignatureFieldsMenuItem_Click" />
+                    </MenuItem>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Annotations" Name="documentAnnotationsMenuItem">
+                    <MenuItem Header="Import From XFDF..." Name="importFromXFDFMenuItem" Click="importFromXFDFMenuItem_Click" />
+                    <MenuItem Header="Export To XFDF..." Name="exportToXFDFMenuItem" Click="exportToXFDFMenuItem_Click" />
+                    <Separator/>
+                    <MenuItem Header="Remove All Annotations" Name="removeAllAnnotationsMenuItem" Click="removeAllAnnotationsMenuItem_Click" />
+                    <MenuItem Header="Remove Markup Annotations" Name="removeMarkupAnnotationsMenuItem" Click="removeMarkupAnnotationsMenuItem_Click" />
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Information..." HeaderStringFormat="{}{0} (Ctrl+ I)" Name="documentInformationMenuItem" Click="documentInformationMenuItem_Click"/>
+                <MenuItem Header="Extensions..." Name="extensionsMenuItem" Click="extensionsMenuItem_Click" />
+                <Separator/>
+                <MenuItem Header="Security Properties..." Name="securityPropertiesMenuItem" Click="securityPropertiesMenuItem_Click"/>
+                <MenuItem Header="Change Security Settings..." Name="securitySettingsMenuItem" Click="securitySettingsMenuItem_Click"/>
+                <Separator/>
+                <MenuItem Name="signaturesSigningMenuItem" Header="Signing And Signatures">
+                    <MenuItem Name="digitalSignaturesMenuItem" Header="View/Verify Digital Signatures..." Click="digitalSignaturesMenuItem_Click"/>
+                    <Separator/>
+                    <MenuItem Name="signDocumentUsingNewSignatureFieldMenuItem" Header="Sign Document using New Signature Field..." Click="signDocumentUsingNewSignatureFieldMenuItem_Click" />
+                    <MenuItem Name="signDocumentUsingExisingEmptySignatureFieldMenuItem" Header="Sign Document using Existing Empty Signature Field..." Click="signDocumentUsingExisingEmptySignatureFieldMenuItem_Click"/>
+                    <Separator/>
+                    <MenuItem Name="addEmptySignatureFieldMenuItem" Header="Add Empty Signature Field..." Click="addEmptySignatureFieldMenuItem_Click"/>
+                    <Separator/>
+                    <MenuItem Name="clearSignatureMenuItem" Header="Clear Signature..." Click="clearSignatureMenuItem_Click"/>
+                    <MenuItem Name="clearAllSignaturesMenuItem" Header="Clear All Signatures" Click="clearAllSignaturesMenuItem_Click"/>
+                    <Separator/>
+                    <MenuItem Name="removeSignatureMenuItem" Header="Remove Signature Field..." Click="removeSignatureMenuItem_Click"/>
+                    <MenuItem Name="removeAllSignaturesMenuItem" Header="Remove All Signature Fields" Click="removeAllSignaturesMenuItem_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Bookmarks" Name="bookmarksMenuItem">
+                    <MenuItem Header="Add..." Name="bookmarks_AddMenuItem" Click="bookmarks_AddMenuItem_Click"/>
+                    <MenuItem Header="Edit..." Name="bookmarks_EditMenuItem" Click="bookmarks_EditMenuItem_Click"/>
+                    <MenuItem Header="Delete" Name="bookmarks_DeleteMenuItem" Click="bookmarks_DeleteMenuItem_Click"/>
+                </MenuItem>
+                <MenuItem Header="Thumbnails" Name="thumbnailsMenuItem">
+                    <MenuItem Header="Remove All" Name="thumbnails_RemoveAllMenuItem" Click="thumbnails_RemoveAllMenuItem_Click"/>
+                    <MenuItem Header="Generate All" Name="thumbnails_GenerateAllMenuItem" Click="thumbnails_GenerateAllMenuItem_Click"/>
+                    <MenuItem Header="View..." Name="thumbnails_ViewMenuItem" Click="thumbnails_ViewMenuItem_Click"/>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Document View Mode" Name="documentViewModeMenuItem">
+                    <ComboBox Name="documentViewModeComboBox" Style="{StaticResource MenuItemComboBoxStyle}"  Width="140" SelectionChanged="documentViewModeComboBox_SelectionChanged"/>
+                </MenuItem>
+                <MenuItem Header="Viewer Page Layout">
+                    <ComboBox Name="viewerPageLayoutComboBox" Style="{StaticResource MenuItemComboBoxStyle}"  SelectionChanged="viewerPageLayoutComboBox_SelectionChanged"/>
+                </MenuItem>
+                <MenuItem Header="Viewer Preferences..." Name="viewerPreferencesMenuItem" Click="viewerPreferencesMenuItem_Click"/>
+                <MenuItem Header="Actions..." Name="documentActionsMenuItem" Click="documentActionsMenuItem_Click"/>
+                <MenuItem Header="Document Level JavaScripts..." Name="documentLevelJavaStripMenuItem" Click="documentLevelJavaStripMenuItem_Click" />
+                <Separator />
+                <MenuItem Header="Attachments (Portfolio)..." Name="attachmentsMenuItem" Click="attachmentsMenuItem_Click"/>
+                <MenuItem Header="Remove Attachments (Portfolio)..." Name="removeAttachmentsMenuItem"  Click="removeAttachmentsMenuItem_Click"/>
+                <MenuItem Header="Embedded Files..." Name="embeddedFilesMenuItem" Click="embeddedFilesMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Resources..." Name="documentResourcesMenuItem"  Click="resourcesMenuItem_Click"/>
+                <MenuItem Header="Image Resources..." Name="imageResourcesMenuItem" Click="documentImageResourcesMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Fonts..." Name="fontsMenuItem" Click="fontsMenuItem_Click"/>
+                <MenuItem Header="Embed All Fonts..." Name="embedAllFontsMenuItem" Click="embedAllFontsMenuItem_Click"/>
+                <MenuItem Header="Subset All Embedded Fonts..." Name="subsetAllFontsMenuItem" Click="subsetAllFontsMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Layers (Optional Content)..." Name="optionalContentMenuItem" Click="optionalContentMenuItem_Click" />
+                <MenuItem Header="Remove Layers (Optional Content)..." Name="removeLayersOptionalContentMenuItem" Click="removeLayersOptionalContentMenuItem_Click" />
+            </MenuItem>
+
+            <MenuItem Name="pageMenuItem" Header="Page">
+                <MenuItem Header="Processing" Name="pageProcessingMenuItem">
+                    <MenuItem Header="Burn PDF annotations on PDF page..." Name="burnThePDFAnnotationsOnPDFPageMenuItem" Click="burnThePDFAnnotationsOnPDFPageMenuItem_Click"/>
+                    <MenuItem Header="Remove PDF annotations on PDF page..." Name="removePDFAnnotationsOnPDFPageMenuItem" Click="removePdfAnnotationsFromPdfPageMenuItem_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Change scale of PDF page..." Name="changeScaleOfPDFPageMenuItem" Click="changeScaleOfPDFPageMenuItem_Click"/>
+                    <MenuItem Header="Resize canvas of PDF page..." Name="resizeCanvasOfPDFPageMenuItem" Click="resizeCanvasOfPDFPageMenuItem_Click"/>
+                    <MenuItem Header="Rotate PDF page by 90 degress..." Name="rotatePDFPageBy90DegressMenuItem" Click="rotatePDFPageBy90DegressMenuItem_Click"/>
+                    <MenuItem Header="Clear PDF page content..." Name="clearPDFPageContentMenuItem" Click="clearPDFPageContentMenuItem_Click"/>
+                    <MenuItem Header="Color Blending..." Name="colorBlendingMenuItem" Click="colorBlendingMenuItem_Click"/>
+                    <MenuItem Header="Invert colors of PDF page" Name="invertPDFPageMenuItem" Click="invertPDFPageMenuItem_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Convert to image-only..." Name="convertToImageonlyMenuItem" Click="convertToImageonlyMenuItem_Click"/>
+                    <MenuItem Header="Simplify page content..." Name="simplifyPageContentMenuItem" Click="simplifyPageContentMenuItem_Click"/>
+                    <MenuItem Header="Remove unused resources from PDF page..." Name="removeUnusedResourcesFromPDFPageMenuItem" Click="removeUnusedResourcesFromPDFPageMenuItem_Click"/>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Properties..." Name="pagePropertiesMenuItem" Click="pagePropertiesMenuItem_Click"/>
+                <MenuItem Header="Actions..." Name="pageActionsMenuItem" Click="pageActionsMenuItem_Click" />
+                <Separator />
+                <MenuItem Header="Resources..." Name="pageResourcesMenuItem" Click="pageResourcesMenuItem_Click"/>
+                <MenuItem Header="Image Resources..." Name="pageImageResourcesMenuItem" Click="pageImageResourcesMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Save As Image..." Name="saveAsImageMenuItem" Click="saveAsImageMenuItem_Click"/>
+            </MenuItem>
+
+            <MenuItem Name="textMenuItem" Header="Text" SubmenuOpened="textMenuItem_SubmenuOpened">
+                <MenuItem Header="Find..." HeaderStringFormat="{}{0} (Ctrl+ F)" Name="findTextMenuItem" Click="findTextMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Highlight Selected Text (Annotate)" Name="highlightSelectedTextAnnotateMenuItem" Click="textMarkupHighlightToolStripMenuItem_Click"/>
+                <MenuItem Header="Strikeout Selected Text (Annotate)" Name="strikeoutSelectedTextAnnotateMenuItem" Click="textMarkupStrikeOutToolStripMenuItem_Click"/>
+                <MenuItem Header="Underline Selected Text (Annotate)" Name="underlineSelectedTextAnnotateMenuItem" Click="textMarkupUnderlineToolStripMenuItem_Click"/>
+                <MenuItem Header="Squiggly Underline Selected Text (Annotate)" Name="squigglyUnderlineSelectedTextAnnotateMenuItem" Click="textMarkupSquigglyUnderlineToolStripMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Highlight Selected Text (Edit Content)" Name="highlightSelectedTextMenuItem" Click="highlightSelectedTextMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Remove Selected Text" Name="removeSelectedTextMenuItem" Click="removeSelectedTextMenuItem_Click"/>
+                <MenuItem Header="Add Selected Text To Redaction Marks" Name="addSelectedTextToRedactionMarksMenuItem" Click="addSelectedTextToRedactionMarksMenuItem_Click"/>
+                <MenuItem Header="Obfuscate Text Encoding" Name="obfuscateTextEncodingMenuItem">
+                    <MenuItem Header="For Current Page" Name="currentPageMenuItem" Click="currentPageMenuItem_Click" />
+                    <MenuItem Header="For Selected Pages" Name="selectedPagesMenuItem" Click="selectedPagesMenuItem_Click" />
+                    <MenuItem Header="For Document" Name="documentMenuItem1" Click="documentMenuItem1_Click" />
+                    <MenuItem Header="Settings..." Name="settingsMenuItem" Click="settingsMenuItem_Click" />
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Name="formsMenuItem"
+                      Header="Forms"
+                      SubmenuOpened="formsMenuItem_SubmenuOpened">
+                <MenuItem Header="Import Data From XFDF..." Name="importDataMenuItem" Click="importDataMenuItem_Click" />
+                <MenuItem Header="Export Data To XFDF..." Name="exportDataMenuItem" Click="exportDataMenuItem_Click" />
+                <MenuItem Header="Reset Form" Name="resetFormMenuItem" Click="resetFormMenuItem_Click" />
+                <Separator />
+                <MenuItem Header="Calculation Order..." Name="calculationOrderMenuItem" Click="calculationOrderMenuItem_Click" />
+            </MenuItem>
+
+            <MenuItem Name="helpMenuItem" Header="Help">
+                <MenuItem Header="About..." HeaderStringFormat="{}{0} (F1)" Name="aboutMenuItem" Click="aboutMenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Name="toolsAndImageViewerPanel" Grid.Row="2" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="308" MinWidth="120"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TabControl Name="toolsTabControl" Margin="0,0,5,0" SelectionChanged="toolsTabControl_SelectionChanged">
+                <TabItem Header="Pages" Name="pagesTabItem">
+                    <vsui:WpfThumbnailViewer 
+                        ThumbnailContainerStyle="{StaticResource ThumbnailItemStyle}" 
+                        Name="thumbnailViewer1" 
+                        GenerateOnlyVisibleThumbnails="True" 
+                        ThumbnailFlowStyle="WrappedRows"
+                        ThumbnailRenderingThreadCount="2"
+                        ThumbnailsLoadingProgress="thumbnailViewer1_ThumbnailLoadingProgress">
+                    </vsui:WpfThumbnailViewer>
+                </TabItem>
+                <TabItem Header="Bookmarks" Name="bookmarksTabItem">
+                    <wdcc:BookmarkTreeViewEditor x:Name="documentBookmarks" CanEditBookmarks="True"/>
+                </TabItem>
+                <TabItem Header="Annotations / Form Fields" Name="annotationToolTabItem">
+                    <wdcc:PdfAnnotationToolControl x:Name="annotationToolControl" Width="Auto" Height="Auto" />
+                </TabItem>
+                <TabItem Header="Comments" Name="commentsTabItem">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Row="0" Grid.Column="0" Height="23" Margin="3,0" Name="addCommentButton" Click="AddCommentButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="16" Height="16" Source="{StaticResource AddCommentIcon}" Margin="3,0" VerticalAlignment="Center" Stretch="None" />
+                                <TextBlock VerticalAlignment="Center">Add Comment...</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Row="0" Grid.Column="1" Height="23" Margin="3,0" Name="closeAllCommentsButton" Click="CloseAllCommentsButton_Click" >Close All Comments</Button>
+
+
+                        <wdcc:PdfCommentsControl Grid.Row="1" Grid.ColumnSpan="2" Margin="0,3" x:Name="commentsControl" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Text Extraction" Name="textExtractionTabItem">
+                    <widcci:WpfTextSelectionControl x:Name="textSelectionControl" Height="Auto" Width="Auto" />
+                </TabItem>
+                <TabItem Header="Redact" Name="removeContentTabItem">
+                    <wdcc:PdfRemoveContentControl x:Name="pdfRemoveContentControl" Width="Auto" Height="Auto" />
+                </TabItem>
+                <TabItem Header="Content Editor" Name="contentEditorTabItem">
+                    <wdcc:PdfContentEditorControl x:Name="pdfContentEditorControl" Height="Auto" Width="Auto" />
+                </TabItem>
+            </TabControl>
+
+            <GridSplitter Grid.Column ="0" Background="LightBlue" Width="5" HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
+
+            <vsui:WpfImageViewer
+                    Background="#FFEEEEEE" 
+                    Grid.Column ="1" 
+                    x:Name="imageViewer1" 
+                    Width="Auto" 
+                    Height="Auto" 
+                    SizeMode="BestFit" 
+                    InputGestureCut="{x:Null}"
+                    InputGestureCopy="{x:Null}"
+                    InputGestureDelete="{x:Null}"
+                    InputGestureInsert="{x:Null}"
+                    FocusedIndexChanged="imageViewer1_FocusedIndexChanged"
+                    FocusedIndexChanging="imageViewer1_FocusedIndexChanging"
+                    ImageLoaded="imageViewer1_ImageLoaded"
+                    ImageLoading="imageViewer1_ImageLoading"
+                    ImageLoadingException="imageViewer1_ImageLoadingException"
+                    ZoomChanged="imageViewer1_ZoomChanged"
+                    RendererCacheSize="256"
+                    IsKeyboardNavigationEnabled="True"/>
+        </Grid>
+
+        <DockPanel Grid.Row="3" VerticalAlignment="Stretch" Name="mainStatusBar">
+            <DockPanel Height="25" HorizontalAlignment="Left">
+                <DockPanel>
+                    <Label Name="statusLabel" VerticalAlignment="Center"></Label>
+                </DockPanel>
+                <DockPanel>
+                    <ProgressBar Name="progressBar" Minimum="0" Maximum="100" Width="100" Margin="4" Visibility="Collapsed"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Name="addThumbnailsStatusLabel" Visibility="Collapsed"></Label>
+                </DockPanel>
+                <DockPanel>
+                    <ProgressBar Name="addThumbnailsProgressBar" Minimum="0" Maximum="100" Width="100" Margin="4" Visibility="Collapsed"/>
+                </DockPanel>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Right">
+                <Label Name="pageInfoLabel"></Label>
+            </DockPanel>
+        </DockPanel>
+
+        <ToolBarTray x:Name="mainToolBar" Grid.Row="1" Grid.Column="0" Orientation="Horizontal" IsLocked="True">
+            <widcci:ImageViewerToolBar x:Name="viewerToolBar" Width="Auto" MinWidth="0" Background="Transparent" 
+                                       CanNavigate="True" OpenFile="viewerToolBar_OpenFile" SaveFile="viewerToolBar_SaveFile" Print="viewerToolBar_Print"/>
+            <widcci:VisualToolsToolBar x:Name="visualToolsToolBar" />
+            <widcci:FindTextToolBar x:Name="findTextToolBar" />
+            <wdcc:ImageViewerResolutionToolBar x:Name="resolutionToolBar" />
+        </ToolBarTray>
+
+    </Grid>
+</Window>

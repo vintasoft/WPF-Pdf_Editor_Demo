@@ -1,0 +1,51 @@
+﻿<Window x:Class="WpfDemosCommonCode.Pdf.PdfResetFormActionEditorWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Title="Reset Form Action Editor" Height="400" Width="650" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <RadioButton Name="allFieldsRadioButton" Grid.Row="0" Grid.Column="0" GroupName="fieldSelectionChoice" Margin="9,10,9,0" VerticalAlignment="Center" IsChecked="True" Click="RadioButton_Click">
+            All Fields
+        </RadioButton>
+        <GroupBox Grid.Row="1" Grid.Column="0">
+            <GroupBox.Header>
+                <RadioButton Name="selectedFieldsRadioButton" GroupName="fieldSelectionChoice" Margin="0,0,0,10" Click="RadioButton_Click">
+                    Selected Fields
+                </RadioButton>
+            </GroupBox.Header>
+            <Grid Name="selectedFieldsGrid" IsEnabled="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Name="excludeSelectedFieldsCheckBox" Grid.Row="0" Grid.Column="0" Margin="3,7,3,7">
+                    Exclude selected fields
+                </CheckBox>
+                <CustomControls:PdfInteractiveFormFieldListEditorControl x:Name="pdfInteractiveFormFieldListEditorControl" Grid.Row="1" Grid.Column="0" ShowOnlyResettableFields="True"/>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Name="okButton" Grid.Row="0" Grid.Column="1" Width="75" Height="23" Margin="5" IsDefault="True" Click="okButton_Click">OK</Button>
+            <Button Grid.Row="0" Grid.Column="2" Width="75" Height="23" Margin="5" IsCancel="True">Cancel</Button>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfTriggersEditorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:PdfControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    Width="Auto" MinWidth="100"
+    Height="Auto" MinHeight="240">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="128*" />
+            <RowDefinition Height="172*" />
+        </Grid.RowDefinitions>
+        
+        <GroupBox Header="Triggers" Grid.Row="0">
+            <ListBox Name="triggersListBox" 
+                     Margin="3"
+                     SelectionChanged="triggersListBox_SelectionChanged" />
+        </GroupBox>
+        
+        <GroupBox Grid.Row="1" Name="triggerActionsGroupBox">
+        <PdfControls:PdfActionEditorControl x:Name="pdfActionEditorControl"                                           
+                                            Width="Auto"
+                                            Height="Auto" 
+                                            ActionChanged="PdfActionEditorControl_ActionChanged"/>
+            </GroupBox>
+    </Grid>
+</UserControl>
