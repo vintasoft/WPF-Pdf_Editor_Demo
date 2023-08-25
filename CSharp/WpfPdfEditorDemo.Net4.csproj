@@ -79,6 +79,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Jint.Vintasoft">
+      <HintPath>.\Jint.Vintasoft\DotNet4\Jint.Vintasoft.dll</HintPath>
+    </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -89,17 +92,6 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsFormsIntegration" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Jint.Vintasoft">
-      <HintPath>.\Jint.Vintasoft\DotNet4\Jint.Vintasoft.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Vintasoft.Barcode" Version="14.1.11.1" />
     <PackageReference Include="Vintasoft.Imaging" Version="12.2.6.1" />
     <PackageReference Include="Vintasoft.Imaging.Gdi" Version="12.2.6.1" />
@@ -122,14 +114,16 @@
     <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="9.2.6.1" />
     <PackageReference Include="Vintasoft.Imaging.Pdf.Office.UI" Version="9.2.6.1" />
     <PackageReference Include="Vintasoft.Imaging.Pdf.Office.Wpf.UI" Version="9.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.UI" Version="9.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Wpf.UI" Version="9.2.6.1" />
     <PackageReference Include="Vintasoft.Imaging.UI" Version="12.2.6.1" />
     <PackageReference Include="Vintasoft.Imaging.Wpf" Version="12.2.6.1" />
     <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="12.2.6.1" />
-    <PackageReference Include="Vintasoft.Imaging.WebpCodec" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Wpf.UI" Version="9.2.6.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.0.0.3" />
     <PackageReference Include="Vintasoft.WpfTwain" Version="14.0.8.1" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -1935,4 +1929,13 @@
     </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+  </PropertyGroup>
 </Project>
