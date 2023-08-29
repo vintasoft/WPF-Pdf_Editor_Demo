@@ -36,7 +36,7 @@ This C# project uses <a href="https://www.vintasoft.com/vsimaging-dotnet-index.h
 
 
 ## Screenshot
-<img src="vintasoft-wpf-pdf-editor-demo.png" alt="VintaSoft WPF PDF Editor Demo">
+<img src="vintasoft-wpf-pdf-editor-demo.png" title="VintaSoft WPF PDF Editor Demo">
 
 
 ## Usage
