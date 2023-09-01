@@ -5,6 +5,8 @@ using Vintasoft.Imaging.Pdf.Tree.Fonts;
 using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 using Vintasoft.Imaging;
 using System.Drawing;
+using Vintasoft.Imaging.Fonts;
+using Vintasoft.Imaging.Pdf;
 
 namespace WpfDemosCommonCode.Pdf.Security
 {
@@ -184,6 +186,7 @@ namespace WpfDemosCommonCode.Pdf.Security
             set
             {
                 _textFigure.Text = value;
+                Font = CreateSubsetIfNeed(value + _signerNameFigure.Text, Font);
                 OnChanged();
             }
         }
@@ -294,6 +297,32 @@ namespace WpfDemosCommonCode.Pdf.Security
             typedTarget.Add(typedTarget._textFigure);
             typedTarget.Add(typedTarget._signatureImageFigure);
             typedTarget.Add(typedTarget._signerNameFigure);
+        }
+
+        /// <summary>
+        /// Creates the subset if need.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="font">The font.</param>
+        /// <returns>The font or font subset.</returns>
+        private PdfFont CreateSubsetIfNeed(string text, PdfFont font)
+        {
+            text = text.Replace("\r", "");
+            text = text.Replace("\n", "");
+            if (!font.CanEncodeText(text))
+            {
+                using (FontProgramSearchResult searchResult = FontProgramsControllerBase.Default.GetTrueTypeFontProgram(new PdfFontInfo(font, font.FontName)))
+                {
+                    if (searchResult.ContainsFontProgram)
+                    {
+                        PdfDocument tempDocument = new PdfDocument();
+                        PdfFont tempFont = tempDocument.FontManager.CreateCIDFontFromTrueTypeFont(searchResult.FontProgramStream);
+                        tempDocument.FontManager.PackFont(tempFont, text);
+                        return tempFont;
+                    }
+                }
+            }
+            return font;
         }
 
         /// <summary>

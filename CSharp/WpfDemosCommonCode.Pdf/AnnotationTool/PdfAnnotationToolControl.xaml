@@ -106,7 +106,7 @@
                       Name="highlightFieldsCheckBox"
                       Checked="highlightFieldsCheckBox_CheckedChanged"
                       Unchecked="highlightFieldsCheckBox_CheckedChanged">
-                Highlight Form  Fields
+                Highlight Form Fields
             </CheckBox>
             
             <CheckBox VerticalAlignment="Center" 
