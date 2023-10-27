@@ -186,7 +186,8 @@ namespace WpfDemosCommonCode.Pdf.Security
             set
             {
                 _textFigure.Text = value;
-                Font = CreateSubsetIfNeed(value + _signerNameFigure.Text, Font);
+                if (Font != null)
+                    Font = CreateSubsetIfNeed(value + _signerNameFigure.Text, Font);
                 OnChanged();
             }
         }

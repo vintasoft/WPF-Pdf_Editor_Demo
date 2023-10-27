@@ -13,7 +13,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
     <EnableDefaultItems>false</EnableDefaultItems>
-    <Version>12.2.9.1</Version>
+    <Version>12.2.10.1</Version>
     <AssemblyName>WpfPdfEditorDemo</AssemblyName>
     <RootNamespace>WpfPdfEditorDemo</RootNamespace>
     <StartupObject>WpfPdfEditorDemo.App</StartupObject>
@@ -45,7 +45,7 @@
     <Reference Include="Jint.Vintasoft">
       <HintPath>.\Jint.Vintasoft\DotNet7\Jint.Vintasoft.dll</HintPath>
     </Reference>
-    <PackageReference Include="Vintasoft.Barcode" Version="14.1.14.1" />
+    <PackageReference Include="Vintasoft.Barcode" Version="14.1.12.1" />
     <PackageReference Include="Vintasoft.Imaging" Version="12.2.7.1" />
     <PackageReference Include="Vintasoft.Imaging.Gdi" Version="12.2.7.1" />
     <PackageReference Include="Vintasoft.Imaging.Annotation" Version="12.2.7.1" />
