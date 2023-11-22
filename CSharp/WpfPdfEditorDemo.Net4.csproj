@@ -92,7 +92,7 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
-    <PackageReference Include="Vintasoft.Barcode" Version="14.1.12.1" />
+    <PackageReference Include="Vintasoft.Barcode" Version="14.1.16.1" />
     <PackageReference Include="Vintasoft.Imaging" Version="12.2.7.1" />
     <PackageReference Include="Vintasoft.Imaging.Gdi" Version="12.2.7.1" />
     <PackageReference Include="Vintasoft.Imaging.Annotation" Version="12.2.7.1" />
