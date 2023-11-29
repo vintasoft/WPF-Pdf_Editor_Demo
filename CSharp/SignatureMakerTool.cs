@@ -118,15 +118,14 @@ namespace WpfPdfEditorDemo
             // if signature field with certificate must be created
             else
             {
-                CreateSignatureFieldWindow createSignatureForm = new CreateSignatureFieldWindow(
-                    document,
-                    ConvertRectangleFromImageSpaceToPageSpace(Rectangle, ImageViewer.Image.Resolution, page),
-                    _signatureAppearence);
-                createSignatureForm.Owner = _owner;
-                if (createSignatureForm.ShowDialog().Value)
+                PdfInteractiveFormSignatureField createdSignatureField = null;
+                if (CreateSignatureFieldWithAppearance.ShowDialog(document,
+                        ConvertRectangleFromImageSpaceToPageSpace(Rectangle, ImageViewer.Image.Resolution, page),
+                        _signatureAppearence,
+                        out createdSignatureField))
                 {
                     // get a new signature field
-                    signatureField = createSignatureForm.SignatureField;
+                    signatureField = createdSignatureField;
                 }
             }
 
@@ -181,7 +180,7 @@ namespace WpfPdfEditorDemo
                 new PointF((float)rect.X + (float)rect.Width, (float)rect.Y + (float)rect.Height) };
 
             // ImageSpace -> PageSpace
-            page.PointsFromImageSpaceToPageSpace(points, imageResolution);
+            page.PointsToUnits(points, imageResolution);
 
             // Points -> RectangleF
             float x0 = Math.Min(points[0].X, points[1].X);

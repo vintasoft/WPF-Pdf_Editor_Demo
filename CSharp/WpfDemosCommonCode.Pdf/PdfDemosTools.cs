@@ -58,6 +58,32 @@ namespace WpfDemosCommonCode.Pdf
         #region PUBLIC
 
         /// <summary>
+        /// Adds the long-term validation (LTV) information to the PDF document.
+        /// </summary>
+        /// <param name="document">The PDF document.</param>
+        public static void AddLongTimeValidationInfo(PdfDocument document)
+        {
+            if (document.IsChanged)
+            {
+                DemosTools.ShowInfoMessage("PDF document is changed. First please sign and save document.");
+                return;
+            }
+            try
+            {
+                int count = Vintasoft.Imaging.Pdf.Tree.DigitalSignatures.PdfDocumentLtv.AddLtvInfo(document);
+                if (count == 0)
+                    DemosTools.ShowInfoMessage("LTV information is not required for this document.");
+                else
+                    DemosTools.ShowInfoMessage("LTV information is added.");
+            }
+            catch (Exception ex)
+            {
+                DemosTools.ShowErrorMessage(ex);
+                return;
+            }
+        }
+
+        /// <summary>
         /// Enables usage of default custom font programs controller for all opened PDF documents.
         /// </summary>
         public static void EnableUsageOfDefaultFontProgramsController()
@@ -110,7 +136,7 @@ namespace WpfDemosCommonCode.Pdf
             }
             if (!result)
             {
-                DemosTools.ShowWarningMessage("One or several pages are not saved in current PDF document. Save document and try again.");
+                DemosTools.ShowWarningMessage("One or several pages are not saved in PDF document. Save document and try again.");
             }
             return result;
         }
@@ -195,12 +221,12 @@ namespace WpfDemosCommonCode.Pdf
             {
                 if (suggestCreating)
                 {
-                    if (MessageBox.Show("Document does not have the Information Dictionary. Do you want to create the Information Dictionary?", "", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                    if (MessageBox.Show("PDF document does not have the Information Dictionary. Do you want to create the Information Dictionary?", "", MessageBoxButton.YesNo) == MessageBoxResult.No)
                         return;
                 }
                 else
                 {
-                    DemosTools.ShowInfoMessage("Document does not have Information Dictionary.");
+                    DemosTools.ShowInfoMessage("PDF document does not have the Information Dictionary.");
                     return;
                 }
             }

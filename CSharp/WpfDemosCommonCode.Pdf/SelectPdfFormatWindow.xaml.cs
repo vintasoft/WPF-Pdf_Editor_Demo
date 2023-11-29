@@ -24,6 +24,9 @@ namespace WpfDemosCommonCode.Pdf
             compressedCrossReferenceTableCheckBox.IsChecked = _format.CompressedCrossReferenceTable;
             binaryFormatCheckBox.IsChecked = _format.BinaryFormat;
             _newEncryptionSettings = initialEncryptionSettings;
+
+            if (initialFormat.VersionNumber >= 12)
+                linearizedCheckBox.IsChecked = _format.LinearizedFormat;
         }
 
         #endregion
@@ -33,6 +36,9 @@ namespace WpfDemosCommonCode.Pdf
         #region Properties
 
         PdfFormat _format;
+        /// <summary>
+        /// Gets the PDF document format.
+        /// </summary>
         public PdfFormat Format
         {
             get
@@ -42,6 +48,9 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         EncryptionSystem _newEncryptionSettings;
+        /// <summary>
+        /// Gets the new encryption settings of PDF document.
+        /// </summary>
         public EncryptionSystem NewEncryptionSettings
         {
             get
@@ -63,7 +72,8 @@ namespace WpfDemosCommonCode.Pdf
         {
             _format = new PdfFormat(pdfVersion.Text,
                 compressedCrossReferenceTableCheckBox.IsChecked.Value == true,
-                binaryFormatCheckBox.IsChecked.Value == true);
+                binaryFormatCheckBox.IsChecked.Value == true,
+                linearizedCheckBox.IsChecked == true);
             DialogResult = true;
             Close();
         }
@@ -93,7 +103,18 @@ namespace WpfDemosCommonCode.Pdf
                 compressedCrossReferenceTableCheckBox.IsChecked = false;
                 compressedCrossReferenceTableCheckBox.IsEnabled = false;
             }
+            if (pdfVersion.SelectedIndex >= 2)
+            {
+                linearizedCheckBox.IsChecked = _format.LinearizedFormat;
+                linearizedCheckBox.IsEnabled = true;
+            }
+            else
+            {
+                linearizedCheckBox.IsChecked = false;
+                linearizedCheckBox.IsEnabled = false;
+            }
         }
+
 
         /// <summary>
         /// Handles the Click event of SecurityButton object.

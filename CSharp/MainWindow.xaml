@@ -389,6 +389,8 @@
                     <Separator/>
                     <MenuItem Name="removeSignatureMenuItem" Header="Remove Signature Field..." Click="removeSignatureMenuItem_Click"/>
                     <MenuItem Name="removeAllSignaturesMenuItem" Header="Remove All Signature Fields" Click="removeAllSignaturesMenuItem_Click"/>
+                    <Separator/>
+                    <MenuItem Name="addLtvMenuItem" Header="Add Long-Term Validation (LTV) Info" Click="addLtvMenuItem_Click"/>
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="Bookmarks" Name="bookmarksMenuItem">

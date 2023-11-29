@@ -18,6 +18,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="18" />
@@ -39,6 +40,7 @@
             <Button Name="securityButton" Grid.Row="1" Grid.Column="2" Width="105" HorizontalAlignment="Left" Height="21" Click="securityButton_Click">Security Settings...</Button>
             <CheckBox Name="compressedCrossReferenceTableCheckBox" Grid.ColumnSpan="3" Grid.Row="2" VerticalAlignment="Center" Margin="3,0" Height="15.96">Compressed Cross-Reference Tables (PDF 1.5)</CheckBox>
             <CheckBox Name="binaryFormatCheckBox" Grid.ColumnSpan="3" Grid.Row="3" VerticalAlignment="Center" Margin="3,0" IsChecked="True" Height="15.96">Binary Format</CheckBox>
+            <CheckBox Name="linearizedCheckBox" Grid.ColumnSpan="3" Grid.Row="4" VerticalAlignment="Center" Margin="3,0" IsChecked="False" Height="15.96">Linearized Format</CheckBox>
         </Grid>
 
         <Button Name="okButton" Margin="55,0,0,0" Width="75" Height="27" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Left" Click="okButton_Click">OK</Button>

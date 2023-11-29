@@ -1,4 +1,8 @@
-﻿using System;
+﻿#if REMOVE_PDF_PLUGIN
+#error Remove DocumentSignaturesWindow from project.
+#endif
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;

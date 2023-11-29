@@ -287,12 +287,7 @@ namespace WpfDemosCommonCode.Pdf
                 // check pages of PDF document
                 if (PdfDemosTools.CheckAllPagesFromDocument(this.AnnotationTool.ImageViewer.Images, signatureView.Field.Document))
                 {
-
-                    CreateSignatureFieldWindow createSignature = new CreateSignatureFieldWindow(
-                        signatureView.Field, signatureAppearanceGraphicsFigure);
-                    createSignature.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                    createSignature.Owner = Window.GetWindow(this);
-                    if (createSignature.ShowDialog() == true)
+                    if (CreateSignatureFieldWithAppearance.ShowDialog(signatureView.Field, signatureAppearanceGraphicsFigure))
                     {
                         signatureView.Invalidate();
                     }

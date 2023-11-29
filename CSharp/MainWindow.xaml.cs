@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Reflection;
 using Microsoft.Win32;
 
 using Vintasoft.Imaging;
@@ -52,6 +53,7 @@ using Vintasoft.Imaging.Text;
 using Vintasoft.Imaging.Wpf.Print;
 using Vintasoft.Imaging.Wpf.UI.VisualTools;
 using Vintasoft.Imaging.Fonts;
+using Vintasoft.Imaging.ImageProcessing.Info;
 #if !REMOVE_OCR_PLUGIN
 using Vintasoft.Imaging.Ocr.Tesseract;
 using Vintasoft.Imaging.Ocr;
@@ -66,8 +68,6 @@ using WpfDemosCommonCode.Pdf.Security;
 using WpfDemosCommonCode.Pdf.JavaScript;
 using WpfDemosCommonCode.Imaging.Codecs.Dialogs;
 using WpfDemosCommonCode.Ocr;
-using Vintasoft.Imaging.ImageProcessing.Info;
-using System.Reflection;
 
 namespace WpfPdfEditorDemo
 {
@@ -493,6 +493,8 @@ namespace WpfPdfEditorDemo
                         @"Release\net6.0-windows\TesseractOCR\",
                         @"Debug\net7.0-windows\TesseractOCR\",
                         @"Release\net7.0-windows\TesseractOCR\",
+                        @"Debug\net8.0-windows\TesseractOCR\",
+                        @"Release\net8.0-windows\TesseractOCR\",
                     };
 
                     // search tesseract dll
@@ -3077,12 +3079,8 @@ namespace WpfPdfEditorDemo
                 // if signature field is selected
                 if (field != null)
                 {
-                    // create a form that allows to perform signing of PDF document
-                    // using existing signature field
-                    CreateSignatureFieldWindow createSignature = new CreateSignatureFieldWindow(field, _signatureAppearance);
-                    createSignature.Owner = this;
                     // if new signature field is created
-                    if (createSignature.ShowDialog().Value)
+                    if (CreateSignatureFieldWithAppearance.ShowDialog(field, _signatureAppearance))
                     {
                         SavePdfDocumentToSourceOrNewFile(true);
                     }
@@ -5340,6 +5338,14 @@ namespace WpfPdfEditorDemo
             return null;
         }
 
+        /// <summary>
+        /// Handles the Click event of AddLtvMenuItem object.
+        /// </summary>
+        private void addLtvMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            PdfDemosTools.AddLongTimeValidationInfo(_document);
+        }
+
         #endregion
 
 
@@ -6542,5 +6548,6 @@ namespace WpfPdfEditorDemo
 
         #endregion
 
+        
     }
 }
