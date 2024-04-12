@@ -227,6 +227,7 @@
                 <MenuItem Header="Save To..." Name="saveToMenuItem" Click="saveToMenuItem_Click"/>
                 <MenuItem Header="Convert to Tiff..." Name="convertToTiffMenuItem" Click="convertToTiffMenuItem_Click"/>
                 <MenuItem Header="Convert to Svg..." Name="convertToSvgMenuItem" Click="convertToSvgMenuItem_Click"/>
+                <MenuItem Header="Convert to Docx..." Name="convertToDocxMenuItem" Click="convertToDocxMenuItem_Click"/>
                 <Separator />
                 <MenuItem Header="Page Settings..." Name="pageSettingsMenuItem" Click="pageSettingsMenuItem_Click"/>
                 <MenuItem Header="Print..." HeaderStringFormat="{}{0} (Ctrl+ P)" Name="printMenuItem" Click="printMenuItem_Click"/>
@@ -316,6 +317,9 @@
                     <MenuItem Header="PDF/A-3a Verifier..." Name="pdfA3aVerifierMenuItem" Click="pdfA3aVerifierMenuItem_Click" />
                     <MenuItem Header="PDF/A-3b Verifier..." Name="pdfA3bVerifierMenuItem" Click="pdfA3bVerifierMenuItem_Click" />
                     <MenuItem Header="PDF/A-3u Verifier..." Name="pdfA3uVerifierMenuItem" Click="pdfA3uVerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-4 Verifier..." Name="pdfA4VerifierMenuItem" Click="pdfA4VerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-4f Verifier..." Name="pdfA4fVerifierMenuItem" Click="pdfA4fVerifierMenuItem_Click" />
+                    <MenuItem Header="PDF/A-4e Verifier..." Name="pdfA4eVerifierMenuItem" Click="pdfA4eVerifierMenuItem_Click" />
                 </MenuItem>
 
                 <MenuItem Header="Conversion" Name="documentConversionMenuItem">
@@ -327,6 +331,9 @@
                     <MenuItem Header="PDF/A-3a Converter..." Name="pdfA3aConverterMenuItem" Click="pdfA3aConverterMenuItem_Click" />
                     <MenuItem Header="PDF/A-3b Converter..." Name="pdfA3bConverterMenuItem" Click="pdfA3bConverterMenuItem_Click" />
                     <MenuItem Header="PDF/A-3u Converter..." Name="pdfA3uConverterMenuItem" Click="pdfA3uConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-4 Converter..." Name="pdfA4ConverterMenuItem" Click="pdfA4ConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-4f Converter..." Name="pdfA4fConverterMenuItem" Click="pdfA4fConverterMenuItem_Click" />
+                    <MenuItem Header="PDF/A-4e Converter..." Name="pdfA4eConverterMenuItem" Click="pdfA4eConverterMenuItem_Click" />
                     <MenuItem Header="Convert to Image-only Document..." Name="convertToImageonlyDocumentMenuItem" Click="convertToImageonlyDocumentMenuItem_Click" />
                 </MenuItem>
                 <MenuItem Header="Compression">

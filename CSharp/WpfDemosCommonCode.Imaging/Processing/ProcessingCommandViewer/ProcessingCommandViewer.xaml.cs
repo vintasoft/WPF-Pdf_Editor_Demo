@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 using Vintasoft.Imaging;
+using Vintasoft.Imaging.Pdf.Processing.PdfA;
 using Vintasoft.Imaging.Processing;
 using Vintasoft.Imaging.Processing.Analyzers;
 using Vintasoft.Imaging.Wpf;
@@ -138,6 +139,12 @@ namespace WpfDemosCommonCode.Imaging
         /// </summary>
         Dictionary<string, BitmapSource> _imageResources =
             new Dictionary<string, BitmapSource>();
+
+        /// <summary>
+        /// The added PDF/A processing.
+        /// </summary>
+        Dictionary<IProcessingCommandInfo, ProcessingTreeViewItem> _addedPdfaProcessing = new Dictionary<IProcessingCommandInfo, ProcessingTreeViewItem>();
+
 
         #endregion
 
@@ -603,6 +610,16 @@ namespace WpfDemosCommonCode.Imaging
                 AddNode(converterNode.Items, targetConverter.Analyzer);
                 converterNode.EndInit();
             }
+
+
+#if !REMOVE_PDF_PLUGIN
+            if (command is PdfAVerifier || command is PdfAConverter)
+            {
+                if (_addedPdfaProcessing.ContainsKey(command))
+                    return node;
+                _addedPdfaProcessing.Add(command, node);
+            }
+#endif
 
             if (command is ITriggerInfo)
             {

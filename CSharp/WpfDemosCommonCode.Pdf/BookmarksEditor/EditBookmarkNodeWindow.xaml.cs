@@ -102,7 +102,7 @@ namespace WpfDemosCommonCode.Pdf
         #region Methods
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -158,7 +158,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of CancelButton object.
+        /// Handles the Click event of cancelButton object.
         /// </summary>
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -166,7 +166,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of ColorButton object.
+        /// Handles the Click event of colorButton object.
         /// </summary>
         private void colorButton_Click(object sender, RoutedEventArgs e)
         {
@@ -178,7 +178,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of ActionRadioButton object.
+        /// Handles the Click event of actionRadioButton object.
         /// </summary>
         private void actionRadioButton_Click(object sender, RoutedEventArgs e)
         {
@@ -213,7 +213,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of EditActionButton object.
+        /// Handles the Click event of editActionButton object.
         /// </summary>
         private void editActionButton_Click(object sender, RoutedEventArgs e)
         {

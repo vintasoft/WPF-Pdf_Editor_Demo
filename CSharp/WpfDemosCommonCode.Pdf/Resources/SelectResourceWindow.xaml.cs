@@ -60,7 +60,7 @@ namespace WpfDemosCommonCode.Pdf
         #region Methods
 
         /// <summary>
-        /// Handles the Click event of CancelButton object.
+        /// Handles the Click event of cancelButton object.
         /// </summary>
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +68,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of ExisingResourceButton object.
+        /// Handles the Click event of exisingResourceButton object.
         /// </summary>
         private void exisingResourceButton_Click(object sender, RoutedEventArgs e)
         {
@@ -88,7 +88,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of NewResourceButton object.
+        /// Handles the Click event of newResourceButton object.
         /// </summary>
         private void newResourceButton_Click(object sender, RoutedEventArgs e)
         {

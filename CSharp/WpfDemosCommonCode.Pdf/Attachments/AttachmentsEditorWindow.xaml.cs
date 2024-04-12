@@ -199,7 +199,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of EncodeFilesImmediatelyMenuItem object.
+        /// Handles the Click event of encodeFilesImmediatelyMenuItem object.
         /// </summary>
         private void encodeFilesImmediatelyMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -959,7 +959,7 @@ namespace WpfDemosCommonCode.Pdf
         #region Hot keys
 
         /// <summary>
-        /// Handles the CanExecute event of CreateNewFolderCommandBinding object.
+        /// Handles the CanExecute event of createNewFolderCommandBinding object.
         /// </summary>
         private void createNewFolderCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -967,7 +967,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CanExecute event of SaveSelectedFilesToCommandBinding object.
+        /// Handles the CanExecute event of saveSelectedFilesToCommandBinding object.
         /// </summary>
         private void saveSelectedFilesToCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -975,7 +975,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CanExecute event of CloseCommandBinding object.
+        /// Handles the CanExecute event of closeCommandBinding object.
         /// </summary>
         private void closeCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -983,7 +983,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CanExecute event of LevelUpCommandBinding object.
+        /// Handles the CanExecute event of levelUpCommandBinding object.
         /// </summary>
         private void levelUpCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -991,7 +991,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CanExecute event of MoveToRootCommandBinding object.
+        /// Handles the CanExecute event of moveToRootCommandBinding object.
         /// </summary>
         private void moveToRootCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -999,7 +999,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CanExecute event of DeleteSelectedCommandBinding object.
+        /// Handles the CanExecute event of deleteSelectedCommandBinding object.
         /// </summary>
         private void deleteSelectedCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -1008,7 +1008,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CanExecute event of SelectAllCommandBinding object.
+        /// Handles the CanExecute event of selectAllCommandBinding object.
         /// </summary>
         private void selectAllCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {

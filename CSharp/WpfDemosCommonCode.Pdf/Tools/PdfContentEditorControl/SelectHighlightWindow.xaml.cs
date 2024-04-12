@@ -71,7 +71,7 @@ namespace WpfDemosCommonCode.Pdf
         #region Methods
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +79,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of CancelButton object.
+        /// Handles the Click event of cancelButton object.
         /// </summary>
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -87,7 +87,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of ModeComboBox object.
+        /// Handles the SelectionChanged event of modeComboBox object.
         /// </summary>
         private void modeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

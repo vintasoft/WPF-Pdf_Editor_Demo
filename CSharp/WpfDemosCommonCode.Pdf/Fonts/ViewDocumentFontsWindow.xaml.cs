@@ -78,7 +78,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of FontComboBox object.
+        /// Handles the SelectionChanged event of fontComboBox object.
         /// </summary>
         private void fontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -86,7 +86,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the ValueChanged event of CellSizeNumericUpDown object.
+        /// Handles the ValueChanged event of cellSizeNumericUpDown object.
         /// </summary>
         private void cellSizeNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -94,7 +94,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the MouseMove event of PdfFontViewerControl object.
+        /// Handles the MouseMove event of pdfFontViewerControl object.
         /// </summary>
         private void pdfFontViewerControl_MouseMove(object sender, MouseEventArgs e)
         {

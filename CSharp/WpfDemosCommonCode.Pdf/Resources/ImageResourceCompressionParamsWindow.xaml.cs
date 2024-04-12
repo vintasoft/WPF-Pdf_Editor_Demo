@@ -60,7 +60,7 @@ namespace WpfDemosCommonCode.Pdf
         #region Methods
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,7 +71,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of CompressionParamsButton object.
+        /// Handles the Click event of compressionParamsButton object.
         /// </summary>
         private void compressionParamsButton_Click(object sender, RoutedEventArgs e)
         {

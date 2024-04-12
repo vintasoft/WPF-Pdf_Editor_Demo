@@ -468,7 +468,7 @@ namespace WpfDemosCommonCode.Pdf
 
 
         /// <summary>
-        /// Handles the Click event of AddRectangleClipToolBarButton object.
+        /// Handles the Click event of addRectangleClipToolBarButton object.
         /// </summary>
         private void addRectangleClipToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -481,7 +481,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of AddEllipseClipToolBarButton object.
+        /// Handles the Click event of addEllipseClipToolBarButton object.
         /// </summary>
         private void addEllipseClipToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -494,7 +494,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of ContentGraphicsPropertiesToolStripMenuItem object.
+        /// Handles the Click event of contentGraphicsPropertiesToolStripMenuItem object.
         /// </summary>
         private void contentGraphicsPropertiesToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -502,7 +502,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of AppendModeToolBarButton object.
+        /// Handles the Click event of appendModeToolBarButton object.
         /// </summary>
         private void appendModeToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -512,7 +512,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of GroupContentFiguresToolBarButton object.
+        /// Handles the Click event of groupContentFiguresToolBarButton object.
         /// </summary>
         private void groupContentFiguresToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -521,7 +521,7 @@ namespace WpfDemosCommonCode.Pdf
                 ContentEditorTool.GroupContentFigures = groupContentFiguresToolBarButton.IsChecked;
         }
         /// <summary>
-        /// Handles the Click event of HighlightToolBarButton object.
+        /// Handles the Click event of highlightToolBarButton object.
         /// </summary>
         private void highlightToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -531,7 +531,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of HorizontalMirrorToolBarButton object.
+        /// Handles the Click event of horizontalMirrorToolBarButton object.
         /// </summary>
         private void horizontalMirrorToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -542,7 +542,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of VerticalMirrorToolBarButton object.
+        /// Handles the Click event of verticalMirrorToolBarButton object.
         /// </summary>
         private void verticalMirrorToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -553,7 +553,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of RotateClockwiseToolBarButton object.
+        /// Handles the Click event of rotateClockwiseToolBarButton object.
         /// </summary>
         private void rotateClockwiseToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -564,7 +564,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of RotateCounterclockwiseToolBarButton object.
+        /// Handles the Click event of rotateCounterclockwiseToolBarButton object.
         /// </summary>
         private void rotateCounterclockwiseToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -575,7 +575,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of ReplaceResourceToolBarButton object.
+        /// Handles the Click event of replaceResourceToolBarButton object.
         /// </summary>
         private void replaceResourceToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -591,7 +591,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of ContentGraphicsPropertiesToolBarButton object.
+        /// Handles the Click event of contentGraphicsPropertiesToolBarButton object.
         /// </summary>
         private void contentGraphicsPropertiesToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -599,7 +599,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of InteractiveContentTypeToolBarButton object.
+        /// Handles the Click event of interactiveContentTypeToolBarButton object.
         /// </summary>
         private void interactiveContentTypeToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -640,7 +640,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the MouseDown event of InteractiveContentTypeToolBarButton object.
+        /// Handles the MouseDown event of interactiveContentTypeToolBarButton object.
         /// </summary>
         private void interactiveContentTypeToolBarButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -719,7 +719,7 @@ namespace WpfDemosCommonCode.Pdf
         #region ContentEditorTool
 
         /// <summary>
-        /// Handles the Click event of EditTextObjectToolBarButton object.
+        /// Handles the Click event of editTextObjectToolBarButton object.
         /// </summary>
         private void editTextObjectToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1741,7 +1741,7 @@ namespace WpfDemosCommonCode.Pdf
                     undoActions.Add(actions[i]);
 
                 // create menu items
-                AddSubMenuItems(undoToolBarMenu, undoActions, undoToolBarMenuItemClick);
+                AddSubMenuItems(undoToolBarMenu, undoActions, undoToolBarMenu_ItemClick);
 
                 // update button properties
                 undoToolBarButton.IsEnabled = true;
@@ -1770,7 +1770,7 @@ namespace WpfDemosCommonCode.Pdf
                     redoActions.Add(actions[i]);
 
                 // create menu items
-                AddSubMenuItems(redoToolBarMenu, redoActions, redoToolBarMenuItemClick);
+                AddSubMenuItems(redoToolBarMenu, redoActions, redoToolBarMenu_ItemClick);
 
                 // update button properties
                 redoToolBarButton.IsEnabled = true;
@@ -1816,7 +1816,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CanExecute event of UndoCommandBinding object.
+        /// Handles the CanExecute event of undoCommandBinding object.
         /// </summary>
         private void undoCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -1824,7 +1824,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of UndoToolBarButton object.
+        /// Handles the Click event of undoToolBarButton object.
         /// </summary>
         private void undoToolBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1832,7 +1832,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CanExecute event of RedoCommandBinding object.
+        /// Handles the CanExecute event of redoCommandBinding object.
         /// </summary>
         private void redoCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -1840,14 +1840,17 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of RedoToolBarButton object.
+        /// Handles the Click event of redoToolBarButton object.
         /// </summary>
         private void redoToolBarButton_Click(object sender, RoutedEventArgs e)
         {
             Redo();
         }
 
-        private void undoToolBarMenuItemClick(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handles the ItemClick event of undoToolBarMenu object.
+        /// </summary>
+        private void undoToolBarMenu_ItemClick(object sender, RoutedEventArgs e)
         {
             // start undo execution
             _isUndoRedoExecuting = true;
@@ -1864,7 +1867,10 @@ namespace WpfDemosCommonCode.Pdf
             UpdateUI();
         }
 
-        private void redoToolBarMenuItemClick(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handles the ItemClick event of redoToolBarMenu object.
+        /// </summary>
+        private void redoToolBarMenu_ItemClick(object sender, RoutedEventArgs e)
         {
             // start redo execution
             _isUndoRedoExecuting = true;

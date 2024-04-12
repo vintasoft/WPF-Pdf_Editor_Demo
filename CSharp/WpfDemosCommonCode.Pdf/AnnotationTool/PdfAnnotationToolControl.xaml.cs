@@ -597,7 +597,7 @@ namespace WpfDemosCommonCode.Pdf
             return action.IsEnabled;
         }
         /// <summary>
-        /// Handles the Click event of TextMarkupHighlightMenuItem object.
+        /// Handles the Click event of textMarkupHighlightMenuItem object.
         /// </summary>
         private void textMarkupHighlightMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -605,7 +605,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of TextMarkupStrinkoutMenuItem object.
+        /// Handles the Click event of textMarkupStrinkoutMenuItem object.
         /// </summary>
         private void textMarkupStrinkoutMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -613,7 +613,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of TextMarkupUnderlineMenuItem object.
+        /// Handles the Click event of textMarkupUnderlineMenuItem object.
         /// </summary>
         private void textMarkupUnderlineMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -621,7 +621,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of TextMarkupSquigglyUnderlineMenuItem object.
+        /// Handles the Click event of textMarkupSquigglyUnderlineMenuItem object.
         /// </summary>
         private void textMarkupSquigglyUnderlineMenuItem_Click(object sender, RoutedEventArgs e)
         {

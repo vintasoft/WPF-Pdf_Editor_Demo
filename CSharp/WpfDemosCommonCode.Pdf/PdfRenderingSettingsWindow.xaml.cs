@@ -65,7 +65,7 @@ namespace WpfDemosCommonCode.Pdf
         #region Methods
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -83,7 +83,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of DpiDefault object.
+        /// Handles the Click event of dpiDefault object.
         /// </summary>
         private void dpiDefault_Click(object sender, RoutedEventArgs e)
         {
@@ -92,7 +92,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of CancelButton object.
+        /// Handles the Click event of cancelButton object.
         /// </summary>
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -100,7 +100,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the ValueChanged event of HorizontalResolution object.
+        /// Handles the ValueChanged event of horizontalResolution object.
         /// </summary>
         private void horizontalResolution_ValueChanged(object sender, EventArgs e)
         {

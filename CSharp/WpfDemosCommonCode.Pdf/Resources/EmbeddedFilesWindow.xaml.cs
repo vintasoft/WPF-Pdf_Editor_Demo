@@ -242,7 +242,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -250,7 +250,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of SaveAsButton object.
+        /// Handles the Click event of saveAsButton object.
         /// </summary>
         private void saveAsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -264,7 +264,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of EmbeddedFilesGridView object.
+        /// Handles the SelectionChanged event of embeddedFilesGridView object.
         /// </summary>
         private void embeddedFilesGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -293,7 +293,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of CompressionComboBox object.
+        /// Handles the SelectionChanged event of compressionComboBox object.
         /// </summary>
         private void compressionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -316,7 +316,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the TextChanged event of DesriptionTextBox object.
+        /// Handles the TextChanged event of desriptionTextBox object.
         /// </summary>
         private void desriptionTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -331,7 +331,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of RemoveButton object.
+        /// Handles the Click event of removeButton object.
         /// </summary>
         private void removeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -353,7 +353,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of AddButton object.
+        /// Handles the Click event of addButton object.
         /// </summary>
         private void addButton_Click(object sender, RoutedEventArgs e)
         {

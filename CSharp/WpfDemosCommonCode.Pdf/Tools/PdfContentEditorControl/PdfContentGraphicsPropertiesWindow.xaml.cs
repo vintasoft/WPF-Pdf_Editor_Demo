@@ -88,7 +88,7 @@ namespace WpfDemosCommonCode.Pdf
         #region UI
 
         /// <summary>
-        /// Handles the CheckedChanged event of StrokePropertiesCheckBox object.
+        /// Handles the CheckedChanged event of strokePropertiesCheckBox object.
         /// </summary>
         private void strokePropertiesCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -99,7 +99,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of FillPropertiesCheckBox object.
+        /// Handles the CheckedChanged event of fillPropertiesCheckBox object.
         /// </summary>
         private void fillPropertiesCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -110,7 +110,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of TextPropertiesCheckBox object.
+        /// Handles the CheckedChanged event of textPropertiesCheckBox object.
         /// </summary>
         private void textPropertiesCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -121,7 +121,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of ColorBlendingCheckBox object.
+        /// Handles the CheckedChanged event of colorBlendingCheckBox object.
         /// </summary>
         private void colorBlendingCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -132,7 +132,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of ButtonOk object.
+        /// Handles the Click event of buttonOk object.
         /// </summary>
         private void buttonOk_Click(object sender, RoutedEventArgs e)
         {
@@ -182,7 +182,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of ButtonCancel object.
+        /// Handles the Click event of buttonCancel object.
         /// </summary>
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {

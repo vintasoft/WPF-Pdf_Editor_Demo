@@ -66,7 +66,7 @@ namespace WpfDemosCommonCode.Pdf
         #region Methods
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +79,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of CancelButton object.
+        /// Handles the Click event of cancelButton object.
         /// </summary>
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -88,7 +88,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of PdfVersion object.
+        /// Handles the SelectionChanged event of pdfVersion object.
         /// </summary>
         private void pdfVersion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -117,7 +117,7 @@ namespace WpfDemosCommonCode.Pdf
 
 
         /// <summary>
-        /// Handles the Click event of SecurityButton object.
+        /// Handles the Click event of securityButton object.
         /// </summary>
         private void securityButton_Click(object sender, RoutedEventArgs e)
         {

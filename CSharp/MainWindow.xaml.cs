@@ -53,6 +53,7 @@ using Vintasoft.Imaging.Text;
 using Vintasoft.Imaging.Wpf.Print;
 using Vintasoft.Imaging.Wpf.UI.VisualTools;
 using Vintasoft.Imaging.Fonts;
+using Vintasoft.Imaging.ImageProcessing.Color;
 using Vintasoft.Imaging.ImageProcessing.Info;
 #if !REMOVE_OCR_PLUGIN
 using Vintasoft.Imaging.Ocr.Tesseract;
@@ -1472,7 +1473,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of AddOcrPagesUsingImageOverTextModeMenuItem object.
+        /// Handles the Click event of addOcrPagesUsingImageOverTextModeMenuItem object.
         /// </summary>
         private void addOcrPagesUsingImageOverTextModeMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -1482,7 +1483,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of AddOcrPagesUsingTextOverImageModeMenuItem object.
+        /// Handles the Click event of addOcrPagesUsingTextOverImageModeMenuItem object.
         /// </summary>
         private void addOcrPagesUsingTextOverImageModeMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -1818,6 +1819,49 @@ namespace WpfPdfEditorDemo
                     savingThread.Start(new object[] { svgEncoder, _convertToFileDialog.FileName });
                 }
             }
+        }
+
+        /// <summary>
+        /// Converts PDF file to a Docx file.
+        /// </summary>
+        private void convertToDocxMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+#if !REMOVE_OFFICE_PLUGIN
+            if (IsDocumentChanged)
+            {
+                if (MessageBox.Show(
+                    "The document is not saved\n" +
+                    "Do you want to save PDF document right now?\n\n" +
+                    "Click 'Yes' if you want to save PDF document right now.\n" +
+                    "Click 'No' if you do not want save PDF document.",
+                    "Save document",
+                    MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    SavePdfDocumentAs();
+
+                    // if document is not saved
+                    if (IsDocumentChanged)
+                        return;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            _convertToFileDialog.Filter = "DOCX Files|*.docx";
+            if (!string.IsNullOrEmpty(Filename))
+                _convertToFileDialog.FileName = Path.GetFileNameWithoutExtension(Filename);
+
+            if (_convertToFileDialog.ShowDialog() == true)
+            {
+                // convert PDF document to DOCX file in background thread
+                Thread savingThread = new Thread(new ParameterizedThreadStart(ConvertPdfDocumentToDocxFileThread));
+                savingThread.Name = "Convert To DOCX";
+                savingThread.IsBackground = true;
+                savingThread.Start(_convertToFileDialog.FileName);
+            }
+#endif
         }
 
         /// <summary>
@@ -2428,6 +2472,30 @@ namespace WpfPdfEditorDemo
             VerifyPdfDocumentForCompatibilityWithPdfA(new PdfA3uVerifier());
         }
 
+        /// <summary>
+        /// Verifies the PDF document for compatibility with PDF/A-4 format. 
+        /// </summary>
+        private void pdfA4VerifierMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            VerifyPdfDocumentForCompatibilityWithPdfA(new PdfA4Verifier());
+        }
+
+        /// <summary>
+        /// Verifies the PDF document for compatibility with PDF/A-4f format. 
+        /// </summary>
+        private void pdfA4fVerifierMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            VerifyPdfDocumentForCompatibilityWithPdfA(new PdfA4fVerifier());
+        }
+
+        /// <summary>
+        /// Verifies the PDF document for compatibility with PDF/A-4e format. 
+        /// </summary>
+        private void pdfA4eVerifierMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            VerifyPdfDocumentForCompatibilityWithPdfA(new PdfA4eVerifier());
+        }
+
         #endregion
 
 
@@ -2495,6 +2563,30 @@ namespace WpfPdfEditorDemo
         private void pdfA3uConverterMenuItem_Click(object sender, RoutedEventArgs e)
         {
             ConvertPdfDocumentToPdfA(new PdfA3uConverter());
+        }
+
+        /// <summary>
+        /// Converts the PDF document to the PDF/A-4 format.
+        /// </summary>
+        private void pdfA4ConverterMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ConvertPdfDocumentToPdfA(new PdfA4Converter());
+        }
+
+        /// <summary>
+        /// Converts the PDF document to the PDF/A-4f format.
+        /// </summary>
+        private void pdfA4fConverterMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ConvertPdfDocumentToPdfA(new PdfA4fConverter());
+        }
+
+        /// <summary>
+        /// Converts the PDF document to the PDF/A-4e format.
+        /// </summary>
+        private void pdfA4eConverterMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ConvertPdfDocumentToPdfA(new PdfA4eConverter());
         }
 
         /// <summary>
@@ -2835,7 +2927,7 @@ namespace WpfPdfEditorDemo
         #region PDF document annotations
 
         /// <summary>
-        /// Handles the Click event of ImportFromXFDFMenuItem object.
+        /// Handles the Click event of importFromXFDFMenuItem object.
         /// </summary>
         private void importFromXFDFMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -2868,7 +2960,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ExportToXFDFMenuItem object.
+        /// Handles the Click event of exportToXFDFMenuItem object.
         /// </summary>
         private void exportToXFDFMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -2898,7 +2990,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of RemoveAllAnnotationsMenuItem object.
+        /// Handles the Click event of removeAllAnnotationsMenuItem object.
         /// </summary>
         private void removeAllAnnotationsMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -2907,7 +2999,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of RemoveMarkupAnnotationsMenuItem object.
+        /// Handles the Click event of removeMarkupAnnotationsMenuItem object.
         /// </summary>
         private void removeMarkupAnnotationsMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -3713,10 +3805,7 @@ namespace WpfPdfEditorDemo
         /// </summary>
         private void invertPDFPageMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            PdfPageColorBlendingCommand invertCommand = new PdfPageColorBlendingCommand();
-            invertCommand.BackgroundColor = System.Drawing.Color.White;
-            invertCommand.BlendingColor = System.Drawing.Color.White;
-            invertCommand.BlendingMode = GraphicsStateBlendMode.Difference;
+            PdfInvertCommand invertCommand = new PdfInvertCommand();
             ExecuteProcessingCommandOnFocusedImage(invertCommand, false, false);
         }
 
@@ -3887,7 +3976,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of TextMarkupHighlightToolStripMenuItem object.
+        /// Handles the Click event of textMarkupHighlightToolStripMenuItem object.
         /// </summary>
         private void textMarkupHighlightToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -3895,7 +3984,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of TextMarkupStrikeOutToolStripMenuItem object.
+        /// Handles the Click event of textMarkupStrikeOutToolStripMenuItem object.
         /// </summary>
         private void textMarkupStrikeOutToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -3903,7 +3992,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of TextMarkupUnderlineToolStripMenuItem object.
+        /// Handles the Click event of textMarkupUnderlineToolStripMenuItem object.
         /// </summary>
         private void textMarkupUnderlineToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -3911,7 +4000,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of TextMarkupSquigglyUnderlineToolStripMenuItem object.
+        /// Handles the Click event of textMarkupSquigglyUnderlineToolStripMenuItem object.
         /// </summary>
         private void textMarkupSquigglyUnderlineToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -5339,7 +5428,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of AddLtvMenuItem object.
+        /// Handles the Click event of addLtvMenuItem object.
         /// </summary>
         private void addLtvMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -5914,6 +6003,40 @@ namespace WpfPdfEditorDemo
         #endregion
 
 
+        #region Convert PDF document to DOCX
+
+#if !REMOVE_OFFICE_PLUGIN
+        /// <summary>
+        /// Converts PDF file to a DOCX file.
+        /// </summary>
+        /// <param name="obj">A string that contains path to the output DOCX file.</param>
+        private void ConvertPdfDocumentToDocxFileThread(object obj)
+        {
+            string filePath = (string)obj;
+
+            // start the 'Convert to DOCX" action
+            StartAction("Convert to DOCX", true);
+
+            // create converter
+            using (Vintasoft.Imaging.Pdf.Office.PdfToDocxConverter converter = new Vintasoft.Imaging.Pdf.Office.PdfToDocxConverter())
+            {
+                // set converter settings
+                converter.DecodingSettings = imageViewer1.ImageDecodingSettings;
+                converter.RenderingSettings = imageViewer1.ImageRenderingSettings;
+                converter.OutputFilename = filePath;
+
+                // convert PDF document to DOCX file
+                using (ProcessingState state = new ProcessingState(Images_ImageCollectionSavingProgress))
+                    converter.Execute(_document, state);
+            }
+
+            EndAction();
+        }
+#endif
+
+        #endregion
+
+
         #region Convert PDF document to SVG
 
         /// <summary>
@@ -5976,7 +6099,7 @@ namespace WpfPdfEditorDemo
         #region Hot keys
 
         /// <summary>
-        /// Handles the CanExecute event of NewCommandBinding object.
+        /// Handles the CanExecute event of newCommandBinding object.
         /// </summary>
         private void newCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -5984,7 +6107,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of OpenCommandBinding object.
+        /// Handles the CanExecute event of openCommandBinding object.
         /// </summary>
         private void openCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -5992,7 +6115,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of CloseCommandBinding object.
+        /// Handles the CanExecute event of closeCommandBinding object.
         /// </summary>
         private void closeCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6000,7 +6123,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of AddPagesCommandBinding object.
+        /// Handles the CanExecute event of addPagesCommandBinding object.
         /// </summary>
         private void addPagesCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6008,7 +6131,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of SaveAsCommandBinding object.
+        /// Handles the CanExecute event of saveAsCommandBinding object.
         /// </summary>
         private void saveAsCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6016,7 +6139,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of PrintCommandBinding object.
+        /// Handles the CanExecute event of printCommandBinding object.
         /// </summary>
         private void printCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6024,7 +6147,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of DocumentInformationCommandBinding object.
+        /// Handles the CanExecute event of documentInformationCommandBinding object.
         /// </summary>
         private void documentInformationCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6032,7 +6155,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of FindTextCommandBinding object.
+        /// Handles the CanExecute event of findTextCommandBinding object.
         /// </summary>
         private void findTextCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6040,7 +6163,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of CutCommandBinding object.
+        /// Handles the CanExecute event of cutCommandBinding object.
         /// </summary>
         private void cutCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6049,7 +6172,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of CopyCommandBinding object.
+        /// Handles the CanExecute event of copyCommandBinding object.
         /// </summary>
         private void copyCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6058,7 +6181,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of PasteCommandBinding object.
+        /// Handles the CanExecute event of pasteCommandBinding object.
         /// </summary>
         private void pasteCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6067,7 +6190,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of DeleteCommandBinding object.
+        /// Handles the CanExecute event of deleteCommandBinding object.
         /// </summary>
         private void deleteCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6076,7 +6199,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of SelectAllCommandBinding object.
+        /// Handles the CanExecute event of selectAllCommandBinding object.
         /// </summary>
         private void selectAllCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6085,7 +6208,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of RotateClockwiseCommandBinding object.
+        /// Handles the CanExecute event of rotateClockwiseCommandBinding object.
         /// </summary>
         private void rotateClockwiseCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6093,7 +6216,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the CanExecute event of RotateCounterclockwiseCommandBinding object.
+        /// Handles the CanExecute event of rotateCounterclockwiseCommandBinding object.
         /// </summary>
         private void rotateCounterclockwiseCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -6548,6 +6671,6 @@ namespace WpfPdfEditorDemo
 
         #endregion
 
-        
+
     }
 }

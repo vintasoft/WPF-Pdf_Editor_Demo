@@ -93,7 +93,7 @@ namespace WpfDemosCommonCode
         #region Methods
 
         /// <summary>
-        /// Handles the Click event of CancelButton object.
+        /// Handles the Click event of cancelButton object.
         /// </summary>
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -103,7 +103,7 @@ namespace WpfDemosCommonCode
         }
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -118,7 +118,7 @@ namespace WpfDemosCommonCode
         }
 
         /// <summary>
-        /// Handles the TextChanged event of TextBox object.
+        /// Handles the TextChanged event of textBox object.
         /// </summary>
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -126,7 +126,7 @@ namespace WpfDemosCommonCode
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of FontComboBox object.
+        /// Handles the SelectionChanged event of fontComboBox object.
         /// </summary>
         private void fontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -134,7 +134,7 @@ namespace WpfDemosCommonCode
         }
 
         /// <summary>
-        /// Handles the MouseUp event of PdfFontViewerControl object.
+        /// Handles the MouseUp event of pdfFontViewerControl object.
         /// </summary>
         private void pdfFontViewerControl_MouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -146,7 +146,7 @@ namespace WpfDemosCommonCode
         }
 
         /// <summary>
-        /// Handles the Click event of AddFontButton object.
+        /// Handles the Click event of addFontButton object.
         /// </summary>
         private void addFontButton_Click(object sender, RoutedEventArgs e)
         {

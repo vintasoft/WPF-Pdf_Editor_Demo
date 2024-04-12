@@ -74,7 +74,7 @@ namespace WpfPdfEditorDemo
         #region Methods
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -91,7 +91,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ForAllButton object.
+        /// Handles the Click event of forAllButton object.
         /// </summary>
         private void forAllButton_Click(object sender, RoutedEventArgs e)
         {
@@ -101,7 +101,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of CompressionComboBox object.
+        /// Handles the SelectionChanged event of compressionComboBox object.
         /// </summary>
         private void compressionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -124,7 +124,7 @@ namespace WpfPdfEditorDemo
         }
 
         /// <summary>
-        /// Handles the Click event of Jpeg200SettingsButton object.
+        /// Handles the Click event of jpeg200SettingsButton object.
         /// </summary>
         private void jpeg200SettingsButton_Click(object sender, RoutedEventArgs e)
         {

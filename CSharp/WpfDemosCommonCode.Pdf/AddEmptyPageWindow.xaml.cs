@@ -102,7 +102,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of OkButton object.
+        /// Handles the Click event of okButton object.
         /// </summary>
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -115,7 +115,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Click event of CancelButton object.
+        /// Handles the Click event of cancelButton object.
         /// </summary>
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -123,7 +123,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of UnitsComboBox object.
+        /// Handles the SelectionChanged event of unitsComboBox object.
         /// </summary>
         private void unitsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -131,7 +131,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the TextChanged event of HeightTextBox object.
+        /// Handles the TextChanged event of heightTextBox object.
         /// </summary>
         private void heightTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -148,7 +148,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the TextChanged event of WidthTextBox object.
+        /// Handles the TextChanged event of widthTextBox object.
         /// </summary>
         private void widthTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -165,7 +165,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Checked event of CustomSizeRadioButton object.
+        /// Handles the Checked event of customSizeRadioButton object.
         /// </summary>
         private void customSizeRadioButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -174,7 +174,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the Checked event of StandardSizeRadioButton object.
+        /// Handles the Checked event of standardSizeRadioButton object.
         /// </summary>
         private void standardSizeRadioButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -183,7 +183,7 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Handles the SelectionChanged event of PaperKindComboBox object.
+        /// Handles the SelectionChanged event of paperKindComboBox object.
         /// </summary>
         private void paperKindComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
