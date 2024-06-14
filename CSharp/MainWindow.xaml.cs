@@ -1133,6 +1133,7 @@ namespace WpfPdfEditorDemo
             saveToMenuItem.IsEnabled = isPdfFileLoaded && !isPdfFileEmpty;
             convertToTiffMenuItem.IsEnabled = isPdfFileLoaded && !isPdfFileEmpty;
             convertToSvgMenuItem.IsEnabled = isPdfFileLoaded && !isPdfFileEmpty;
+            convertToDocxMenuItem.IsEnabled = isPdfFileLoaded && !isPdfFileEmpty;
             pageSettingsMenuItem.IsEnabled = isPdfFileLoaded && !isPdfFileEmpty;
             printMenuItem.IsEnabled = isPdfFileLoaded && !isPdfFileEmpty;
 
