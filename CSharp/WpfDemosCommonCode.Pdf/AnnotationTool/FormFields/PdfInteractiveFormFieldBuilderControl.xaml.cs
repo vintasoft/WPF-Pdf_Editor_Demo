@@ -1063,6 +1063,9 @@ namespace WpfDemosCommonCode.Pdf
         private void InitAnnotationAppearanceGeneratorController(
             PdfAnnotationAppearanceGeneratorController controller)
         {
+            if (ImagingEnvironment.IsInDesignMode)
+                return;
+
             textFieldNoBorderMenuItem.IsChecked = false;
             checkBoxStandardMenuItem.IsChecked = false;
             buttonBorder3DMenuItem.IsChecked = false;
@@ -1252,6 +1255,9 @@ namespace WpfDemosCommonCode.Pdf
         /// <param name="fileName">Name of the file.</param>
         private void AddImageResource(string resourceName, string fileName)
         {
+            if (ImagingEnvironment.IsInDesignMode)
+                return;
+
             string resourceNameFormatString = "WpfDemosCommonCode.Pdf.AnnotationTool.FormFields.Resources.{0}.png";
             using (VintasoftImage image = DemosResourcesManager.GetResourceAsImage(string.Format(resourceNameFormatString, fileName)))
             {

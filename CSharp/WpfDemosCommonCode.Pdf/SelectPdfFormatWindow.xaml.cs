@@ -21,7 +21,16 @@ namespace WpfDemosCommonCode.Pdf
             InitializeComponent();
             _format = initialFormat;
             pdfVersion.Text = _format.Version;
-            compressedCrossReferenceTableCheckBox.IsChecked = _format.CompressedCrossReferenceTable;
+            if (pdfVersion.SelectedIndex > 4)
+            {
+                compressedCrossReferenceTableCheckBox.IsChecked = _format.CompressedCrossReferenceTable;
+                compressedObjectStreamsCheckBox.IsChecked = _format.CompressedObjectStreams;
+            }
+            else
+            {
+                compressedCrossReferenceTableCheckBox.IsChecked = false;
+                compressedObjectStreamsCheckBox.IsChecked = false;
+            }
             binaryFormatCheckBox.IsChecked = _format.BinaryFormat;
             _newEncryptionSettings = initialEncryptionSettings;
 
@@ -72,6 +81,7 @@ namespace WpfDemosCommonCode.Pdf
         {
             _format = new PdfFormat(pdfVersion.Text,
                 compressedCrossReferenceTableCheckBox.IsChecked.Value == true,
+                compressedObjectStreamsCheckBox.IsChecked == true,
                 binaryFormatCheckBox.IsChecked.Value == true,
                 linearizedCheckBox.IsChecked == true);
             DialogResult = true;
@@ -93,13 +103,18 @@ namespace WpfDemosCommonCode.Pdf
         private void pdfVersion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             securityButton.IsEnabled = pdfVersion.SelectedIndex >= 1;
+            binaryFormatCheckBox.IsChecked = true;
             if (pdfVersion.SelectedIndex > 4)
             {
-                compressedCrossReferenceTableCheckBox.IsChecked = _format.CompressedCrossReferenceTable;
+                compressedObjectStreamsCheckBox.IsChecked = true;
+                compressedObjectStreamsCheckBox.IsEnabled = true;
+                compressedCrossReferenceTableCheckBox.IsChecked = true;
                 compressedCrossReferenceTableCheckBox.IsEnabled = true;
             }
             else
             {
+                compressedObjectStreamsCheckBox.IsChecked = false;
+                compressedObjectStreamsCheckBox.IsEnabled = false;
                 compressedCrossReferenceTableCheckBox.IsChecked = false;
                 compressedCrossReferenceTableCheckBox.IsEnabled = false;
             }

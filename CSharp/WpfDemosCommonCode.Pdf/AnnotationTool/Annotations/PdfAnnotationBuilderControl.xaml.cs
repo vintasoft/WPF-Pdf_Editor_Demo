@@ -596,6 +596,9 @@ namespace WpfDemosCommonCode.Pdf
             string annotationImageResourceName,
             AnnotationType annotationType)
         {
+            if (Vintasoft.Imaging.ImagingEnvironment.IsInDesignMode)
+                return;
+
             string resourceNameFormatString = "WpfDemosCommonCode.Pdf.AnnotationTool.Annotations.Resources.{0}.png";
             using (Vintasoft.Imaging.VintasoftImage image =
                 DemosResourcesManager.GetResourceAsImage(string.Format(resourceNameFormatString, annotationImageResourceName)))
