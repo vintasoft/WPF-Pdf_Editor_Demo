@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
@@ -305,7 +305,7 @@ namespace WpfDemosCommonCode.Imaging
                 text = _textSelectionTool.SelectedText;
 
             // copy text to clipboard
-            Clipboard.SetText(text, TextDataFormat.Text);
+            Clipboard.SetText(text, TextDataFormat.UnicodeText);
         }
 
         /// <summary>
