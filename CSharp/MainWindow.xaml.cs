@@ -333,10 +333,13 @@ namespace WpfPdfEditorDemo
             // specify that exceptions of visual tools must be catched
             DemosTools.CatchVisualToolExceptions(imageViewer1);
 
+
+            // set CustomFontProgramsController for all opened PDF documents
+            CustomFontProgramsController.SetDefaultFontProgramsController();
+
             // enable PDF password dialog
             PdfAuthenticateTools.EnableAuthenticateRequest = true;
-            // set CustomFontProgramsController for all opened PDF documents
-            PdfDemosTools.EnableUsageOfDefaultFontProgramsController();
+            
             // generate interactive form fields appearance if need
             PdfDemosTools.NeedGenerateInteractiveFormFieldsAppearance = true;
 
