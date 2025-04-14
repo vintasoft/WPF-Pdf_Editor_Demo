@@ -42,7 +42,7 @@
     <Reference Include="Jint.Vintasoft">
       <HintPath>.\Jint.Vintasoft\DotNet9\Jint.Vintasoft.dll</HintPath>
     </Reference>
-    <PackageReference Include="Vintasoft.Barcode" Version="15.1.5.1" />
+    <PackageReference Include="Vintasoft.Barcode" Version="15.1.6.1" />
     <PackageReference Include="Vintasoft.Imaging" Version="14.0.9.1" />
     <PackageReference Include="Vintasoft.Imaging.Gdi" Version="14.0.9.1" />
     <PackageReference Include="Vintasoft.Imaging.Annotation" Version="14.0.9.1" />
