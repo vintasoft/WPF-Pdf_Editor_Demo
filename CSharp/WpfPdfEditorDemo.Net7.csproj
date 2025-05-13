@@ -74,7 +74,7 @@
     <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="14.0.11.1" />
     <PackageReference Include="Vintasoft.Imaging.Pdf.Wpf.UI" Version="11.0.11.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.4.0.1" />
-    <PackageReference Include="Vintasoft.WpfTwain" Version="15.1.1.1" />
+    <PackageReference Include="Vintasoft.WpfTwain" Version="15.1.2.1" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
