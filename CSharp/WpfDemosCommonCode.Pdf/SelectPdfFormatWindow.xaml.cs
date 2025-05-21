@@ -81,7 +81,7 @@ namespace WpfDemosCommonCode.Pdf
         {
             _format = new PdfFormat(pdfVersion.Text,
                 compressedCrossReferenceTableCheckBox.IsChecked.Value == true,
-                compressedObjectStreamsCheckBox.IsChecked == true,
+                compressedObjectStreamsCheckBox.IsChecked.Value == true,
                 binaryFormatCheckBox.IsChecked.Value == true,
                 linearizedCheckBox.IsChecked == true);
             DialogResult = true;

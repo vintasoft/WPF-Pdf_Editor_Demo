@@ -333,7 +333,6 @@ namespace WpfPdfEditorDemo
             // specify that exceptions of visual tools must be catched
             DemosTools.CatchVisualToolExceptions(imageViewer1);
 
-
             // set CustomFontProgramsController for all opened PDF documents
             CustomFontProgramsController.SetDefaultFontProgramsController();
 

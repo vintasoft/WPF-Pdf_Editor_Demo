@@ -1253,8 +1253,8 @@ namespace WpfDemosCommonCode.Pdf
                 officeAnnotation.SetDocumentStream(documentStream);
                 documentStream.Dispose();
 
-                // enable use releative size instread specified size of graphics object
-                officeAnnotation.UseGraphicObjectReleativeSize = true;
+                // enable use relative size instread specified size of graphics object
+                officeAnnotation.UseGraphicObjectRelativeSize = true;
 
                 // set the annotation rectangle
                 officeAnnotation.Rectangle = GetNewAnnotationRectangle();

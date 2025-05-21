@@ -119,7 +119,7 @@ namespace WpfDemosCommonCode.Pdf.Security
             window.CanChangeSignatureAppearance = true;
             window.CreateSignatureAppearance += Form_CreateSignatureAppearance;
 
-            return window.ShowDialog() == true;
+            return window.ShowDialog().Value == true;
         }
 
         /// <summary>

@@ -84,33 +84,6 @@ namespace WpfDemosCommonCode.Pdf
         }
 
         /// <summary>
-        /// Enables usage of default custom font programs controller for all opened PDF documents.
-        /// </summary>
-        public static void EnableUsageOfDefaultFontProgramsController()
-        {
-            // subscribe to the PdfDocumentController.DocumentOpened event
-            PdfDocumentController.DocumentOpened += PdfDocumentController_DocumentOpened;
-        }
-
-        /// <summary>
-        /// Disables usage of default custom font programs controller for all opened PDF documents.
-        /// </summary>
-        public static void DisableUsageOfDefaultFontProgramsController()
-        {
-            // unsubscribe from the PdfDocumentController.DocumentOpened event
-            PdfDocumentController.DocumentOpened -= PdfDocumentController_DocumentOpened;
-        }
-
-        /// <summary>
-        /// PDF document is opened.
-        /// </summary>
-        private static void PdfDocumentController_DocumentOpened(object sender, Vintasoft.Imaging.Pdf.PdfDocumentEventArgs e)
-        {
-            // set the default custom font programs controller as a document font programs controller
-            e.Document.FontProgramsController = CustomFontProgramsController.Default;
-        }
-
-        /// <summary>
         /// Returns a value indicating whether all specified images are contained in specified PDF document.
         /// </summary>
         /// <param name="images">An image collection.</param>
