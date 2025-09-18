@@ -98,7 +98,7 @@ namespace WpfDemosCommonCode.Office
             // layout only first page
             e.LayoutSettings.PageCount = 1;
 
-            // use relative size instread specified size of graphics object
+            // use reletive size instread specified size of graphics object
             e.LayoutSettings.UseGraphicObjectRelativeSize = true;
 
             // set page size to 70x70mm
