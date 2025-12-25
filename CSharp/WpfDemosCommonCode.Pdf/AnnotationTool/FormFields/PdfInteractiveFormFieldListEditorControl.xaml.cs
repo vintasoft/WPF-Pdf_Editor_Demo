@@ -119,9 +119,9 @@ namespace WpfDemosCommonCode.Pdf
 
                     if (value != null)
                     {
-                        foreach (PdfInteractiveFormField field in value)
+                        foreach (PdfInteractiveFormField formField in value)
                         {
-                            items.Add(new ListBoxItem(field));
+                            items.Add(new ListBoxItem(formField));
                         }
                     }
                 }

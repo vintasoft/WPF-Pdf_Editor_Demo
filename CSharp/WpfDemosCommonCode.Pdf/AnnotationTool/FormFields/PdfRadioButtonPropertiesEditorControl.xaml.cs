@@ -104,14 +104,14 @@ namespace WpfDemosCommonCode.Pdf
                             if (_offAppearanceState == _currentAppearanceState)
                             {
                                 // for each field in radio button group
-                                foreach (PdfInteractiveFormField field in radioButtonGroup.Kids)
+                                foreach (PdfInteractiveFormField formField in radioButtonGroup.Kids)
                                 {
                                     // if field is radio button
-                                    if (field is PdfInteractiveFormRadioButtonField)
+                                    if (formField is PdfInteractiveFormRadioButtonField)
                                     {
                                         // get the radio button
                                         PdfInteractiveFormRadioButtonField radioButtonField =
-                                            (PdfInteractiveFormRadioButtonField)field;
+                                            (PdfInteractiveFormRadioButtonField)formField;
 
                                         // get the checked appearance state of radio button
                                         string checkedAppearanceStateName = radioButtonField.GetCheckedAppearanceStateName();

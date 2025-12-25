@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 
 using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 
@@ -54,18 +53,18 @@ namespace WpfDemosCommonCode.Pdf
                     if (_interactiveForm.CalculationOrder != null)
                     {
                         // for each field in caculation order
-                        foreach (PdfInteractiveFormField field in _interactiveForm.CalculationOrder)
+                        foreach (PdfInteractiveFormField formField in _interactiveForm.CalculationOrder)
                         {
                             // if field has the "Calculate" action
-                            if (field.IsCalculated)
+                            if (formField.IsCalculated)
                             {
                                 ListBoxItem item = new ListBoxItem();
-                                item.Content = field.FullyQualifiedName;
-                                item.Tag = field;
+                                item.Content = formField.FullyQualifiedName;
+                                item.Tag = formField;
                                 // add field to a form list box
                                 interactiveFormListBox.Items.Add(item);
                                 // add field to a list of fields with "Calculate" action
-                                fieldsWithCalculateAction.Add(field);
+                                fieldsWithCalculateAction.Add(formField);
                             }
                         }
                     }
@@ -73,17 +72,17 @@ namespace WpfDemosCommonCode.Pdf
                     // get all interactive form fields of interactive form
                     PdfInteractiveFormField[] interactiveFormFields = _interactiveForm.GetFields();
                     // for each field
-                    foreach (PdfInteractiveFormField field in interactiveFormFields)
+                    foreach (PdfInteractiveFormField formField in interactiveFormFields)
                     {
                         // if field has "Calculate" action
-                        if (field.IsCalculated)
+                        if (formField.IsCalculated)
                         {
                             // if list of fields with "Calculate" action does NOT contain field
-                            if (!fieldsWithCalculateAction.Contains(field))
+                            if (!fieldsWithCalculateAction.Contains(formField))
                             {
                                 ListBoxItem item = new ListBoxItem();
-                                item.Content = field.FullyQualifiedName;
-                                item.Tag = field;
+                                item.Content = formField.FullyQualifiedName;
+                                item.Tag = formField;
                                 // add field to a form list box
                                 interactiveFormListBox.Items.Add(item);
                             }
