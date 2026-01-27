@@ -13,7 +13,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
     <EnableDefaultItems>false</EnableDefaultItems>
-    <Version>15.0.1.1</Version>
+    <Version>15.0.2.1</Version>
     <AssemblyName>WpfPdfEditorDemo</AssemblyName>
     <RootNamespace>WpfPdfEditorDemo</RootNamespace>
     <StartupObject>WpfPdfEditorDemo.App</StartupObject>
@@ -42,34 +42,34 @@
     <Reference Include="Jint.Vintasoft">
       <HintPath>.\Jint.Vintasoft\DotNet8\Jint.Vintasoft.dll</HintPath>
     </Reference>
-    <PackageReference Include="Vintasoft.Barcode" Version="15.3.5.1" />
-    <PackageReference Include="Vintasoft.Imaging" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.UI" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Wpf.UI" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="10.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="12.0.1.1" />
+    <PackageReference Include="Vintasoft.Barcode" Version="15.3.6.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.UI" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Wpf.UI" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="10.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="12.0.2.1" />
     <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="10.1.0.1" />
-    <PackageReference Include="Vintasoft.Imaging.Ocr" Version="10.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Ocr.Tesseract" Version="10.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="7.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.JavaScript" Version="12.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Mrc" Version="12.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="12.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Ocr" Version="12.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="12.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.UI" Version="12.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.Wpf.UI" Version="12.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.WebpCodec" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.0.1.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Wpf.UI" Version="12.0.1.1" />
+    <PackageReference Include="Vintasoft.Imaging.Ocr" Version="10.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Ocr.Tesseract" Version="10.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="7.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.JavaScript" Version="12.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Mrc" Version="12.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="12.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Ocr" Version="12.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="12.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.UI" Version="12.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.Wpf.UI" Version="12.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.WebpCodec" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Wpf.UI" Version="12.0.2.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.6.1.1" />
     <PackageReference Include="Vintasoft.WpfTwain" Version="15.3.3.1" />
   </ItemGroup>
