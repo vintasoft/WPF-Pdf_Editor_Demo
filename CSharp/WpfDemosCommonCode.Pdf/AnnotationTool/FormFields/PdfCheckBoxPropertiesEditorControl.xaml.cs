@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to view and edit properties of

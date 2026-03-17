@@ -6,7 +6,7 @@ using Vintasoft.Imaging.Pdf.Tree.Fonts;
 
 using Vintasoft.Imaging.Text;
 
-namespace WpfDemosCommonCode
+namespace WpfCommonCode
 {
     /// <summary>
     /// Contains collection of helper-algorithms with fonts for demo applications.

@@ -9,7 +9,7 @@ using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Tree;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to view and edit PDF goto action.

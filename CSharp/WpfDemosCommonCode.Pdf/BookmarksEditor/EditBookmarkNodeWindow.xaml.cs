@@ -7,10 +7,10 @@ using Vintasoft.Imaging.Pdf.Tree;
 using Vintasoft.Imaging.Wpf;
 using Vintasoft.Imaging.Wpf.UI;
 
-using WpfDemosCommonCode.CustomControls;
+using WpfCommonCode.CustomControls;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to view and edit parameters of PDF bookmark.

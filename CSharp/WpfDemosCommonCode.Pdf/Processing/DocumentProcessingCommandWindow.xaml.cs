@@ -5,10 +5,10 @@ using System.Windows.Controls;
 using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Processing;
 
-using WpfDemosCommonCode.Imaging;
+using WpfCommonCode.Imaging;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to view the PDF document processing commands.

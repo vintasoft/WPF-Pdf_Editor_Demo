@@ -4,7 +4,7 @@ using System.Windows;
 using Vintasoft.Imaging.Pdf.Tree;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to rename the JavaScript Action of PDF document.

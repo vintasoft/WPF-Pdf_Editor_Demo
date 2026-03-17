@@ -9,7 +9,7 @@ using Vintasoft.Imaging;
 using Vintasoft.Imaging.Pdf.Tree.Annotations;
 using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to show information about annotations of PDF Page.

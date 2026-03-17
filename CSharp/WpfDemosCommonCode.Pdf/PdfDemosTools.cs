@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -12,10 +12,10 @@ using Vintasoft.Imaging.UI;
 using Vintasoft.Imaging.UIActions;
 using Vintasoft.Imaging.Wpf.UI.VisualTools;
 
-using WpfDemosCommonCode.Imaging;
+using WpfCommonCode.Imaging;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Contains common static functions for PDF demos.

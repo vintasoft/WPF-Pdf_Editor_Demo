@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
@@ -10,7 +10,7 @@ using Vintasoft.Imaging.Wpf.UI;
 using Vintasoft.Imaging.Wpf;
 using Vintasoft.Imaging.Wpf.UI.VisualTools;
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// A window that allows to find a text on PDF page.

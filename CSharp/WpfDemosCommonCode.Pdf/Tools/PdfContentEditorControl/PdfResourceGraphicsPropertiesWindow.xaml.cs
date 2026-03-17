@@ -3,7 +3,7 @@
 using Vintasoft.Imaging.Pdf.Content;
 using Vintasoft.Imaging.Pdf.Tree;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to edit the PDF content graphics properties of XObject resource.

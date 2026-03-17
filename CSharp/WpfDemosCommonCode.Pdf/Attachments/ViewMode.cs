@@ -1,5 +1,5 @@
 ﻿
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Specifies available view modes.

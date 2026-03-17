@@ -1,7 +1,7 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfPushButtonPropertiesEditorControl"
+﻿<UserControl x:Class="WpfCommonCode.Pdf.PdfPushButtonPropertiesEditorControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Controls="clr-namespace:WpfDemosCommonCode.Pdf"
+    xmlns:Controls="clr-namespace:WpfCommonCode.Pdf"
     Width="Auto" MinWidth="210"
     Height="Auto" MinHeight="282">
     <UserControl.Resources>

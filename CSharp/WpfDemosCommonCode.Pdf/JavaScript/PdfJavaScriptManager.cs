@@ -4,7 +4,7 @@ using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.JavaScriptApi;
 using Vintasoft.Imaging.Wpf.UI;
 
-namespace WpfDemosCommonCode.Pdf.JavaScript
+namespace WpfCommonCode.Pdf.JavaScript
 {
     /// <summary>
     /// PDF JavaScript engine manager.

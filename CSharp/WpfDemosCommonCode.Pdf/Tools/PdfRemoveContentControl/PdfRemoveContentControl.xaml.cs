@@ -14,12 +14,12 @@ using Vintasoft.Imaging.Wpf.UI.VisualTools;
 using Vintasoft.Imaging.Wpf.UI.VisualTools.UserInteraction;
 using Vintasoft.Imaging.Wpf.Utils;
 
-using WpfDemosCommonCode.Imaging;
-using WpfDemosCommonCode.Pdf.Security;
+using WpfCommonCode.Imaging;
+using WpfCommonCode.Pdf.Security;
 using Vintasoft.Imaging.Wpf;
 using Vintasoft.Imaging.Text;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to create, manage and apply redaction marks to a PDF page.

@@ -1,7 +1,7 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Imaging.WpfTextSelectionControl"
+﻿<UserControl x:Class="WpfCommonCode.Imaging.WpfTextSelectionControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    xmlns:CustomControls="clr-namespace:WpfCommonCode.CustomControls"
     Height="550" Width="230">
     <UserControl.Resources>
         <ContextMenu x:Key="TextSelectionContextMenu" Opened="TextSelectionContextMenu_Opened">

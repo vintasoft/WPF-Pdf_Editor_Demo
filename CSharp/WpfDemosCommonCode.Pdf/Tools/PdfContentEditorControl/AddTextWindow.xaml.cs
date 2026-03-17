@@ -10,7 +10,7 @@ using Vintasoft.Imaging.Pdf.Tree.Fonts;
 using Vintasoft.Imaging.Wpf;
 
 
-namespace WpfDemosCommonCode
+namespace WpfCommonCode
 {
     /// <summary>
     /// A window that allows to enter the text, which must be added to a PDF document.

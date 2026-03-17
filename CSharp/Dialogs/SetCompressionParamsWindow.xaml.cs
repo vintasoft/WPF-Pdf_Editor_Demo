@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using Vintasoft.Imaging;
 using Vintasoft.Imaging.Codecs.Encoders;
 
-using WpfDemosCommonCode.Imaging.Codecs.Dialogs;
+using WpfCommonCode.Imaging.Codecs.Dialogs;
 
 namespace WpfPdfEditorDemo
 {

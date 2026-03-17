@@ -2,7 +2,7 @@
 using System.Windows;
 
 
-namespace WpfDemosCommonCode.Twain
+namespace WpfCommonCode.Twain
 {
     /// <summary>
     /// A window that allows to view and edit mode of 64-bit TWAIN2 device manager.

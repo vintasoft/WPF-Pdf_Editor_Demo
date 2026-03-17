@@ -3,7 +3,7 @@
 using Vintasoft.Imaging.Processing;
 
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// Stores a named result of execution of a composite processing command.

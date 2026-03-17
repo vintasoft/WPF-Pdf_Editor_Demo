@@ -8,7 +8,7 @@ using Vintasoft.Imaging.Wpf.UI;
 using Vintasoft.Imaging.Pdf.Tree.OptionalContent;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to view and change settings of optional content (layers) of PDF document.

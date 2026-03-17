@@ -3,7 +3,7 @@ using System.Windows.Media.Imaging;
 using Vintasoft.Imaging.Pdf.Wpf.UI;
 
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// Stores information about a <see cref="WpfPdfContentXObjectTool"/> action.

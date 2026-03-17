@@ -12,7 +12,7 @@ using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to view and edit the PDF interactive form of PDF document.

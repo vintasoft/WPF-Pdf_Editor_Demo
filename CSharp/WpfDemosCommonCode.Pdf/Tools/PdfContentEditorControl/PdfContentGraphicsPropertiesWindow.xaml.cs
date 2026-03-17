@@ -7,7 +7,7 @@ using Vintasoft.Imaging.Text;
 using Vintasoft.Imaging.Wpf;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to edit the PDF content graphics properties.

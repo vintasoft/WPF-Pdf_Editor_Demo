@@ -10,7 +10,7 @@ using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 using Vintasoft.Imaging.Utils;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to show information about annotations of PDF Annotation Tool.

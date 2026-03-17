@@ -2,7 +2,7 @@
 using System.Windows.Media;
 
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// A view of the processing item.

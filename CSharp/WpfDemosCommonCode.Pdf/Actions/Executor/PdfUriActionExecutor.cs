@@ -5,7 +5,7 @@ using System.Windows;
 using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Tree;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Executor of "URI" actions that opens URL using the default internet browser.

@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfDemosCommonCode.CreateFontWindow"
+﻿<Window x:Class="WpfCommonCode.CreateFontWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:pdfConstrols ="clr-namespace:Vintasoft.Imaging.Pdf.Wpf.UI;assembly=Vintasoft.Imaging.Pdf.Wpf.UI"   

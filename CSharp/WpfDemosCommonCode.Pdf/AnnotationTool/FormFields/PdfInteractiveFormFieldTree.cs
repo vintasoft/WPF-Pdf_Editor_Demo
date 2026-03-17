@@ -13,7 +13,7 @@ using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 using Vintasoft.Imaging.Utils;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Represents the tree view of PDF interactive form.

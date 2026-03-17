@@ -15,7 +15,7 @@ using Vintasoft.Imaging.Pdf.Wpf.UI;
 using Vintasoft.Imaging.UI;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to view PDF resource.

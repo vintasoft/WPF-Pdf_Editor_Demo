@@ -11,11 +11,11 @@ using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Tree.DigitalSignatures;
 using Vintasoft.Imaging.Pdf.Wpf.UI;
 
-using WpfDemosCommonCode.CustomControls;
-using WpfDemosCommonCode.Imaging;
-using WpfDemosCommonCode.Imaging.Codecs;
+using WpfCommonCode.CustomControls;
+using WpfCommonCode.Imaging;
+using WpfCommonCode.Imaging.Codecs;
 
-namespace WpfDemosCommonCode.Pdf.Security
+namespace WpfCommonCode.Pdf.Security
 {
     /// <summary>
     /// Form that allows to create signature field appearance.

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.EmbeddedFileSpecificationPropertiesEditor"
+﻿<UserControl x:Class="WpfCommonCode.Pdf.EmbeddedFileSpecificationPropertiesEditor"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     MinHeight="130" MinWidth="254"

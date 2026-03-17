@@ -13,7 +13,7 @@ using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 using Vintasoft.Imaging.Wpf.UI.VisualTools.UserInteraction;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to view and edit PDF annotations.

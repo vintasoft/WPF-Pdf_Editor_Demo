@@ -9,7 +9,7 @@ using Vintasoft.Imaging.Text;
 using Vintasoft.Imaging.Wpf.UI;
 using Vintasoft.Imaging.Wpf.UI.VisualTools;
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// Tool strip that allows to search text in a PDF document.

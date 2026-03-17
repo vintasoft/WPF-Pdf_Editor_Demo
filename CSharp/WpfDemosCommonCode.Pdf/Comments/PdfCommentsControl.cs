@@ -7,9 +7,9 @@ using Vintasoft.Imaging.Pdf.Tree.Annotations;
 using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 using Vintasoft.Imaging.Wpf;
 
-using WpfDemosCommonCode.Annotation;
+using WpfCommonCode.Annotation;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Provides a control that displays collection of PDF comments (PdfAnnotationComment).

@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using Vintasoft.Imaging.Pdf.Tree;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Form that allows to edit the JavaScript of PDF document.

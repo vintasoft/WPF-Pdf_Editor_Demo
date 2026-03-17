@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfResourceViewerControl"
+﻿<UserControl x:Class="WpfCommonCode.Pdf.PdfResourceViewerControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:WpfControls="clr-namespace:Vintasoft.Imaging.Wpf.UI;assembly=Vintasoft.Imaging.Wpf.UI"

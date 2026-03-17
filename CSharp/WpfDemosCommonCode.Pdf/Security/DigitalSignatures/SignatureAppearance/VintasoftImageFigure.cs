@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows;
 
 
-namespace WpfDemosCommonCode.Pdf.Security
+namespace WpfCommonCode.Pdf.Security
 {
     /// <summary>
     /// Represents a VintasoftImage graphics figure.

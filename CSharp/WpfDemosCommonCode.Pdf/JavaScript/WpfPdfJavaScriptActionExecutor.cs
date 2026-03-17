@@ -10,7 +10,7 @@ using Vintasoft.Imaging.Pdf.Tree;
 using Vintasoft.Imaging.Utils;
 using Vintasoft.Imaging.Pdf.JavaScript;
 
-namespace WpfDemosCommonCode.Pdf.JavaScript
+namespace WpfCommonCode.Pdf.JavaScript
 {
     /// <summary>
     /// Executor of JavaScript actions that interprets JavaScript code.

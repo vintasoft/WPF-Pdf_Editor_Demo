@@ -3,7 +3,7 @@
 using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 
 
-namespace WpfDemosCommonCode.Pdf.Security
+namespace WpfCommonCode.Pdf.Security
 {
     /// <summary>
     /// Form that allows to select signature field from list.

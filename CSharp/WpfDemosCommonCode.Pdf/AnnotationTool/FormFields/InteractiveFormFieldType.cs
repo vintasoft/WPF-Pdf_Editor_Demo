@@ -1,4 +1,4 @@
-﻿namespace WpfDemosCommonCode.Pdf
+﻿namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Specifies available types of <see cref="PdfInteractiveFormField"/>, which can be built.

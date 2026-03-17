@@ -1,9 +1,9 @@
-﻿<Window x:Class="WpfDemosCommonCode.Pdf.AttachmentsEditorWindow"
+﻿<Window x:Class="WpfCommonCode.Pdf.AttachmentsEditorWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:win="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
     xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-    xmlns:pdf="clr-namespace:WpfDemosCommonCode.Pdf"
+    xmlns:pdf="clr-namespace:WpfCommonCode.Pdf"
     Title="Attachments (Portfolio) Editor" Height="510" MinHeight="150" Width="750" MinWidth="200"
     WindowStartupLocation="CenterOwner">
     <Window.Resources>

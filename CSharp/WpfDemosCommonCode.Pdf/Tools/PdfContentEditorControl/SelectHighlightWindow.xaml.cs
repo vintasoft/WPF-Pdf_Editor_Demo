@@ -5,7 +5,7 @@ using Vintasoft.Imaging.Pdf.Drawing;
 using Vintasoft.Imaging.Pdf.Tree;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to set the blending settings for PDF pen or PDF brush.

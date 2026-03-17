@@ -4,7 +4,7 @@ using System.Net;
 using System.Text;
 using System.Windows;
 
-namespace WpfDemosCommonCode
+namespace WpfCommonCode
 {
     /// <summary>
     /// A window that allows to upload data to a web server.

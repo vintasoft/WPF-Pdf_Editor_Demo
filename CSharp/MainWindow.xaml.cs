@@ -60,15 +60,15 @@ using Vintasoft.Imaging.Ocr.Tesseract;
 using Vintasoft.Imaging.Ocr;
 #endif
 
-using WpfDemosCommonCode;
-using WpfDemosCommonCode.Imaging;
-using WpfDemosCommonCode.Imaging.Codecs;
-using WpfDemosCommonCode.Annotation;
-using WpfDemosCommonCode.Pdf;
-using WpfDemosCommonCode.Pdf.Security;
-using WpfDemosCommonCode.Pdf.JavaScript;
-using WpfDemosCommonCode.Imaging.Codecs.Dialogs;
-using WpfDemosCommonCode.Ocr;
+using WpfCommonCode;
+using WpfCommonCode.Imaging;
+using WpfCommonCode.Imaging.Codecs;
+using WpfCommonCode.Annotation;
+using WpfCommonCode.Pdf;
+using WpfCommonCode.Pdf.Security;
+using WpfCommonCode.Pdf.JavaScript;
+using WpfCommonCode.Imaging.Codecs.Dialogs;
+using WpfCommonCode.Ocr;
 
 namespace WpfPdfEditorDemo
 {
@@ -681,7 +681,7 @@ namespace WpfPdfEditorDemo
             base.OnContentRendered(e);
 
 #if !REMOVE_OFFICE_PLUGIN && !REMOVE_PDFVISUALEDITOR_PLUGIN
-            WpfDemosCommonCode.Office.OfficeDocumentVisualEditorWindow documentVisualEditorForm = new WpfDemosCommonCode.Office.OfficeDocumentVisualEditorWindow();
+            WpfCommonCode.Office.OfficeDocumentVisualEditorWindow documentVisualEditorForm = new WpfCommonCode.Office.OfficeDocumentVisualEditorWindow();
             documentVisualEditorForm.Owner = this;
             documentVisualEditorForm.AddVisualTool(_contentEditorTool);
             documentVisualEditorForm.AddVisualTool(_annotationTool);

@@ -7,10 +7,10 @@ using System.Windows.Input;
 using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Tree.Fonts;
 
-using WpfDemosCommonCode;
+using WpfCommonCode;
 
 
-namespace WpfDemosCommonCode.CustomControls
+namespace WpfCommonCode.CustomControls
 {
     /// <summary>
     /// A panel that allows to show the selected PDF font and

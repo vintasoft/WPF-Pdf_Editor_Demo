@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -9,12 +9,12 @@ using Microsoft.Win32;
 
 using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Tree.Fonts;
-using WpfDemosCommonCode.Imaging;
-using WpfDemosCommonCode.Pdf;
-using WpfDemosCommonCode.Pdf.Security;
+using WpfCommonCode.Imaging;
+using WpfCommonCode.Pdf;
+using WpfCommonCode.Pdf.Security;
 
 
-namespace WpfDemosCommonCode
+namespace WpfCommonCode
 {
     /// <summary>
     /// A window that allows to create new PDF font.

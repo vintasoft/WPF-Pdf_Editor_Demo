@@ -8,7 +8,7 @@ using System.Drawing;
 using Vintasoft.Imaging.Fonts;
 using Vintasoft.Imaging.Pdf;
 
-namespace WpfDemosCommonCode.Pdf.Security
+namespace WpfCommonCode.Pdf.Security
 {
     /// <summary>
     /// Represents a PDF graphic figure that defines the appearance of the signature field.

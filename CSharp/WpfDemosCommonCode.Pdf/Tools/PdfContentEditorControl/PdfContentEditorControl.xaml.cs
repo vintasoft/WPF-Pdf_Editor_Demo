@@ -26,12 +26,12 @@ using Vintasoft.Imaging.Wpf.UI;
 using Vintasoft.Imaging.Wpf.UI.UIElements;
 using Vintasoft.Imaging.Wpf.UI.VisualTools.UserInteraction;
 
-using WpfDemosCommonCode.CustomControls;
-using WpfDemosCommonCode.Imaging;
-using WpfDemosCommonCode.Imaging.Codecs;
-using WpfDemosCommonCode.Office;
+using WpfCommonCode.CustomControls;
+using WpfCommonCode.Imaging;
+using WpfCommonCode.Imaging.Codecs;
+using WpfCommonCode.Office;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to create and manage graphics figures.

@@ -7,9 +7,9 @@ using System.Windows.Threading;
 
 using Vintasoft.Imaging.Pdf;
 
-using WpfDemosCommonCode.Pdf.Security;
+using WpfCommonCode.Pdf.Security;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Allows to enable PDF document authentication in PDF demos.

@@ -3,7 +3,7 @@
 using Vintasoft.Imaging.Processing;
 
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// A control that allows to view the processing commands.

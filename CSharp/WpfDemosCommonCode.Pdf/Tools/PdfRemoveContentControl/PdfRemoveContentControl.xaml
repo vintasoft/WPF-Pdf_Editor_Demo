@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfRemoveContentControl"
+﻿<UserControl x:Class="WpfCommonCode.Pdf.PdfRemoveContentControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="500" Width="300">

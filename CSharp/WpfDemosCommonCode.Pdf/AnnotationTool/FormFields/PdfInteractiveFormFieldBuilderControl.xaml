@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfInteractiveFormFieldBuilderControl"
+﻿<UserControl x:Class="WpfCommonCode.Pdf.PdfInteractiveFormFieldBuilderControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Width="Auto" MinWidth="150"

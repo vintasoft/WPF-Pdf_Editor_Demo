@@ -6,7 +6,7 @@ using Vintasoft.Imaging.Pdf.Tree;
 using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to view and edit properties of the <see cref="PdfInteractiveFormComboBoxField"/>.

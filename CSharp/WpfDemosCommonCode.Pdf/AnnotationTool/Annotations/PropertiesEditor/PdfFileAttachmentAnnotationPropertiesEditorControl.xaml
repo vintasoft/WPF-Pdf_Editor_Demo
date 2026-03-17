@@ -1,7 +1,7 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfFileAttachmentAnnotationPropertiesEditorControl"
+﻿<UserControl x:Class="WpfCommonCode.Pdf.PdfFileAttachmentAnnotationPropertiesEditorControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.Pdf"         
+    xmlns:CustomControls="clr-namespace:WpfCommonCode.Pdf"         
     MinHeight="186" MaxHeight="186" MinWidth="256"
     Width="Auto">
     <Grid Name="mainGrid">

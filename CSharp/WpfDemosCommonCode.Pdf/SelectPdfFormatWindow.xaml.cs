@@ -3,10 +3,10 @@ using System.Windows.Controls;
 
 using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Security;
-using WpfDemosCommonCode.Pdf.Security;
+using WpfCommonCode.Pdf.Security;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to select format of PDF document.

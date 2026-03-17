@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Vintasoft.Imaging.Pdf.Tree.Annotations;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Controller of PDF annotation appearance generators.

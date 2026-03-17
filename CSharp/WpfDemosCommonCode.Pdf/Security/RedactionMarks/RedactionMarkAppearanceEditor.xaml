@@ -1,7 +1,7 @@
-﻿<Window x:Class="WpfDemosCommonCode.Pdf.Security.RedactionMarkAppearanceEditor"
+﻿<Window x:Class="WpfCommonCode.Pdf.Security.RedactionMarkAppearanceEditor"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    xmlns:CustomControls="clr-namespace:WpfCommonCode.CustomControls"
     xmlns:wpfUi="clr-namespace:Vintasoft.Imaging.Wpf.UI;assembly=Vintasoft.Imaging.Wpf.UI"
     Title="Redaction Mark Appearance Editor" MinHeight="250" Height="550" MinWidth="500" Width="600"
     WindowStartupLocation="CenterOwner" Loaded="Window_Loaded" >

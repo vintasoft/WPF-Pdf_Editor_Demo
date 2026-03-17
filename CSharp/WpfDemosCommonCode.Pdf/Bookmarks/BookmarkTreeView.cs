@@ -1,4 +1,4 @@
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -9,7 +9,7 @@ using Vintasoft.Imaging.Wpf;
 using Vintasoft.Imaging.Wpf.UI;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A tree view that allows to view bookmarks of PDF document.

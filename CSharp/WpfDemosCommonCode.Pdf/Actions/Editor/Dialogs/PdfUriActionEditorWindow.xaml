@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfDemosCommonCode.Pdf.PdfUriActionEditorWindow"
+﻿<Window x:Class="WpfCommonCode.Pdf.PdfUriActionEditorWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="URI Action Editor" Height="100" Width="400" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize">

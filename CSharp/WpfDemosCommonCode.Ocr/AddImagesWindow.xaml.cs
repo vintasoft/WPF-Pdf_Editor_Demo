@@ -14,11 +14,11 @@ using Vintasoft.Imaging.ImageProcessing.Document;
 using Vintasoft.Imaging.ImageProcessing.Info;
 using Vintasoft.Imaging.ImageProcessing.Transforms;
 
-using WpfDemosCommonCode.Imaging;
-using WpfDemosCommonCode.Imaging.Codecs;
-using WpfDemosCommonCode.Twain;
+using WpfCommonCode.Imaging;
+using WpfCommonCode.Imaging.Codecs;
+using WpfCommonCode.Twain;
 
-namespace WpfDemosCommonCode.Ocr
+namespace WpfCommonCode.Ocr
 {
     /// <summary>
     /// A window that allows to add images.

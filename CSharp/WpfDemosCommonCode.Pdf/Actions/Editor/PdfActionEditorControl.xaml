@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfActionEditorControl"
+﻿<UserControl x:Class="WpfCommonCode.Pdf.PdfActionEditorControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     MinHeight="160" MinWidth="165" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

@@ -4,7 +4,7 @@ using Vintasoft.Imaging.Pdf.Tree.Annotations;
 using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 using Vintasoft.Imaging.Wpf;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Contains common static functions for PDF annotations.

@@ -8,7 +8,7 @@ using Vintasoft.Imaging;
 using Vintasoft.Imaging.Pdf.Tree;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to specify parameters of page, which should be added to a PDF document.

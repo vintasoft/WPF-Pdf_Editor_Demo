@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Determines available view types for PDF resource tree.

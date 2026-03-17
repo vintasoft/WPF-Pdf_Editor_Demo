@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -8,7 +8,7 @@ using Vintasoft.Imaging.Wpf;
 using Vintasoft.WpfTwain; 
 #endif
 
-namespace WpfDemosCommonCode.Twain
+namespace WpfCommonCode.Twain
 {
     /// <summary>
     /// Represents a simple TWAIN manager for WPF.

@@ -6,10 +6,10 @@ using Vintasoft.Imaging.Pdf.Tree.Annotations;
 using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 using Vintasoft.Imaging.Pdf.Tree.InteractiveForms.AppearanceGenerators;
 
-using WpfDemosCommonCode.Pdf.Security;
+using WpfCommonCode.Pdf.Security;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Appearance generator for PDF signature field.

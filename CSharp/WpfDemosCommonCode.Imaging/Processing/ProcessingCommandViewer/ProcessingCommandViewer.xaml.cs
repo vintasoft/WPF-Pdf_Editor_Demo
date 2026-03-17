@@ -16,7 +16,7 @@ using Vintasoft.Imaging.Processing.Analyzers;
 using Vintasoft.Imaging.Wpf;
 
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// A control that allows to view processing commands.

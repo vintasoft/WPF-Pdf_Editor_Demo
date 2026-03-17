@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfFreeTextAnnotationPropertiesEditorControl"
+﻿<UserControl x:Class="WpfCommonCode.Pdf.PdfFreeTextAnnotationPropertiesEditorControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
-    xmlns:PdfCustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    xmlns:CustomControls="clr-namespace:WpfCommonCode.CustomControls"
+    xmlns:PdfCustomControls="clr-namespace:WpfCommonCode.CustomControls"
     MinHeight="196" Height="Auto" MinWidth="160" 
     Width="Auto">
     <UserControl.Resources>

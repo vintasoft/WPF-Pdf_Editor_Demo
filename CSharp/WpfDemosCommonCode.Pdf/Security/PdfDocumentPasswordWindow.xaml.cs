@@ -7,7 +7,7 @@ using Vintasoft.Imaging.Pdf.Security;
 #endif
 
 
-namespace WpfDemosCommonCode.Pdf.Security
+namespace WpfCommonCode.Pdf.Security
 {
     /// <summary>
     /// Form that allows to enter password of PDF document.

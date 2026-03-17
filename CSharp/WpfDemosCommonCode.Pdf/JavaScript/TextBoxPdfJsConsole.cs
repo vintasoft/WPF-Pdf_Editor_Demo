@@ -4,7 +4,7 @@ using System.Text;
 using Vintasoft.Imaging.Pdf.JavaScriptApi;
 using System.Windows.Controls;
 
-namespace WpfDemosCommonCode.Pdf.JavaScript
+namespace WpfCommonCode.Pdf.JavaScript
 {
     /// <summary>
     /// Textbox for PDF JavaScript console.

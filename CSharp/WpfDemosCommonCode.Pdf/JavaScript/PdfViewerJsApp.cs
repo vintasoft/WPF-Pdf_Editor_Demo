@@ -11,7 +11,7 @@ using Vintasoft.Imaging.Wpf.Print;
 using Vintasoft.Imaging.Wpf.UI;
 using Vintasoft.Imaging.Pdf.Wpf.UI.JavaScript;
 
-namespace WpfDemosCommonCode.Pdf.JavaScript
+namespace WpfCommonCode.Pdf.JavaScript
 {
     /// <summary>
     /// An JavaScript API "app" object that represents the WPF PDF Viewer application. 

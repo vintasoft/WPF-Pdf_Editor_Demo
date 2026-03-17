@@ -1,9 +1,9 @@
-using System.Windows;
+﻿using System.Windows;
 
 using Vintasoft.Imaging.Pdf.Tree;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to view and edit PDF named action.

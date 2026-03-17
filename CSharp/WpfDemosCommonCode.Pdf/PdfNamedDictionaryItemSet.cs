@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Vintasoft.Imaging.Pdf.Tree;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Represents a set of name-value pairs.

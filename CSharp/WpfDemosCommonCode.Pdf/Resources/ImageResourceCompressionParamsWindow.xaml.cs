@@ -2,10 +2,10 @@
 
 using Vintasoft.Imaging.Pdf;
 
-using WpfDemosCommonCode.Imaging;
+using WpfCommonCode.Imaging;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to set the compression parameters of PDF image-resource.

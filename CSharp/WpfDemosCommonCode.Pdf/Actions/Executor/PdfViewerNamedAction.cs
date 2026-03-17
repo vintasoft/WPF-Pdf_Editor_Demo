@@ -1,5 +1,5 @@
 ﻿
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Contains information about PDF viewer named action.

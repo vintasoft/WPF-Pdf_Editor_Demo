@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfDemosCommonCode.Twain.SelectDeviceManagerModeWindow"
+﻿<Window x:Class="WpfCommonCode.Twain.SelectDeviceManagerModeWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Device Manager Mode" Height="106" Width="270" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"  WindowStyle="ToolWindow">

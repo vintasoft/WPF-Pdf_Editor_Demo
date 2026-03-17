@@ -1,4 +1,4 @@
-﻿<ToolBar x:Class="WpfDemosCommonCode.Imaging.FindTextToolBar"
+﻿<ToolBar x:Class="WpfCommonCode.Imaging.FindTextToolBar"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="31" Width="Auto" Background="Transparent" SnapsToDevicePixels="True">

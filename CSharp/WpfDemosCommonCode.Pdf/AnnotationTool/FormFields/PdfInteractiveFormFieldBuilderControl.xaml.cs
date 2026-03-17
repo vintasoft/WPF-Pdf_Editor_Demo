@@ -15,11 +15,11 @@ using Vintasoft.Imaging.Pdf.Tree.InteractiveForms.AppearanceGenerators;
 using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 using Vintasoft.Imaging.Wpf.UI;
 
-using WpfDemosCommonCode.Imaging;
-using WpfDemosCommonCode.Pdf.Security;
+using WpfCommonCode.Imaging;
+using WpfCommonCode.Pdf.Security;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A panel that allows to build new PDF interactive form field and add the field to a PDF page.

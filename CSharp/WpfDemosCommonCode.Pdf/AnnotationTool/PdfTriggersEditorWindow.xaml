@@ -1,7 +1,7 @@
-﻿<Window x:Class="WpfDemosCommonCode.Pdf.PdfTriggersEditorWindow"
+﻿<Window x:Class="WpfCommonCode.Pdf.PdfTriggersEditorWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
-    xmlns:PdfCustomControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    xmlns:PdfCustomControls="clr-namespace:WpfCommonCode.Pdf"
     Title="Triggers Editor" MinHeight="380" MinWidth="200" Width="430" Height="380">
     <Grid>
         <Grid.RowDefinitions>

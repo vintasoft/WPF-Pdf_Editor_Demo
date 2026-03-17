@@ -1,4 +1,4 @@
-﻿namespace WpfDemosCommonCode.Imaging
+﻿namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// Specifies available tree types of processing result.

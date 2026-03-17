@@ -7,10 +7,10 @@ using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Tree;
 using Vintasoft.Imaging.Wpf.UI;
 
-using WpfDemosCommonCode.Pdf.JavaScript;
+using WpfCommonCode.Pdf.JavaScript;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Window that allows to debug PDF JavaScript interperter.

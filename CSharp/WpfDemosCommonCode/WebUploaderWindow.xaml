@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfDemosCommonCode.WebUploaderWindow"
+﻿<Window x:Class="WpfCommonCode.WebUploaderWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Upload Data (WebClient)" Height="302" Width="524">

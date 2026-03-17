@@ -1,5 +1,5 @@
-﻿<TreeView x:Class="WpfDemosCommonCode.Imaging.ProcessingCommandViewer"
+﻿<TreeView x:Class="WpfCommonCode.Imaging.ProcessingCommandViewer"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:c="clr-namespace:WpfDemosCommonCode.Imaging" >
+    xmlns:c="clr-namespace:WpfCommonCode.Imaging" >
 </TreeView>

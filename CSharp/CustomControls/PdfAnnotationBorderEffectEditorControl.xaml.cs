@@ -3,10 +3,10 @@ using System.Windows.Controls;
 
 using Vintasoft.Imaging.Pdf.Tree.Annotations;
 
-using WpfDemosCommonCode.Pdf;
+using WpfCommonCode.Pdf;
 
 
-namespace WpfDemosCommonCode.CustomControls
+namespace WpfCommonCode.CustomControls
 {
     /// <summary>
     /// A control that allows to view and edit properties of

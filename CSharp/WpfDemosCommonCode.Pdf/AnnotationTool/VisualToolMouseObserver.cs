@@ -5,7 +5,7 @@ using System.Windows.Input;
 using Vintasoft.Imaging.Wpf.UI.VisualTools;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Observes mouse focus and mouse location in visual tool.

@@ -17,7 +17,7 @@ using Vintasoft.Imaging.Pdf.Tree;
 using Vintasoft.Imaging.Pdf.Tree.FileAttachments;
 using Vintasoft.Imaging.Wpf;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Represents the PDF attachment viewer.

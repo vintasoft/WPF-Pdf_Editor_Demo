@@ -10,7 +10,7 @@ using Vintasoft.Imaging.Pdf.Tree.Annotations;
 using Vintasoft.Imaging.Pdf.Wpf.UI;
 using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Contains common static functions for text markup on PDF page using PDF text markup annotation.

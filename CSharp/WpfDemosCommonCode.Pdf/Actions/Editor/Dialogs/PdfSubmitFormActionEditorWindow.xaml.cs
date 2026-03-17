@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Windows;
 
 using Vintasoft.Imaging.Pdf.Tree.InteractiveForms;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to view and edit PDF form submit action.

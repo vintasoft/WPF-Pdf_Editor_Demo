@@ -8,7 +8,7 @@ using Vintasoft.Imaging.Pdf.Tree;
 using Vintasoft.Imaging.Processing;
 
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// A form that allows to view the commands for processing a PDF document.

@@ -1,7 +1,7 @@
-﻿<Window x:Class="WpfDemosCommonCode.Pdf.PdfResetFormActionEditorWindow"
+﻿<Window x:Class="WpfCommonCode.Pdf.PdfResetFormActionEditorWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    xmlns:CustomControls="clr-namespace:WpfCommonCode.Pdf"
     Title="Reset Form Action Editor" Height="400" Width="650" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>

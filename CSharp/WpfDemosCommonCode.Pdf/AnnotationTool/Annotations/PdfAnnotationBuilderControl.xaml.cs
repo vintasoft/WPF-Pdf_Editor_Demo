@@ -14,9 +14,9 @@ using Vintasoft.Imaging.Pdf.Tree.Fonts;
 using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 using Vintasoft.Imaging.Wpf.UI;
 using Vintasoft.Imaging.Wpf.UI.VisualTools.UserInteraction;
-using WpfDemosCommonCode.Office;
+using WpfCommonCode.Office;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A panel that allows to add and build new PDF annotations on a PDF page.

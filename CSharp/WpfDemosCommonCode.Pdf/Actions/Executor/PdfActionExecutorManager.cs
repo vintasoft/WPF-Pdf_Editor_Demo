@@ -3,10 +3,10 @@ using Vintasoft.Imaging.Pdf.Wpf.UI;
 using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 using Vintasoft.Imaging.Wpf.UI;
 
-using WpfDemosCommonCode.Pdf.JavaScript;
+using WpfCommonCode.Pdf.JavaScript;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Manager of Application Action Executors.

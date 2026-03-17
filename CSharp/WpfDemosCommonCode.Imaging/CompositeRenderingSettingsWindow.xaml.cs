@@ -8,7 +8,7 @@ using Vintasoft.Imaging.Pdf;
 #endif
 using Vintasoft.Imaging.Wpf;
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// A window that allows to view and edit the composite rendering settings.

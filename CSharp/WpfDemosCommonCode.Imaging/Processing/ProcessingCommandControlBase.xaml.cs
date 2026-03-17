@@ -7,7 +7,7 @@ using Vintasoft.Imaging.Utils;
 using System.ComponentModel;
 
 
-namespace WpfDemosCommonCode.Imaging
+namespace WpfCommonCode.Imaging
 {
     /// <summary>
     /// A form that allows to view the processing commands.

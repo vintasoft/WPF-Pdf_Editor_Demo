@@ -5,7 +5,7 @@ using System.Text;
 using Vintasoft.Imaging.Processing;
 using Vintasoft.Imaging.Processing.Analyzers;
 
-namespace WpfDemosCommonCode
+namespace WpfCommonCode
 {
     /// <summary>
     /// Contains collection of helper-algorithms for

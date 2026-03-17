@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfDemosCommonCode.Pdf.EmbeddedFilesWindow"
+﻿<Window x:Class="WpfCommonCode.Pdf.EmbeddedFilesWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Embedded Files" Height="318" Width="764" MinHeight="265" MinWidth="570" WindowStartupLocation="CenterScreen">

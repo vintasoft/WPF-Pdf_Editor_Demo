@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls" x:Class="WpfDemosCommonCode.Imaging.CompositeRenderingSettingsWindow"
+        xmlns:CustomControls="clr-namespace:WpfCommonCode.CustomControls" x:Class="WpfCommonCode.Imaging.CompositeRenderingSettingsWindow"
         mc:Ignorable="d"
         Title="Markup Rendering Settings" Height="382.482" Width="311.167" WindowStartupLocation="CenterScreen" Topmost="True" ResizeMode="NoResize">
     <Grid>

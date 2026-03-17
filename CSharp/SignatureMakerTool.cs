@@ -11,8 +11,8 @@ using Vintasoft.Imaging.Wpf.UI.VisualTools;
 using Vintasoft.Imaging.Wpf.UI.VisualTools.UserInteraction;
 using Vintasoft.Imaging.Utils;
 
-using WpfDemosCommonCode;
-using WpfDemosCommonCode.Pdf.Security;
+using WpfCommonCode;
+using WpfCommonCode.Pdf.Security;
 
 
 namespace WpfPdfEditorDemo

@@ -1,7 +1,7 @@
-﻿<Window x:Class="WpfDemosCommonCode.Pdf.CustomContentRendererSettingsWindow"
+﻿<Window x:Class="WpfCommonCode.Pdf.CustomContentRendererSettingsWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.CustomControls"
+    xmlns:CustomControls="clr-namespace:WpfCommonCode.CustomControls"
     Title="Content Renderer Settings" Height="344" Width="457" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" WindowStyle="ToolWindow">
     <Window.Resources>
         <Style TargetType="Button">

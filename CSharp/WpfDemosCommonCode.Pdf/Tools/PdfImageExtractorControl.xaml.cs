@@ -12,10 +12,10 @@ using Vintasoft.Imaging.Pdf.Tree;
 using Vintasoft.Imaging.Pdf.Wpf.UI;
 using Vintasoft.Imaging.Wpf.UI;
 
-using WpfDemosCommonCode.Imaging.Codecs;
+using WpfCommonCode.Imaging.Codecs;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to extract image-resources from PDF page.

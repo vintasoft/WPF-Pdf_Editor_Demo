@@ -11,7 +11,7 @@ using Vintasoft.Imaging.Pdf.Tree.InteractiveForms.AppearanceGenerators;
 using Vintasoft.Imaging.Pdf.Wpf.UI.Annotations;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Form that allows to edit properties of annotations.

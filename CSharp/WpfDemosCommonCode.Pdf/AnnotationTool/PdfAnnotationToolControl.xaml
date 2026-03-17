@@ -1,7 +1,7 @@
-﻿<UserControl x:Class="WpfDemosCommonCode.Pdf.PdfAnnotationToolControl"
+﻿<UserControl x:Class="WpfCommonCode.Pdf.PdfAnnotationToolControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:CustomControls="clr-namespace:WpfDemosCommonCode.Pdf"
+    xmlns:CustomControls="clr-namespace:WpfCommonCode.Pdf"
     Height="Auto" Width="Auto"
     IsEnabledChanged="UserControl_IsEnabledChanged">
     <UserControl.Resources>

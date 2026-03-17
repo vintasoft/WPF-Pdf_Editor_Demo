@@ -4,7 +4,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows;
 
 
-namespace WpfDemosCommonCode
+namespace WpfCommonCode
 {
     /// <summary>
     /// Represents controller of progress visualization of an action.

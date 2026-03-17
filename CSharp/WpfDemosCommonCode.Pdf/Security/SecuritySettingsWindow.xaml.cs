@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 
 using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Security;
 
-namespace WpfDemosCommonCode.Pdf.Security
+namespace WpfCommonCode.Pdf.Security
 {
     /// <summary>
     /// A window that allows to edit the security properties of PDF document.

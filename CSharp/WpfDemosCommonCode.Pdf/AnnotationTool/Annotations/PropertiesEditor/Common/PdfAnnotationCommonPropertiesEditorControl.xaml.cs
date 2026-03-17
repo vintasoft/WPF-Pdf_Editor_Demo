@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using Vintasoft.Imaging.Pdf.Tree.Annotations;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A control that allows to view and edit common properties of the <see cref="PdfAnnotation"/>.

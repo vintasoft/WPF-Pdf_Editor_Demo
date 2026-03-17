@@ -7,10 +7,10 @@ using Vintasoft.Imaging.ImageRendering;
 using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Wpf.UI;
 
-using WpfDemosCommonCode.Imaging;
+using WpfCommonCode.Imaging;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// Tool strip that allows to changes rendering resolution of image viewer.

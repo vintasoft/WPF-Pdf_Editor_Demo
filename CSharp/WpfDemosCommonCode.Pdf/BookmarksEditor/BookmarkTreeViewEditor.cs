@@ -10,9 +10,9 @@ using Vintasoft.Imaging.Pdf.JavaScriptApi;
 using Vintasoft.Imaging.Pdf.Tree;
 using Vintasoft.Imaging.Wpf;
 
-using WpfDemosCommonCode.Pdf.JavaScript;
+using WpfCommonCode.Pdf.JavaScript;
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A tree view that allows to view and edit bookmarks of PDF document.

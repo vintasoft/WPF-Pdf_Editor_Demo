@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WpfDemosCommonCode
+namespace WpfCommonCode
 {
     /// <summary>
     /// Provides the <b>abstract</b> base class that can work with data set.

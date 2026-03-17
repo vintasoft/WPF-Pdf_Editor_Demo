@@ -10,11 +10,11 @@ using Vintasoft.Imaging;
 using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Tree;
 
-using WpfDemosCommonCode.Imaging;
-using WpfDemosCommonCode.Imaging.Codecs;
+using WpfCommonCode.Imaging;
+using WpfCommonCode.Imaging.Codecs;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A form that allows to display PDF resources and select PDF resource.

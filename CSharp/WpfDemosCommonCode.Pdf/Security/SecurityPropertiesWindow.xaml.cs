@@ -1,10 +1,10 @@
-using System.Windows;
+﻿using System.Windows;
 
 using Vintasoft.Imaging.Pdf;
 using Vintasoft.Imaging.Pdf.Security;
 
 
-namespace WpfDemosCommonCode.Pdf.Security
+namespace WpfCommonCode.Pdf.Security
 {
     /// <summary>
     /// A window that shows the security properties of PDF document.

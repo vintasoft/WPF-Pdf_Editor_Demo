@@ -10,7 +10,7 @@ using Vintasoft.Imaging.Pdf.Content.TextExtraction;
 using Vintasoft.Imaging.Pdf.Tree.Fonts;
 
 
-namespace WpfDemosCommonCode.Pdf
+namespace WpfCommonCode.Pdf
 {
     /// <summary>
     /// A window that allows to view fonts of PDF document.
