@@ -42,7 +42,7 @@
     <Reference Include="Jint.Vintasoft">
       <HintPath>.\Jint.Vintasoft\DotNet9\Jint.Vintasoft.dll</HintPath>
     </Reference>
-    <PackageReference Include="Vintasoft.Barcode" Version="15.3.12.1" />
+    <PackageReference Include="Vintasoft.Barcode" Version="16.0.1.1" />
     <PackageReference Include="Vintasoft.Imaging" Version="15.0.11.1" />
     <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.0.11.1" />
     <PackageReference Include="Vintasoft.Imaging.Annotation" Version="15.0.11.1" />
@@ -71,7 +71,7 @@
     <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.0.11.1" />
     <PackageReference Include="Vintasoft.Imaging.Pdf.Wpf.UI" Version="12.0.11.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.6.1.1" />
-    <PackageReference Include="Vintasoft.WpfTwain" Version="15.3.3.1" />
+    <PackageReference Include="Vintasoft.WpfTwain" Version="15.3.7.1" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
