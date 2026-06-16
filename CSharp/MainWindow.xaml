@@ -334,7 +334,10 @@
                     <MenuItem Header="PDF/A-4 Converter..." Name="pdfA4ConverterMenuItem" Click="pdfA4ConverterMenuItem_Click" />
                     <MenuItem Header="PDF/A-4f Converter..." Name="pdfA4fConverterMenuItem" Click="pdfA4fConverterMenuItem_Click" />
                     <MenuItem Header="PDF/A-4e Converter..." Name="pdfA4eConverterMenuItem" Click="pdfA4eConverterMenuItem_Click" />
+                    <Separator />
                     <MenuItem Header="Convert to Image-only Document..." Name="convertToImageonlyDocumentMenuItem" Click="convertToImageonlyDocumentMenuItem_Click" />
+                    <MenuItem Header="Simplify Document Content..." Name="simplifyDocumentContentMenuItem" Click="simplifyDocumentContentMenuItem_Click"/>
+                    <MenuItem Header="Flatten Document Text Content..." Name="flattenDocumentTextContentMenuItem" Click="flattenDocumentTextContentMenuItem_Click"/>
                 </MenuItem>
                 <MenuItem Header="Compression">
                     <MenuItem Header="Compress document..." Name="compressDocumentMenuItem" Click="compressDocumentMenuItem_Click" />

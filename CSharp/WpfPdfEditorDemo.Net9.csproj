@@ -13,7 +13,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
     <EnableDefaultItems>false</EnableDefaultItems>
-    <Version>15.0.14.1</Version>
+    <Version>15.1.0.1</Version>
     <AssemblyName>WpfPdfEditorDemo</AssemblyName>
     <RootNamespace>WpfPdfEditorDemo</RootNamespace>
     <StartupObject>WpfPdfEditorDemo.App</StartupObject>
@@ -29,7 +29,6 @@
     <DefineConstants>NETCORE</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
@@ -37,39 +36,38 @@
     <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.0" />
   </ItemGroup>
 
-
   <ItemGroup>
     <Reference Include="Jint.Vintasoft">
       <HintPath>.\Jint.Vintasoft\DotNet9\Jint.Vintasoft.dll</HintPath>
     </Reference>
-    <PackageReference Include="Vintasoft.Barcode" Version="16.0.2.1" />
-    <PackageReference Include="Vintasoft.Imaging" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.UI" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Wpf.UI" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="10.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="12.0.14.1" />
+    <PackageReference Include="Vintasoft.Barcode" Version="16.0.3.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.UI" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Wpf.UI" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="10.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="12.1.0.1" />
     <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="10.1.0.1" />
-    <PackageReference Include="Vintasoft.Imaging.Ocr" Version="10.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Ocr.Tesseract" Version="10.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="7.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.JavaScript" Version="12.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Mrc" Version="12.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="12.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Ocr" Version="12.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="12.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.UI" Version="12.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.Wpf.UI" Version="12.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.WebpCodec" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.0.14.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf.Wpf.UI" Version="12.0.14.1" />
+    <PackageReference Include="Vintasoft.Imaging.Ocr" Version="10.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Ocr.Tesseract" Version="10.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.UI" Version="7.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml.Wpf.UI" Version="7.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.JavaScript" Version="12.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Mrc" Version="12.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="12.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Ocr" Version="12.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office" Version="12.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.UI" Version="12.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Office.Wpf.UI" Version="12.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.WebpCodec" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Wpf.UI" Version="15.1.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf.Wpf.UI" Version="12.1.0.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.6.1.1" />
     <PackageReference Include="Vintasoft.WpfTwain" Version="15.3.7.1" />
   </ItemGroup>
@@ -223,6 +221,14 @@
     </Compile>
     <Compile Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageViewerSettingsWindow.xaml.cs">
       <DependentUpon>ImageViewerSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\OCR\OcrBinarizationMode.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\OCR\OcrLanguagesListBox.xaml.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\OCR\OcrLanguagesWindow.xaml.cs">
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Imaging\OCR\OcrSettingsWindow.xaml.cs">
     </Compile>
     <Compile Include="WpfDemosCommonCode.Imaging\PageSettingsWindow.xaml.cs">
       <DependentUpon>PageSettingsWindow.xaml</DependentUpon>
@@ -561,9 +567,6 @@
     <Compile Include="WpfDemosCommonCode.Pdf\Fonts\CreateFontWindow.xaml.cs">
       <DependentUpon>CreateFontWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WpfDemosCommonCode.Pdf\Fonts\ViewDocumentFontsWindow.xaml.cs">
-      <DependentUpon>ViewDocumentFontsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WpfDemosCommonCode.Pdf\ImageViewerResolutionToolBar.xaml.cs">
       <DependentUpon>ImageViewerResolutionToolBar.xaml</DependentUpon>
     </Compile>
@@ -729,6 +732,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="SignatureMakerTool.cs" />
+    <Compile Include="WpfDemosCommonCode.Pdf\Fonts\EditPdfFontSymbolWindow.xaml.cs">
+      <DependentUpon>EditPdfFontSymbolWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfDemosCommonCode.Pdf\Fonts\PdfDocumentFontsWindow.xaml.cs">
+      <DependentUpon>PdfDocumentFontsWindow.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -984,6 +993,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="WpfDemosCommonCode.Imaging\ImageViewer\ImageViewerSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\OCR\OcrLanguagesListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\OCR\OcrLanguagesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Imaging\OCR\OcrSettingsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1303,10 +1324,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="WpfDemosCommonCode.Pdf\Fonts\ViewDocumentFontsWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="WpfDemosCommonCode.Pdf\ImageViewerResolutionToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1458,6 +1475,14 @@
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Fonts\EditPdfFontSymbolWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WpfDemosCommonCode.Pdf\Fonts\PdfDocumentFontsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Resource Include="App.ico" />
     <EmbeddedResource Include="Resources\ContentEditor.png" />

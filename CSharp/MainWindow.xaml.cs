@@ -304,15 +304,10 @@ namespace WpfPdfEditorDemo
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// Initializes the <see cref="MainWindow"/> class.
         /// </summary>
-        public MainWindow()
+        static MainWindow()
         {
-            // register the evaluation license for VintaSoft Imaging .NET SDK
-            Vintasoft.Imaging.ImagingGlobalSettings.Register("REG_USER", "REG_EMAIL", "EXPIRATION_DATE", "REG_CODE");
-
-            InitializeComponent();
-
             Jbig2AssemblyLoader.Load();
             Jpeg2000AssemblyLoader.Load();
             DocxAssemblyLoader.Load();
@@ -323,6 +318,20 @@ namespace WpfPdfEditorDemo
             PdfOfficeWpfUIAssembly.Init();
 #endif
 
+            // set CustomFontProgramsController for all opened PDF documents
+            CustomFontProgramsController.SetDefaultFontProgramsController();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
+        public MainWindow()
+        {
+            // register the evaluation license for VintaSoft Imaging .NET SDK
+            Vintasoft.Imaging.ImagingGlobalSettings.Register("REG_USER", "REG_EMAIL", "EXPIRATION_DATE", "REG_CODE");
+
+            InitializeComponent();
+
             visualToolsToolBar.ImageViewer = imageViewer1;
             visualToolsToolBar.VisualToolsMenuItem = visualToolsMenuItem;
 
@@ -332,9 +341,6 @@ namespace WpfPdfEditorDemo
 
             // specify that exceptions of visual tools must be catched
             DemosTools.CatchVisualToolExceptions(imageViewer1);
-
-            // set CustomFontProgramsController for all opened PDF documents
-            CustomFontProgramsController.SetDefaultFontProgramsController();
 
             // enable PDF password dialog
             PdfAuthenticateTools.EnableAuthenticateRequest = true;
@@ -2605,6 +2611,39 @@ namespace WpfPdfEditorDemo
                 true);
         }
 
+        /// <summary>
+        /// Handles the Click event of simplifyDocumentContentMenuItem object.
+        /// </summary>
+        private void simplifyDocumentContentMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            _annotationTool.CancelBuilding();
+
+            PdfSimplifyContentCommand command = new PdfSimplifyContentCommand();
+            if (imageViewer1.ImageDecodingSettings != null)
+                command.ColorManagement = imageViewer1.ImageDecodingSettings.ColorManagement;
+
+            ProcessingCommandWindow<ImageCollection>.ExecuteProcessing(
+                imageViewer1.Images,
+                command,
+                true);
+        }
+
+        /// <summary>
+        /// Handles the Click event of flattenDocumentTextContentMenuItem object.
+        /// </summary>
+        private void flattenDocumentTextContentMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            _annotationTool.CancelBuilding();
+
+            PdfFlattenTextCommand flattenTextCommand = new PdfFlattenTextCommand();
+            flattenTextCommand.FlattenAnnotations = true;
+
+            ProcessingCommandWindow<ImageCollection>.ExecuteProcessing(
+                imageViewer1.Images,
+                flattenTextCommand,
+                true);
+        }
+
         #endregion
 
 
@@ -3631,22 +3670,38 @@ namespace WpfPdfEditorDemo
         /// </summary>
         private void fontsMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            // get all PDF documents loaded in image viewer
+            // get all PDF documents, which are loaded in image viewer
             List<PdfDocument> documents = GetPdfDocumentsAssociatedWithImageCollection(imageViewer1.Images);
+            // the font list
             List<PdfFont> fonts = new List<PdfFont>();
+            // for each PDF document
             foreach (PdfDocument document in documents)
+            {
+                // add the document fonts to the font list
                 fonts.AddRange(document.GetFonts());
+            }
 
+            // if document does not contain fonts
             if (fonts.Count == 0)
             {
                 MessageBox.Show("This document does not contain fonts.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            // if document contains fonts
             else
             {
-                ViewDocumentFontsWindow viewDocumentFontsDialog = new ViewDocumentFontsWindow(fonts);
-                viewDocumentFontsDialog.Owner = this;
-                viewDocumentFontsDialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                viewDocumentFontsDialog.ShowDialog();
+                // create a dialog that allows to view information about fonts of PDF document
+                PdfDocumentFontsWindow pdfDocumentFontsDialog = new PdfDocumentFontsWindow(fonts);
+                pdfDocumentFontsDialog.Owner = this;
+                pdfDocumentFontsDialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                // show the dialog
+                pdfDocumentFontsDialog.ShowDialog();
+
+                // if the Unicode table of one or several PDF fonts is changed
+                if (pdfDocumentFontsDialog.IsPdfFontUnicodeTableChanged)
+                {
+                    // reload images asynchronously
+                    ReloadImagesAsync();
+                }
             }
         }
 
@@ -6656,8 +6711,8 @@ namespace WpfPdfEditorDemo
         delegate void SetStatusLabelTextDelegate(string text);
 
 
+
         #endregion
-
-
+      
     }
 }
