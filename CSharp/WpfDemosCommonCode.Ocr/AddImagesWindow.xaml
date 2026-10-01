@@ -126,7 +126,7 @@
                         <CheckBox x:Name="holePunchRemovalCheckBox" IsChecked="True">Hole Punch Removal</CheckBox>
                         <CheckBox x:Name="despeckleCheckBox" IsChecked="True">Despeckle</CheckBox>
                         <CheckBox x:Name="deskewChekBox" IsChecked="True">Deskew</CheckBox>
-                        <CheckBox x:Name="autoOrientationCheckBox">Auto Orienation</CheckBox>
+                        <CheckBox x:Name="autoOrientationCheckBox">Auto Orientation</CheckBox>
                         <CheckBox x:Name="segmentationCheckBox">Segmentation</CheckBox>
                         <ProgressBar x:Name="currentImageProgressBar"/>
                         <ProgressBar x:Name="allImagesProgressBar"/>

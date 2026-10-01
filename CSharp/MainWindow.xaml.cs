@@ -318,6 +318,15 @@ namespace WpfPdfEditorDemo
             PdfOfficeWpfUIAssembly.Init();
 #endif
 
+#if !REMOVE_OFFICE_PLUGIN && !REMOVE_DOCCLEANUP_PLUGIN
+            // set Table detection command in PDF to DOCX converter
+            Vintasoft.Imaging.Pdf.Office.PdfToDocxConverter.DefaultTableDetectionCommand =
+                new Vintasoft.Imaging.ImageProcessing.Info.TableDetection.TableWithBordersDetectionCommand();
+            // register PdfLineRecognitionCommand that finds lines
+            // on vector PDF page if image is associated with PDF page
+            Vintasoft.Imaging.ImageProcessing.Info.PdfLineRecognitionCommand.Register();
+#endif
+
             // set CustomFontProgramsController for all opened PDF documents
             CustomFontProgramsController.SetDefaultFontProgramsController();
         }
@@ -500,10 +509,10 @@ namespace WpfPdfEditorDemo
                         @"TesseractOCR\",
                         @"Debug\net8.0-windows\TesseractOCR\",
                         @"Release\net8.0-windows\TesseractOCR\",
-                        @"Debug\net9.0-windows\TesseractOCR\",
-                        @"Release\net9.0-windows\TesseractOCR\",
                         @"Debug\net10.0-windows\TesseractOCR\",
                         @"Release\net10.0-windows\TesseractOCR\",
+                        @"Debug\net11.0-windows\TesseractOCR\",
+                        @"Release\net11.0-windows\TesseractOCR\",
                     };
 
                     // search tesseract dll
@@ -1865,10 +1874,7 @@ namespace WpfPdfEditorDemo
             if (_convertToFileDialog.ShowDialog() == true)
             {
                 // convert PDF document to DOCX file in background thread
-                Thread savingThread = new Thread(new ParameterizedThreadStart(ConvertPdfDocumentToDocxFileThread));
-                savingThread.Name = "Convert To DOCX";
-                savingThread.IsBackground = true;
-                savingThread.Start(_convertToFileDialog.FileName);
+                ConvertPdfDocumentToDocxDocument(_convertToFileDialog.FileName);
             }
 #endif
         }
@@ -6067,14 +6073,9 @@ namespace WpfPdfEditorDemo
         /// <summary>
         /// Converts PDF file to a DOCX file.
         /// </summary>
-        /// <param name="obj">A string that contains path to the output DOCX file.</param>
-        private void ConvertPdfDocumentToDocxFileThread(object obj)
+        /// <param name="filePath">A string that contains path to the output DOCX file.</param>
+        private void ConvertPdfDocumentToDocxDocument(string filePath)
         {
-            string filePath = (string)obj;
-
-            // start the 'Convert to DOCX" action
-            StartAction("Convert to DOCX", true);
-
             // create converter
             using (Vintasoft.Imaging.Pdf.Office.PdfToDocxConverter converter = new Vintasoft.Imaging.Pdf.Office.PdfToDocxConverter())
             {
@@ -6084,11 +6085,8 @@ namespace WpfPdfEditorDemo
                 converter.OutputFilename = filePath;
 
                 // convert PDF document to DOCX file
-                using (ProcessingState state = new ProcessingState(Images_ImageCollectionSavingProgress))
-                    converter.Execute(_document, state);
+                ProcessingCommandWindow<PdfDocument>.ExecuteProcessing(_document, converter, true);
             }
-
-            EndAction();
         }
 #endif
 

@@ -546,7 +546,7 @@ namespace WpfCommonCode.Ocr
 
                 if (preprocessingCommand.Segmentation != null)
                 {
-                    _segmentationResults.Add(Images[i], preprocessingCommand.SegmentationTextRegions);
+                    _segmentationResults.Add(Images[i], preprocessingCommand.DetectedRegions);
                 }
                 DemosTools.DoEvents();
             }
